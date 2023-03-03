@@ -15,7 +15,7 @@
             domain: 域，表示这个cookie属于那个网站的
             path: 路径，表示这个cookie是属于该网站的那个基路径
             secure: 是否使用安全传输
-            expire: 过期事件，表示该cookie在什么时候过期
+            expire: 过期时间，表示该cookie在什么时候过期
 
             当浏览器向服务器发出请求时，cookie小系统就会看那个cookie符合条件，符合得则会带在请求中。
             条件如下： 
@@ -36,7 +36,7 @@
                 domain  默认是当前请求时网页的域（全称域）
                 expire  一个有效的GMT事件，如  Fri 17 Apr 2020 09:25:59 GMT
                 max-age 秒（浏览器会以当前时间加上这些秒数后过期）
-                  expire、max-age 如果都没设置，则该cookie表示会话结束后过期（关闭浏览器），这两个属性只能设置一个。
+                  expire、max-age 如果都没设置，则该cookie表示会话结束后过期（关闭窗口），这两个属性只能设置一个。
                 httponly  默认为false,true表示该cookie仅用于传输，不允许在客户端通过js获取（防止XSS攻击）
                
             
