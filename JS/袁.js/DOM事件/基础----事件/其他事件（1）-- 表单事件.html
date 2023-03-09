@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .div {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div" class="div">
+        <input id="inpt">
+    </div>
+    <form action="https://www.baidu.com">
+        <button id="1">提交1</button>
+        <button id="2">提交2</button>
+        <button id="3">提交3</button>
+    </form>
+    <script>
+        /* 
+              #表单事件
+                focus:元素聚焦的时候触发(能与用户发生交互的元素,都可以聚焦),该事件不会冒泡
+                blur:元素失去焦点时触发,该事件不会冒泡
+                submit:提交表单事件,仅在form元素上有效,会冒泡
+                change:文本改变事件,如:表单列表每还一项就触发一次
+                input:文本改变事件,即时触发(聚焦后失焦,触发。。。必须改变文本后失焦才触发)
+          */
+
+
+        var inpt = document.getElementById('inpt')
+        inpt.onfocus = function (e) { //聚焦时触发事件,该事件不会冒泡
+            console.log('来了老弟', e.bubbles)
+        }
+        var div = document.getElementById('div')
+        div.onfocus = function () { //没有聚焦功能,所以不会触发
+            console.log('聚焦div')
+        }
+
+
+        var from = document.querySelector('form')
+        var but = document.querySelectorAll('button')[1]
+        from.onsubmit = function (e) {
+            if (e.target.id !== '2') {
+                console.log('来了')
+                return false //阻止默认行为
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+             #Array
+              凡是通过Array构造函数,创建出来的对象都是 数组 
+
+            **静态方法
+               from方法:可以将一个伪数组转换为真数组。(会把实参的，每一项push进数组并返回)
+               isArray方法:判断一个给定的数据,是否为一个真数组
+                       Array.isArray(arguments)
+
+               of方法:类似于中括号创建数组,依次赋予数组每一项 
+                      var arr = [6] == Array.of(6)
+         
+            **动态方法  
+               fill方法:填充数组,把数组每一项都填充
+               pop方法:截取最后一位并返回
+               push方法:向数组的末尾添加一项
+               reverse方法:把数组颠倒,逆转
+               shift方法:截取数组第一项,并返回
+               sort方法:对数组进行排序,但是并不完美,因为js引擎,是对它进行ASII码排序
+                       如果是引用值,会调用toString方法得结果再进行排序
+                 sort方法:留下一个借口,写一个实参的函数,函数有两形参。也相当于回调函数
+                          规则自己定
+               unshift(数据):向数组起始位置添加数据(索引的开始位),会导致数组变化   
+               splice(索引,删除个数,添加数据)   
+   
+             不会改变原数组:
+               concat方法:在数组末尾拼接(两个数组拼接)     
+               includes:数组中是否包含满足条件的元素
+                  数组.includes(数据,索引)
+                  第二个实参可以不写
+                  从索引开始从,看有没有对应的数据,采用严格比较,返回值是boolean类型
+               join方法:对象数组进行拼接,并返回toString的结果
+               indexOf方法:找第一个严格相等匹配的下标
+               lastIndexOf方法:找最后一个严格相等匹配到的下标
+                 这两个方法,找不到都是返回-1
+             
+               (slice从该位开始截取，截取到该位) 不写参数就是整个字符串截取
+
+               forEach方法:遍历数组的每一项 属性值  属性名  数组  (会循环length次)
+                  只能一个实参,且是函数,也就是回调函数,函数有3个形参,第一个代表属性值,第二个代表属性名,第三个代表数组
+               every:是否所有元素都满足条件 (返回值boolean)
+                     跟forEach函数差不多,都必须要一个实参函数,实参函数的形参第一个为属性值,第二个为属性名
+                     的三为数组
+               some:是否至少有一个元素满足条件(返回值也是boolean)
+                     和上面的方法参数都一样
+               filter:过滤,得到满足条件的元素,组成新的数组  
+               find:查找第一个满足条件的元素,并返回它,如果没有找到,则返回undefined    
+               findIndex:查找第一个满足条件的元素,并返回它的下标
+               map:应式,将数组的每一项应式成另外一项,并push进新数组返回       
+               reduce:统计、累计
+                数组.reduce(function(a,b){},0) //如果有两个实参,就会把第二个实参赋给第一个实参函数的形参
+                                               //如果没有第二个实参,且数组为空,就会报错...根据自定条件来
+                                               //如果数组只有一项,不会运行第一个实参函数,直接返回数组第一项
+
+
+
+
+
+           */
+
+        var arr = [1, 2, 3, 4, 5, 6, 7, 8]
+        arr.findIndex(function (imgs) {
+            return imgs > 7
+        })
+        
+
+
+        function Arr() {
+            var nin = Array.from(arguments)
+            console.log(nin)
+        }
+        Arr(1, 2, 3, 4, 5, 6, 7)
+        //这两种方法差不多
+        function test() {
+            console.log([].slice.call(arguments))
+        }
+        test(1, 2, 3, 4, 5)
+
+
+        Array.of(6) //和var arr = [6] 一样的效果
+
+        var arr = [1, 2, 3, 4, 5, 3, 2, 1, 3, 3, 21]
+        arr.sort(function (a, b) { //这样就不根据ASII码排
+            return a - b //升序
+            return b - a //降序
+        })
+
+        //将数组乱序
+        var arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        arr1.sort(function (a, b) {
+            var Mr = Math.random() - 0.4 //返回随机数
+            return Mr
+        })
+        console.log(arr1)
+
+        var arr2 = [1, 2, 3, 4, 3, 21]
+
+        // concat
+        arr1.concat(arr, arr2)
+        console.log(arr1)
+
+
+        //封装forEach方法
+        function test(arr, func) {
+            var func = func.length
+            for (var prop in arr) {
+                if (func >= 3) {
+                    func(arr[prop], prop, arr)
+                } else if (func === 2) {
+                    func(arr[prop], prop)
+                } else {
+                    func(arr[prop])
+                }
+                //简化版: func(arr[prop],prop,arr) 
+            }
+        }
+
+
+        //every
+        var arr7 = [2, 2, 4, 5, 3, 1, 4, 5, 6, 8]
+        arr7.every(function (zhi, ming, xian) {
+            return zhi >= 1
+        }) //看arr7这个属性,的所有项都是否为1或大于1
+
+
+        arr7.some(function (zhi, ming, xian) {
+            return zhi >= 1
+        }) //arr7数组有一项满足就为true了
+
+        arr7.find(function (imn) {
+            return imn > 8
+        })
+
+        //map:应式
+        var niu = arr7.map(function (imn, i) {
+            return {
+                name: '奈斯' + (i + 1),
+                som: imn
+            }
+        })
+        console.log(niu)
+
+        var nim = arr7.reduce(function (a, b) {
+            console.log('1')
+            return a + b
+        })
+        console.log(nim)
+
+        //链式编程:每一个函数调用返回的类型一致  (返回结果都是同一种类型)
+        var arr = [22, 33, 44, 55, 66, 77, 88]
+        //先对数组进行随机排序
+        //只取及格的分数
+        //得到学生对象的数组(每个学生对象包含姓名和分数)
+        var newArr = arr.sort(function () { //随机可以不用传参
+            return Math.random() //一整个表达式最后返回一个乱序的数组
+        }).filter(function (ims) {
+            return ims >= 60 //一整个表达式最后返回一个过滤后的新数组
+        }).map(function (ims, i) {
+            return {
+                name: '学生' + i + 1,
+                fenshu: ims
+            }
+        })
+        console.log(newArr)
+    </script>
+</body>
+
+</html>

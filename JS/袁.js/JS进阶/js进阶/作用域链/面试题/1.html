@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+                var foo = {
+                    n:1
+                    };
+              (function (foo) {
+                    console.log(foo.n) //1
+                    foo.n = 3 //把对象里的n变为3
+                    var foo = { //变量提升,有同名,但不是一等公民所以被忽略
+                        n:2   
+                    } //直接把地址给改了
+                    console.log(foo.n) //2 
+                }(foo));
+                 console.log(foo.n)// 3 //因为引用值赋的是地址 所以在函数里面已经被改成3了
+
+                
+    </script>
+</body>
+</html>

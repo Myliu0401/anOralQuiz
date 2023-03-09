@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+         .a{
+             width: 200px;
+             height: 200px;
+             background-color: darkgray;
+         }
+         .b{
+             width: 170px;
+             height: 170px;
+             background: darkmagenta;
+         }
+         .c{
+             width: 120px;
+             height: 120px;
+             background-color: darksalmon;
+         }
+         .d{
+             width: 70px;
+             height: 70px;
+             background-color: deepskyblue;
+         }
+    </style>
+</head>
+
+<body>
+    <button onclick="console.log('====')">奈斯</button>
+    <div class="a" id="div1">
+        <div class="b" id="div2">
+            <div class="c" id="div3">
+                <div class="d" id="div4"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        /*
+               #事件对象
+                 事件对象封装了事件的相关信息
+              原理:当触发事件时,浏览器会根据发生的相关信息创建一个event对象,把这个对象做为实参传给事件函数
+                  除ie外,事件函数执行完毕浏览器会把创建的event delate掉   
+
+               ##获取事件对象
+                 通过事件处理函数的形参获取
+                 旧版本的ie浏览器通过window.event获取
+
+               ##事件对象的通用成员
+                 target(代表事件源在谁身上发生就是谁)  
+                 tagName(代表targrt那个人的名)
+                 srcElement(一样,ie版本)
+                事件目标(事件源)
+                事件委托:通过给祖先元素注册事件,在程序处理中判断事件源进行不同的处理
+                通常,事件委托用于动态生成元素的区域
+
+                  currentTarget
+                   当前目标:获取绑定事件的元素,等效于this
+
+                  type
+                   字符串,得到事件的类型
+  
+                 方法:
+                  preventDefault   &  returnValue(ie浏览器)ie是属性不是方法
+                  阻止浏览器默认行为
+                  如:a元素的超链接默认行为就是跳转到页面,给a元素重新添加事件,先运行添加的事件后,还会跳转到页面(也就是还会执行默认行为)      
+                  dom0的方式:在事件处理程序中返回false
+                  针对a元素,可以设置为功能性链接解决跳转问题(在a元素的属性hrl加javascript)
+
+                stopPropagation方法
+                 阻止事件冒泡或捕获
+
+                eventPhase 
+                  得到事件所处的阶段
+                  1:事件捕获
+                  2:事件目标
+                  3:事件冒泡
+
+                bubbles属性
+                 是判断是否冒泡
+                    
+
+         */
+     var but = document.querySelector('button')
+     var div = document.querySelectorAll('div')
+     /* but.onclick = function (e){
+          var event = e || window.event
+         console.log(event) 
+         console.log(e.currentTarget)
+     }
+    var div = document.querySelectorAll('div')
+    div[0].addEventListener('click',function (){
+        console.log('div1')
+    },true)
+    div[1].addEventListener('click',function (){
+        console.log('div2')
+    },true)
+    div[2].addEventListener('click',function (e){
+        e.stopPropagation() 
+        console.log('div3')
+    },)
+    div[3].addEventListener('click',function (){
+        console.log('div4')
+    },true) */
+    div[0].onmouseover = function (){
+      
+        console.log('div1')
+    }
+    div[1].onmouseenter = function (){
+        console.log('div2')
+    }
+    div[2].onmouseover = function (){
+        console.log('div3')
+    }
+    div[3].onmouseover= function (e){
+        
+        console.log('div4')
+    }
+    </script>
+</body>
+
+</html>

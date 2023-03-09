@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //数组 就是用于存放多个数据
+        /*
+           创建一个数组
+            1.new Array(长度)
+            长度,数组里面的数据总数,长度一定是一个非负整数 
+
+            new Array(数据，数据，数据....) 
+            创建一个数组,并初始化每一项数据的值
+            数组项就是数组其中的某一项数据
+            索引:就是数组里的每项数据的属性,数据就是值
+            索引从0开始,根据数据依次增加
+
+           2.创建数组 
+           var arr2 = [1,2,3,4...]  用字面量的形式,创建一个数组,并初始化每一项数据
+
+           //认识数组
+           数组本质就是一个对象
+           length 这个属性就代表数组的长度 ,是根据最大索引加1
+           索引:就是数组里的每项数据的属性,数据就是值
+           索引从0开始,根据数据依次增加
+
+           如果改变数组的length属性值,可能会导致数组的索引(属性)被截断
+           如果数组属性有6位,把length属性赋为4,就会在索引为4的属性开始截断后面
+
+           //索引
+            通常情况下,索引是连续的
+            不连续的索引的数组,叫做稀松数组
+            var arr = [,,]
+            new Array(10) 生成一个长度为10稀松数组
+            因为索引乱了
+
+            //添加数组项
+             数组[长度] = 数据 : 向末尾添加一项
+                *数组里面的所有方法都来自数组的原型*
+             数组.push(数据) : 也是向末尾添加一项 
+             数组.unshift(数据):向数组起始位置添加数据(索引的开始位),会导致数组
+             每一项的索引向后移动
+             数组.splice(索引,删除个数,添加数据):从指定索引位置开始,删除几个,然后在该位置插入添加
+             的数据,如果索引超过最大索引,则按照最大索引进行处理。
+             返回一个新数组,该数组记录  。如果索引为负数,就按照倒数位开始
+             被删除的数据
+
+             push、unshift、splice可以添加多个数据
+
+             //删除数据
+               delete 数组[索引]:这种做法不会导致数组其他的属性发生变化,因此,该做法会导致产生稀松数组
+               数组.pop():剪切数组的最后一项,并返回,该方法不能传参,如果没有数组项则返回undefinde
+               数组.shift():剪切数组的第一项,并返回,该方法也不能传参,如果没有数组项则返回undefinde
+                数组.splice(索引,删除个数,添加数据):从指定索引位置开始,删除几个,然后在该位置插入添加
+             的数据,如果索引超过最大索引,则按照最大索引进行处理。
+             如果索引为负数,就按照倒数位开始。 返回一个新数组,该数组记录
+             被删除的数据
+
+             //数组的其他操作
+             数组.slice(起始位置索引,结束位置索引):将起始位置到结束位置之间的数据拿出来,得到
+             一个新的数组,该函数不会改变原数组。
+             结束索引取不出来,如果结束索引大于数组的索引位则从起始索引位开始全部取出
+             
+             索引可以是负数,如果是负数,则从数组的末尾开始计算
+
+             如果不写结束索引,则直接取到末尾
+
+             如果什么都没写就等于全部截取,并返回
+
+
+             //清空数组
+            数组.splice(0,数组.length)
+            数组.lrngth=0
+
+            //查找数组中某一项的索引
+              数组.indexOf(数据)
+              从数组中依次查找对应的数据,查找时使用严格相等进行比较。
+              找到第一个匹配的索引,并返回。
+              如果没有找到,则得到-1
+
+              数组.lastIndexOf(数据)
+              功能和indexOf类似,只是查找的是最后一个匹配的索引
+
+             //数组.fill
+               数组.fill(数据):将数字的所有项,填充为指定的数据
+               数组.fill(数据,开始索引):将数组从开始索引起,到数组的末尾,填充为指定的数据
+               数组.fill(数据，开始索引,结束索引):将数组从开始索引起,到数组的结束索引(取不到结束索引)
+               填充为指定的数据
+
+            //in关键字
+            判断某个属性在对象中是否存在
+            属性名 in 对象
+
+            //for-in循环
+            for(var prop in 对象){
+                //循环体
+            }
+            取出对象的所有属性名,每次循环将其中一个属性名赋给变量prop,运行循环体
+            因为for-in循环做了特殊处理,length属性不会被遍历
+
+            如果是对象:for-in循环就没有做特殊处理
+
+
+         */
+
+        var arr = new Array(20) //创建一个长度为20的数组,但里面什么都没存,索引也没有
+        var arr1 = new Array(1, 2, 3, 4, 5, 6) //创建一个长度为6的数组,里面有6位,每一位就是索引的值
+
+        var obj = {
+            '0': 123,
+            '2': 1232
+        }
+        //obj.2  属性字面量的形式,访问不了,会报错,因为属性只能是变量,如果写字符串就是定量了
+
+
+        var arr2 = [2, 4, 1, 5, 8]
+        arr2[4] = 90
+        arr2['4'] = 18
+        arr2.op = '213' //给数组的op属性赋值  //属性不是索引,改属性会被数组自动提到最后一位
+        arr2[7] = '312'
+        arr2[arr2.length] = '123' //向末尾添加一项
+        //  arr2.length = 2
+        console.log(arr2[4], arr2['4'], arr2) //都是18
+
+        var arr = [1, 2, 3, 3, 3, 4, 5, 6]
+        arr.indexOf(3) //取第一个属性值为3的索引,这个方法是取索引
+        arr.lastIndexOf(3) //取最后一个属性值为3的索引
+          2 in arr   //系统会把数字转换为字符串
+
+
+
+
+
+
+        //=============================================================//
+
+        //push方法的原理
+        Array.prototype.push = function () {
+            var len = arguments.length
+            for (var i = 0; i < len; i++) {
+                this[this.length] = arguments[i]
+            }
+            return this.length
+        }
+        //unshift方法原理    
+        Array.prototype.unshift = function () {
+            var ary = []
+            for (var j = 0; j < arguments.length; j++) {
+                ary.push(arguments[j])
+            }
+            for (var i = 0; i < this.length; i++) {
+                ary.push(this[i])
+            }
+            this.length = this.length + arguments.length
+            for (var k = 0; k < ary.length; k++) {
+                this[k] = ary[k]
+            }
+            return this.length
+        }
+        //pop方法原理
+        Array.prototype.pop = function () {
+            var k = this[this.length - 1]
+            this.length = this.length - 1 //长度被减一位,数组最后一项就没了,一位时根据最大索引加1来的
+            return k
+        }
+        //shift方法原理 
+        Array.prototype.shift = function () {
+            if (this.length === 0) {
+                return undefined
+            } else {
+                var k = this[0]
+                var p = 0
+                for (var i = this.length - 1; i < this.length; i--) {
+                    if (i !== 0) {
+                        this[p] = this[this.length - i]
+                    } else {
+                        break
+                    }
+                    p++
+                }
+            }
+            this.pop()
+            return k
+        }
+    </script>
+</body>
+
+</html>

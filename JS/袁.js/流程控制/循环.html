@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         //输出100个hello web
+         for(var i=0; i<100; i++){
+             console.log('hello web')
+         }
+
+           /*
+                   循环就是重复的执行代码块
+                   JS支持3种循环结构 for循环  while循环  do-whil循环
+
+                   while循环
+                   while(表达式也是条件判断){
+                       代码块
+                   }
+                   会对表达式进行boolean判断,为true就执行代码块,false就不执行
+                   如表达式为true,执行代码块,代码块结果为true,那就无限循环执行,
+                   死循环:永远无法停止循环
+                   必须要把表达式变为false才会停止循环
+
+                   do-while循环
+                   do{
+                      代码块
+                   }while(条件判断) 
+                   //先执行代码块,再执行条件判断,条件判断为false就直接结束,
+                   为true就继续执行代码块,再执行条件判断,无限循环
+
+                   跟while循环差不多
+
+                   //============
+                      for循环(初始表达式; 条件; 改变表达式){
+                          代码块
+                      }
+                      系统会把变量提升,把初始表达式提升,然后执行,条件。
+                      进入循环体,然后改变表达式会被提到循环体的最底部
+                      初始表达式只执行一次
+
+                      关键字:
+                            break;跳出循环,强制停止循环 
+                             continue:跳跃本次循环,进行下次循环
+             
+            */
+
+           //while循环
+           var count = 1
+           while(count){              
+               console.log('你好! web')
+               count++
+               if(count==101){
+                   count=0
+               }
+           }
+           var kk = 0
+           while(kk < 100){
+               console.log('web')
+               kk++
+           }
+
+           //do-while循环
+            var jo = 0
+            do{
+                console.log('web 加油!')
+                jo++
+            }while(jo < 10)
+
+         //-------
+            for(var i=0; i<10; i++){
+                console.log('web')
+            }
+            console.log(i)
+            //输出1-100的所有数字
+            for(var k=1; k<=100; k++){
+                console.log(k)
+            }
+
+            //输出100-1的所有数字
+            for(var n=100; n>=1; n--){
+                console.log(n)
+            }
+
+            //输出1-100的奇数
+              //能被整除余数就是0
+              //不能被整除余数就是1
+            for(var g=1; g<=100; g++){
+                if(g%2==1){//奇数不能被整除
+                    console.log(g+":"+"是奇数")
+                }else{//遇数能被整除
+                    console.log(g+":"+"是遇数")
+                }
+            }
+
+            //另一种方法
+              for(var u=0; u<=100; u+=2){ //每次都加2,然后赋给自身
+                  console.log(u)
+              }
+
+
+              //============
+                 //求出1到100的质数
+                //质数的定义：一个大于1的自然数，除了1和它本身外,不能被其他数整除。
+                   //余数为0就是能被整除,1就是不能被整除               
+                   var conum = 0 //设个变量为0
+                    for(var i=1; i<=100; i++){ //遍历1到100的数
+                        for(var j=1; j<=i; j++){ //遍历1到,每次循环i的数
+                            if(i % j==0){ //能被整除
+                                conum ++  //加1
+                            }
+                        }
+                        if(conum==2){  //被整除2次
+                            console.log(i) //打印出来
+                        }
+                        conum = 0 //把变量再变为0,不然继续累加就没法判断
+                    }      
+             /* 
+                   原理:首先变量提升GO{var i=1  var j=1}
+                   执行带码..最外层循环i=1, i<=100 执行循环体,
+                   进入里面的循环,j=1, j<=1 执行循环体 内容.... 因为会把改变循环,提到循环体的最后
+                   j++ 此时 j变量为2。 j(2)<=i(1)为false 不进入循环体
+                   if....... i++ i变量为2   i(2)<=100 执行循环体,重新扫到for循环 把var j=1 变量提升
+                   覆盖原来的j=2 此时j变为1...... 以此类推
+
+                   因为for循环,只执行一次初始表达式
+
+              */    
+        //=======================================
+        
+            for(var i=0; i<5; i++){
+               for(var j=0; j=5; j++){
+                   console.log(i,j)
+                   if(j==2){
+                       break
+                   }
+               }
+            }
+           
+
+    </script>
+</body>
+</html>

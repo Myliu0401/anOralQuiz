@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="../DOM核心/DOM样式作业/5. 拼图游戏/img/lol.png" id="imgs">
+    <script>
+        /* 
+               ##其他事件
+                window全局对象
+                   load、DOMContentLoaded、readystatechange
+                   window的load:页面中所有资源全部加载完毕的事件
+                   图片的load:图片资源加载完毕的事件(图片资源加载完成后就立即触发)
+                   document的DOMContentLoaded事件:dom树构建完成后发生(这个事件特殊,只能在dom2的方式注册)
+                           
+                   document的readystatechange事件:返回document的readystate它的属性值 (也只能再dom2中注册)
+                   这个事件相当于一整个页面运行完毕,会触发2次这个事件(dom树建完后开始触发)
+                   readyState:docuemt身上本来就有这个属性,属性值是根据不同的阶段而变化(window上没有这个属性)
+                   loading(页面正在加载)   interactive(dom树构建完成)  complete(全部加载完成)
+                   *相当于在没有运行页面时document的readyState属性的值是loading
+                    dom树建完后readyState属性值变为interactive
+                    全部加载后属性值变为complete*
+
+                   interactive相当于触发DOMContentLoaded事件
+                   complete相当于触发load事件
+
+
+                  浏览器渲染页面的延续
+                  1.得到页面源代码
+                  2.创建document节点
+                  3.从上到下,将元素依次添加到dom树中,每添加一个元素,进行预渲染
+                  4.按照结构,依次渲染子节点
+
+                  **js代码应该尽量写到页面底部**
+                  css应该写到页面顶部:避免出现闪烁(因为css文件是同步的,如果写在底部,会导致元素先没有样式,使用默认的样式,然后当读到css文件后,重新加载样式)
+                  js应该写到页面底部:避免阻塞后续的渲染,也避免运行js时,得不到页面中的元素(js文件也是同步的)
+            
+
+ 
+         //===============================================//
+                     document readystatechange事件
+
+　　           readyState 属性描述了文档的加载状态，在整个加载过程中 document.readyState会不断变化，每次变化都会触发readystatechange事件。
+　　           readyState 有以下状态：
+　　　    　   loading / 加载document 仍在加载。
+　　　　       interactive / 互动文档已经完成加载，文档已被解析，但是诸如图像，样式表和框架之类的子资源仍在加载。
+　　　　       complete / 完成T文档和所有子资源已完成加载。状态表示 load 事件即将被触发。
+        */
+
+        var img = document.getElementById('imgs')
+        document.onreadystatechange = function () {
+            console.log('来了')
+            console.log(document.readyState)
+        }
+        console.log(document.readyState)
+        /* document.addEventListener('readystatechange', function () {
+            console.log('==')
+        }) */
+    </script>
+</body>
+
+</html>

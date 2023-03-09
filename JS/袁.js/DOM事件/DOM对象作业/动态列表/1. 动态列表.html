@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>
+        <input type="text">
+        <button>添加</button>
+    </p>
+    <ul>
+        <li>
+            <span>列表1</span>
+            <button>删除</button>
+        </li>
+        <li>
+            <span>列表2</span>
+            <button>删除</button>
+        </li>
+        <li>
+            <span>列表3</span>
+            <button>删除</button>
+        </li>
+        <li>
+                <span>列表4</span>
+                <button>删除</button>
+        </li>
+    </ul>
+    <script>
+        var p = document.querySelector('p')
+        var ul1 = document.querySelector('ul')
+        var ul = Array.from(document.querySelectorAll('ul li'))
+        p.querySelector('button').onclick = function () {
+            if (p.querySelector('input').value.trim() !== '') {
+                test()
+            }
+        }
+
+        function test() {
+          var k = document.createElement('li')
+            ul.push(k)
+            var l = document.createElement('span')
+            l.innerText = `列表${ul.length}`
+            k.appendChild(l)
+            var g = document.createElement('button')
+            g.innerText = '删除'
+            k.appendChild(g)
+            ul1.appendChild(k)
+        }
+        ul1.onclick = function (e) {
+            if (e.target.tagName === 'BUTTON') {
+                e.target.parentElement.remove()
+            }
+        }
+    </script>
+</body>
+
+</html>

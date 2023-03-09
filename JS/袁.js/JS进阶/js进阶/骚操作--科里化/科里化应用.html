@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .DIV {
+            width: 90%;
+            padding: 30px;
+            margin: 0 auto;
+            border: solid 2px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="DIV">
+
+    </div>
+    <script>
+        function keli(hanshu) {
+            var arr = Array.from(arguments).slice(1)
+            console.log(arr)
+            return function () {
+                var arr1 = Array.from(arguments)
+                var arr2 = arr.concat(arr1)
+                if (arr2.length >= hanshu.length) {
+                    zhixin.apply(this, arr2)
+                } else {
+                    arr2.unshift(hanshu)
+                    return this.keli.apply(this, arr2)
+                }
+            }
+        }
+
+        function zhixin(dom, mingzi, styles, innerHTML) {
+            var div = document.createElement('div')
+            dom.appendChild(div)
+            for (var prop in styles) {
+                div.style[prop] = styles[prop]
+            }
+            if (innerHTML !== undefined) {
+                div.innerText = innerHTML
+            }
+
+        }
+        var div = document.querySelector('.DIV')
+        var kop = keli(zhixin, div, 'div', {
+            width: '50%',
+            height: '150px',
+            backgroundColor: 'red',
+            margin: '0 auto',
+            marginTop: '2px',
+        })
+    </script>
+</body>
+
+</html>

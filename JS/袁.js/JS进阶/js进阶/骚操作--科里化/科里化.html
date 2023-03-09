@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+               科里化函数
+               在函数式编程中,科里化最重要的作用是把多参函数变为单参函数
+
+             curry：  Haskell curry
+          科里化函数：固定某个函数的一些实参数，得到该函数剩余实参数的一个新函数，如果参数不够，则调用
+          
+    */
+
+
+        function currying(fun, b, c, d) {
+            var p = Array.from(arguments).slice(1)
+            return function () {
+                var arg = Array.from(arguments)
+                var he = p.concat(arg)
+                console.log(he)
+                if (he.length >= fun.length) {
+                    return fun.apply(null, he)
+                } else {
+                    he.unshift(fun)
+                    return this.currying.apply(this, he)
+                }
+            }
+        }
+
+        function fun(a, b, c, d, e, g, h) {
+            return (a + b) * c
+        }
+        var o = currying(fun, 2, 4, 6)
+        var i = o(2, 3)
+        console.log(i(1, 2))
+    </script>
+</body>
+
+</html>

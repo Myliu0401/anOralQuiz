@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function test() {
+            if (Math.random() < 0.5) {
+                return {}
+            } else {
+                return []
+            }
+        }
+        var obj = test()
+        //如何得到创建obj构造函数的名称
+        console.log(obj.__proto__.constructor.name)
+
+        function A() {}
+
+        var obj1 = new A()
+        var obj2 = new A()
+        obj1.abc = 123
+        obj2.__proto__.bcd = 234
+        console.log(obj1.abc, obj2.abc) //123  undefined
+        console.log(obj1.__proto__.bcd, obj2.__proto__.bcd) //234  234
+
+
+
+        function UO() {
+            this.naishi1 = 13
+            this.naishi2 = 23
+            this.naishi34 = function () {
+                console.log('==')
+            }
+        }
+        var obj1 = new UO()
+        var obj2 = new UO()
+        console.log(obj1.naishi1 === obj2.naishi1) //原始值比的是内容 为 true
+        console.log(obj1.naishi34 == obj2.naishi34) //调用了两次函数,创建了两个naishi34函数 所以地址不同为false
+        console.log(obj1)
+
+
+        UN.prototype.naishi = function () {}
+
+        function UN() {
+            this.ni = 123
+            this.nio = 234
+        }
+        var nu = new UN()
+        var nu1 = new UN()
+        console.log(nu.naishi === nu1.naishi) //共用一个原型 为 true
+
+
+        //猴子补丁:转成大驼峰式命名
+        String.prototype.Bighump = function () {
+            var gre = /\b(\w)(\w*)\b/g //以单词边界开始两个捕获组单词边界结束
+            return this.replace(gre, function ($, $1, $2) {
+                console.log($, $1, $2)
+                return $1.toUpperCase() + $2
+            }).replace(/\s/g, '')
+        }
+        console.log('liu yu lian'.Bighump())
+
+        var F = function () {}
+        Object.prototype.a = function () {}
+        Function.prototype.b = function () {}
+        var f = new F()
+        console.log(f.a, f.b, F.a, F.b) //function undefined function function
+
+
+
+    
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        h1 {
+            display: inline-block;
+        }
+
+        div {
+            position: absolute;
+            display: inline-block;
+            margin-left: 35%;
+        }
+
+        button {
+            margin-left: 20px;
+            height: 50px;
+            width: 70px;
+            font-size: 25px;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button>开始</button>
+        <h1>计时:</h1>
+        <h1 id="h">0</h1>
+        <h1>秒</h1>
+        <button>停止</button>
+    </div>
+    <script>
+        var h1 = document.getElementById('h')
+        var button = document.getElementsByTagName('button')
+        var count = 1
+        var tian
+        var tin
+
+        //单次计时器
+        function jishiqi() {
+            tian = setTimeout(function () {
+                h1.innerText = count++
+                jishiqi() //利用递归实现循环计时器
+            }, 1000)
+        }
+
+        button[0].onclick = function () {
+            /* jishiqi() */
+            xunhuan()
+        }
+        button[1].onclick = function () {
+            clearTimeout( /* tian */ tin)
+        }
+
+
+        //循环计时器
+        function xunhuan() {
+            tin = setInterval(function () {
+                h1.innerText = count++
+            }, 10)
+        }
+
+
+        console.log('不会溢出')
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            #Date构造函数
+            ##术语
+             1.时间单位
+               年(year)
+               月(month)
+               日(date)
+               小时(hour)
+               分钟(minute)
+               秒(second)
+               毫秒(millisecond)
+
+             2.UTC和GMT
+               GMT:格林威治世界时
+               UTC:世界协调时
+
+             3.时间戳
+               数字
+               1970-1-1 凌晨 到某个时间 所经过的豪秒数
+
+
+           ##创建时间对象
+             直接调用函数(不使用new),忽略所有参数,直接返回当前时间的字符串
+             new Date() 创建对象    
+             如果使用new 
+             1. 无参的情况  会返回原型toString 的值  (函数对象原型的toString的值)
+             2. 1个参数,参数为数字,表示传入的是时间戳
+             3. 两个参数以上,分别表示:年、月、日、时、分、秒、毫秒
+
+             月份的数字从0开始计算
+             0表示1月 以此类推
+
+             如果缺失参数,日期部分默认为1,时分秒毫秒默认为0
+             月、日、时、分、秒、毫秒,可以传递负数,如果传递负数,会根据指定日期进行计算
+
+             原型上的成员 
+                 得到
+               getDate方法:得到日期 天数(第几天)
+               getDay方法:得到星期几 0表示星期天
+               getFullYear方法:得到年份
+               getHours方法:得到小时
+               getMinutes方法:得到分钟
+               getSeconds方法:得到秒
+               getMilliseconds方法:得到毫秒
+               getTime方法:得到时间戳 //1970年凌晨到现在的毫秒
+               getMonth方法:得到月,从0开始计算
+          ( 返回出来的都是数字对象,里的valueOf方法的结果(都属于包装类的问题)    )
+
+ 
+               修改
+              把上面方法名字的get改成set  
+              setFullYear  这个改年 的方法 可以 改年月日 ,加参数...
+
+
+              转换成字符串
+               toTimeString() 得到时间部分
+               toDateString方法:将日期部分转换为可读的字符串
+               toISOString方法:将整个对象转换为ISO标准的字符串
+               toLocaleDateString方法:根据当前系统的地区设置,将日期部分转换为可读的字符串
+               toLocaleString方法:根据当前系统的地区设置,将整个日期对象转换为可读的字符串
+               toLocaleTimeString方法:根据当前系统的地区设置,将时间部分转换为可读的字符串
+         */
+
+        console.log(new Date(1000)) //1970年凌晨加上1秒
+        console.log(new Date(2020, 7, 7, 7, 25, 17)) //7表示八月
+       // setFullYear(2019,1,1)  修改年 月 日
+
+
+         //封装友好的日期对象
+           //这个被定死
+         function Da(date){
+             var niu = new Date()
+             return niu.getFullYear()+'年'+Number(niu.getMonth()+1)+'月'+niu.getDate()+'日'+
+                    niu.getHours()+'小时'+niu.getMinutes()+'分'+niu.getSeconds()+'秒'
+         }
+        Da()
+
+           //更灵活              
+          function Datee(date){   //返回数字 然后.属性或方式,会形包装类 (此时还是表达式所以没事)
+            var year = date.getFullYear().toString().padStart(4,'0')
+            var month = (date.getMonth()+1).toString().padStart(2,'0')
+            var date = date.getDate().toString().padStart(2,'0')
+            var hour = date.getHours().toString().padStart(2,'0')
+            var minute = date.getMinutes().toString().padStart(2,'0')
+            var second = date.getSeconds().toString().padStart(2,'0')
+            console.log(year)
+          }  
+          Datee(new Date())
+          
+        //  (如在直接写数字就是真正原始) 真正的原始不会形成包装类
+        //  (只有数字直接写才是真正的原始)
+    </script>
+</body>
+
+</html>

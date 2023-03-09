@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+           /*
+                 if判断
+
+                if(条件1){
+                    满足条件1就执行这里
+
+                }esle if(条件2){
+                    满足条件2就执行这里
+
+                }else if(条件3){
+                     满足条件3就执行这里
+
+                }else{
+                    都为false
+                    执行这里
+                }  
+                一个条件判断
+               其中一个条件满足,就执行,然后后面的条件就直接忽略
+               else if 可以有多个,也可以0个
+               else 可以有1个或0个
+               如果执行体只有一条语句,则可以忽略跨括号 
+               if只能出现1次
+               如果if出现两个那就是2个条件判断
+            */
+            var div = parseInt(window.prompt('input')) //输入框
+              if(div>=90 && div<=100){
+                  alert('奈斯')
+              }else if(div>=80 && div<=90){
+                  alert('牛唔哩')
+              }else{
+                  alert('林培璇')
+              }
+
+
+             if(!x){ //!undefined == true
+                 x=1
+             }
+              if(x++ >= 1){ //1>=1 true   变量x为2
+                  var x  //变量被提到window上
+                  
+                  x++        //2  变量x为3
+              }else if(++x >= 2){  //直接被忽略
+                  x++
+              }else{
+                  x--
+              }
+              console.log(x) //3
+
+              /*
+                  用户输入:prompt("提示文本")
+
+                  该表达方式返回结果:
+                  1.null: 表示用户点击取消
+                  2.用户输入的字符串:表明用户点击了确定,得到用户输入的结果
+                  用户输入的数据会被转换成字符串
+                  如果没输入数据,则返回一个空串
+                   
+                   返回类型:null 或 字符串
+
+               */
+               //等待用户操作(确定,取消),将用户操作的结果保存到变量
+               var shuju = prompt("请输入你的奈斯")
+               console.log(shuju,typeof(shuju))
+
+             //让用户输入一个数字,如果点击了取消,就输出取消,如果点击了确定,根据输入的内容判断
+               if(shuju === null){
+                   document.write('点击了取消')
+               }else{
+                   shuju = +shuju //隐式转换
+                   if(isNaN(shuju)){
+                       //非数
+                       console.log('输入有误')
+                   }else{
+                       console.log(shuju,typeof(shuju))
+                   }
+               }  
+
+
+              
+
+    </script>
+</body>
+</html>

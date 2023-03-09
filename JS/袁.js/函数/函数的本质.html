@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+           # 函数的本质就是对象
+            
+            所有的对象都是通过关键字 new 出来的
+             new 构造函数()
+
+             所有的函数都是通过 new Function() 创建的
+             Function 函数一开始就有v8引擎启动,就自带了Function,而所有的函数都是同过 new 它创建的
+
+             js  已经自己 new Object     new Array  new了这些函数等
+             所以Object 和Array 通过typoef后都是函数
+
+             通过new Function 创生一个函数,在new 这个函数就会产生一个函数对象
+              由于函数本身就是对象,因此函数中,可以拥有各种属性
+
+          #包装类
+            原始类型不可以有属性和方法
+            js 为了增强原始类型的功能,为boolean、string、numder分别创建了一个构造函数
+            1.Soolean
+            2.Numder
+            3.Boolean
+            当调用原始类型的属性或方法时,会自动转换成原始类型的对象
+
+            如果语法上,将原始类型当做对象使用(一般是在使用属性,或方法时),js会自动在该位置创建构造函数,
+            创建原始类型的对象来访问原始类型上的属性
+
+            
+            #成员属性或方法、实例属性或方法:表示该属性是通过构造函数创建的对象调用的,也就是对象上的属性
+            #静态属性或方法、类属性或方法:表示该属性是通过构造函数本身调用的,也就是函数自己身上的方法
+             */
+
+        
+    </script>
+</body>
+
+</html>

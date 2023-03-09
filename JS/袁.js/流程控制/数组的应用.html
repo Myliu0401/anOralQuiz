@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [2, 4, 2, [1, 2, 3, 4], 2]
+        var arr1 = arr
+        arr1[0] = 77
+        console.log(arr1[0], arr[0]) //都是77  //因为引用值赋了是地址
+
+        //如何复制,但地址不同(克隆,产生一个全新的数组)
+        //利用slice方法的特殊性,截取返回一个新数组,但属性一样
+        var arr1 = [1, 2, 3, 3, 4, 5]
+        var arr3 = arr1.slice() //没写参数,代表返回全部截取,并装在数组返回
+
+        //数组求和
+        var arr4 = [1, 2, 3, 4, 5, 6, 7]
+        var coun = 0
+        for (var prop in arr4) {
+            coun += arr4[prop]
+        }
+        console.log(coun)
+
+        //二维数组:就是数组里面的每一项都是数组  
+          //3*3数组
+        var arr5 = [
+            [123, 123, 123],
+            [123, 123, 123],
+            [123, 123, 123]
+        ]
+         //输出数组的每一项,把里面的值也输出
+        for(var i=0; i<arr5.length; i++){
+            for(var j=0; j<arr5[i].length; j++){
+                console.log(arr5[i][j])
+            }
+        }
+
+
+        //数组.jojn(分隔符) //该函数返回一个字符串,把数组每一项都拼接起来
+         var arr6 = [1,2,3,4,5,6]
+         arr6.join(',')
+ 
+           //jojn原理
+       
+
+       //数组concat(数据)
+       var arr7 = [1,2,3,4,5]
+       var arr8 = ['1342','41243']
+       //数组1.concat(数组2)
+       //将数组2的所有元素,拼接到数组1的末尾,产生一个新的数组并返回,该表达式不会对原数组产生影响
+          
+    </script>
+</body>
+
+</html>

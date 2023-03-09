@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .aa{
+            width: 150px;
+            height: 150px;
+            background-color: cadetblue;
+        }
+        .bb{
+            width: 100px;
+            height: 100px;
+            background-color: cornflowerblue;
+            margin: auto;
+
+        }
+        .cc{
+            width: 50px;
+            height: 50px;
+            background-color: darkgoldenrod;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="aa">
+        <div class="bb">
+            <div class="cc"></div>
+        </div>
+    </div>
+    <script>
+          /* 
+                #事件注册,也叫事件绑定
+             ## dom0
+                将事件名称前面加上on,作为dom对象里面的属性名,给该属性赋值为一个函数,即为事件注册
+                移除:重新给事件属性赋值,通常赋值为undefined或null
+              
+             ##dom2
+               dom对象.addEventListener('事件类型(不用加on)',处理函数,是否 开启捕获)
+               //第三个参数可以不写,默认冒泡
+               
+               与dom0的区别
+                 1.dom2可以为某个元素的同一个事件,添加多个处理程序,按照注册的先后顺序运行
+                 2.dom2
+                 3.最直接触发,那个元素,那个元素就属于最里层,属于目标阶段,它就不参与冒泡或捕获
+                   比如:点击最里层上面的元素,它就属于目标阶段,它的子元素不会触发到
+                 1.如果元素是目标元素(事件源),第三个参数无效
+                 
+                事件的移除:
+                      dom对象.removeEventListener(事件类型,处理函数) 
+                 *dom2移除事件,不能使用匿名函数*
+                 
+                 *细节*
+                   1.dom2在ie8及以下不兼容,需要使用attachEvent添加事件、detachEvent移除事件
+          */
+
+     //dom0
+         var div = document.querySelectorAll('div')
+        /* div[0].onclick = function (e){
+           console.log(e)
+           console.log('div[0]')
+        }
+        div[1].onclick = function (e){
+            console.log(e)
+            console.log('div[1]')
+        } */
+ 
+     //dom2
+      /*  div[1].addEventListener('click',function (){
+           console.log('老弟来了')
+       }) */
+      //捕获
+        div[0].addEventListener('click',function (t){
+             console.log('div1') 
+            console.log(t) 
+        },true) 
+        div[1].addEventListener('click',function (t){
+            console.log('div2')
+            console.log(t.bubbles)
+        },true)
+        div[2].addEventListener('click',function (){
+              console.log('div3')
+        },true)
+
+      //移除事件
+        /* function test1(){
+            console.log('hello')
+        }  
+        div[1].addEventListener('click',function (){
+            //dom2移除只能这样
+            div[0].removeEventListener('click',test1)//相当于把函数test1赋给事件,点击事件就执行这个函数
+        }) */
+    </script>
+</body>
+
+</html>

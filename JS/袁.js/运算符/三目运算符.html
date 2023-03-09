@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+                           /*
+                                三目运算符 
+                              ? :
+                               书写方式:表达式1 ？表达式2 : 表达式3
+                               对表达式1进行boolen判断
+                               表达式1为真,则返回表达式2,表达式3就忽略
+                               表达式1位假,则返回表达式3,表达方式2就忽略
+
+                           */
+
+                           var x = 1
+                           x = x++ >= 1 ? x++ * x++ : ++x * ++x
+                            //    true      2 * 3
+                           console.log(x) // 6
+
+    </script>
+</body>
+</html>

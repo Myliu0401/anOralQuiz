@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+           var a = 1
+           function b(){                        
+               console.log(a) //函数整体提升 a为函数
+               a = 10    //函数整体提升后,执行到它时,a变为10
+               return;
+               function a(){} //函数整体提升,相当于在AO里var a = function(){}
+           }
+           b()
+           console.log(a) 
+
+         //预编译
+         //最终的执行上下文
+         //GO:{a:1}
+         //AO:{a:10}
+    </script>
+</body>
+
+</html>

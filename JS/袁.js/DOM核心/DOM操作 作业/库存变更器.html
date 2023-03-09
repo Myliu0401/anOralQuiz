@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        span{
+            min-width: 50px;
+            display: inline-block;
+            text-align: center;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        库存的最小值为0
+    </p>
+    <div>
+        库存：
+        <button data-plus='-1000' >-1000</button>
+        <button data-plus='-100' >-100</button>
+        <button data-plus='-10' >-10</button>
+        <button data-plus='-1' >-</button>
+        <span>0</span>
+        <button data-plus='1' >+</button>
+        <button data-plus='10' >+10</button>
+        <button data-plus='100' >+100</button>
+        <button data-plus='1000' >+1000</button>
+    </div>
+    <script>
+         var but = document.getElementsByTagName('button')
+         var sp = document.getElementsByTagName('span')[0]
+         //给每个按钮加事件
+         for(var i=0; i<but.length; i++){
+             but[i].onclick = function (){ 
+                sp.innerText = parseInt(this.dataset.plus)+parseInt(sp.innerText) 
+                if(parseInt(sp.innerText)<=0){
+                    sp.innerText = 0
+                }
+             }
+         }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .left {
+            float: left;
+            margin-left: 10px;
+            line-height: 30px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="naishi" class="ss left">
+        <img src="./星星评分1/images/empty.png">
+        <img src="./星星评分1/images/empty.png">
+        <img src="./星星评分1/images/empty.png">
+        <img src="./星星评分1/images/empty.png">
+        <img src="./星星评分1/images/empty.png">
+    </div>
+    <div id="hello" class="po left">
+
+    </div>
+    <script>
+        var arr = ['奈斯', '迷死', '假死', '逼死', '起司']
+        var div1 = document.getElementById('naishi')
+        var div2 = document.getElementById('hello')
+        var count = -1
+
+        div1.onmouseover = function (e) {
+            if (e.target.tagName === 'IMG') {
+                var img = e.target.previousElementSibling
+                e.target.src = "./星星评分1/images/./shining.png"
+                while (img) {
+                    img.src = "./星星评分1/images/./shining.png"
+                    img = img.previousElementSibling
+                }
+                var imgg = e.target.nextElementSibling
+                while (imgg) {
+                    imgg.src = "./星星评分1/images/empty.png"
+                    imgg = imgg.nextElementSibling
+                }
+                div2.innerHTML = arr[Array.from(div1.children).indexOf(e.target)]
+            }
+        }
+        div1.onmouseout = function () {
+            for (var i = 0; i < div1.children.length; i++) {
+                if (i <= count) {
+                    div1.children[i].src = "./星星评分1/images/./shining.png"
+                } else {
+                    div1.children[i].src = "./星星评分1/images/empty.png"
+                }
+            }
+        }
+        div1.onclick = function (e) {
+            if (e.target.tagName === 'IMG') {
+                count = Array.from(div1.children).indexOf(e.target)
+            }
+        }
+    </script>
+
+</body>
+
+</html>

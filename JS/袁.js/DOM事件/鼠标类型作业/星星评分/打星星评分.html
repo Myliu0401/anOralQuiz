@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>打星星评分</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <img id="1" class="" src="./星星评分1/images/empty.png">
+        <img id="2" class="" src="./星星评分1/images/empty.png">
+        <img id="3" class="" src="./星星评分1/images/empty.png">
+        <img id="4" class="" src="./星星评分1/images/empty.png">
+        <img id="5" class="" src="./星星评分1/images/empty.png">
+    </div>
+    <div class="score">
+        <span>垃圾</span>
+        <span>文理</span>
+        <span>毁我</span>
+        <span>青</span>
+        <span>春</span>
+    </div>
+    <script>
+        var img = Array.from(document.querySelectorAll('img'))
+        var div = document.getElementsByClassName('container')[0]
+        var div1 = document.getElementsByClassName('score')[0]
+        var span = document.querySelectorAll('span')
+        var imgs = "../星星评分/星星评分1/images/shining.png"
+        div1.style.display = 'none'
+        div.onmouseover = function (e) {
+            if (e.target.tagName === 'IMG') {
+                /* img.filter(function (imgss) {
+                    return imgss.className === '1'
+                }).forEach(function (naishi) {
+                    naishi.src = "./星星评分1/images/empty.png"
+                }) */
+                if (e.target.id < img.length) {
+                    for (var i = e.target.id; i < img.length; i++) {
+                        img[i].src = "./星星评分1/images/empty.png"
+                    }
+                }
+                for (var i = 0; i < e.target.id; i++) {
+                    img[i].src = imgs
+                    img[i].className = '1'
+                }
+                if (div.lastElementChild.tagName === 'SPAN') {
+                    div.lastElementChild.remove()
+                }
+                var kelong = span[e.target.id - 1].cloneNode(true)
+                div.appendChild(kelong)
+            }
+        }
+        div.onmouseout = function (e) {
+            img.forEach(function (imgss) {
+                imgss.src = "./星星评分1/images/empty.png"
+            })
+            if (div.lastElementChild.tagName === 'SPAN') {
+                div.lastElementChild.remove()
+            }
+        }
+    </script>
+</body>
+
+</html>

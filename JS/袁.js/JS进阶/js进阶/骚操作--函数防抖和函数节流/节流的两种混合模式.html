@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Clone(hanshu, shijian, boolean) {
+            var trimg
+            if (boolean) { //使用计时器方式节流
+                return function () {
+                    if (trimg) {
+                        return
+                    }
+                    trimg = setTimeout(function () {
+                        hanshu()
+                        trimg = null
+                    }, shijian)
+                }
+            } else { //使用时间戳方式
+                return function () {
+                    if (!trimg || new Date().getTime() - shijian >= trimg) {
+                        hanshu()
+                        trimg = new Date().getTime()
+                    }
+                }
+            }
+
+        }
+        var naishi = Clone(function () {
+            console.log('来了老弟')
+        }, 1000, true)
+        window.onresize = function () {
+            naishi()
+        }
+    </script>
+</body>
+
+</html>

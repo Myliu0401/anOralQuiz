@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var naisi = ' qeqwe        g            4312414           111f'
+
+        function test(str) {
+            var str1 = str.split(' ')
+            console.log(str1)
+            var str0 = ''
+            for (var i = 0; i < str1.length; i++) {
+                if (str1[i].length > 0) {
+                    str0 += str1[i][0].toUpperCase() + str1[i].substr(1, str1[i].length)
+                }
+            }
+            console.log(str0)
+        }
+        test(naisi)
+
+
+
+
+
+
+
+    function  getAge(year, month, day) {
+        //得到当前日期
+        var now = new Date();
+        var dec = now.getFullYear() - year;
+        console.log(dec)
+        //处理闰年
+        if (month === 2 && day === 29 && !this.isLeap(now.getFullYear())) {
+            day = 28;
+        }
+        //得到今年的生日
+        var birthdayThisYear = new Date(now.getFullYear(), month - 1, day);
+        if (birthdayThisYear > now) {
+            dec--;
+        }
+        console.log(dec) 
+    }
+    getAge(1998,12,13)
+    </script>
+
+</body>
+
+</html>

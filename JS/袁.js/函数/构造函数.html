@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+                    #构造函数
+                     对象中的属性,如果是一个函数,也称改属性为对象的方法
+                     
+                    ##用于创建对象的函数
+                      用函数创建对象,可以减少繁琐的对象创建流程
+                      1.函数返回一个对象
+                      2.构造函数
+                         new 函数名(参数) 
+
+                         构造函数使用大驼峰命名
+                         平常函数使用小驼峰命名
+                       //构造的三步骤
+                         1.函数作用域你的this,不再指向window,this会变成一个对象 thsi:{}  
+                         2.查看函数体有没有this,为其对象添加属性, this.xxx
+                         3.return 返回值 变成 this,也就是把这个对象给返回出去
+                        如果自己改返回值,为原始类型,构造函数会自动忽略. 
+                        引用类型就不会被忽略
+
+                        所有的对象,最终都是通过构造函数创建的
+
+
+                       # new.target
+                         该表达式在函数中使用,返回的是当前的构造函数,但是,如果该函数不是通过new调用的,则返回undefined
+                         通常用于判断某个函数是否通过new在调用 
+                  */
+
+        //创建一个对象,当运行函数,就返回一个对象,每运行一次返回一个,地址不同
+        //相当于每运行一次创建一个对象
+        function test() {
+            return {
+                name: '123'
+            }
+        }
+        var obj = test()
+        var obj1 = test()
+        obj === obj1 //false  因为每次调用函数就创建一个对象返回,所以地址不同
+
+        //构造函数创建对象
+        function test(a, b) {
+            this.a = a,
+                this.b = a
+            console.log(this)
+            console.log(123)
+        }
+
+        var obj = new test(1, 2)
+
+        //函数体里的new.target
+        function text(a, b, c, d) {
+            if (new.target) {
+                this.a = a,
+                this.b = b,
+                this.c = c,
+                this.d = d
+            }else{
+                return {
+                    a:a,
+                    b:b,
+                    c:c,
+                    d:d
+                }
+            }
+            return this
+        }
+    </script>
+</body>
+
+</html>

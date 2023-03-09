@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #000000;
+        }
+
+        .div {
+            position: fixed;
+        /*     position: absolute; */
+            width: 50px;
+            height: 50px;
+            left: 800px;
+            top: 400px;
+   
+        }
+    </style>
+</head>
+
+<body>
+    <!--  <img src="./imgs/tankD.gif"> -->
+    <div class="div"></div>
+    <script>
+        var arr = ["./imgs/tankD.gif", "./imgs/tankL.gif", './imgs/tankR.gif', './imgs/tankU.gif']
+        var div = document.getElementsByClassName('div')[0]
+        div.style.background = `url(${arr[0]}) no-repeat left top/100% 100%`
+        window.onkeydown = function (e) {
+            console.log(e.key)
+            if (e.key === 'ArrowUp') {
+                div.style.background = `url(${arr[3]}) no-repeat left top/100% 100%`
+                div.style.top = parseFloat(getComputedStyle(div).top) - 3 + 'px'
+            } else if (e.key === 'ArrowDown') {
+                div.style.background = `url(${arr[0]}) no-repeat left top/100% 100%`
+                div.style.top = parseFloat(getComputedStyle(div).top) + 3 + 'px'
+            } else if (e.key === 'ArrowLeft') {
+                div.style.background = `url(${arr[1]}) no-repeat left top/100% 100%`
+                div.style.left = parseFloat(getComputedStyle(div).left) - 3 + 'px'
+            } else if (e.key === 'ArrowRight') {
+                div.style.background = `url(${arr[2]}) no-repeat left top/100% 100%`
+                div.style.left = parseFloat(getComputedStyle(div).left) + 3 + 'px'
+            }
+
+        }
+    </script>
+</body>
+
+</html>

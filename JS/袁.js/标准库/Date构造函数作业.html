@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //  1. 编写一个函数， 用于返回一个友好的日期字符串格式
+    //  年 - 月 - 日 时: 分: 秒
+
+    function Friendly(date) {
+      var year = date.getFullYear().toString().padStart(4, '0')
+      var month = (date.getMonth() + 1).toString().padStart(2, '0')
+      var datr = date.getDate().toString().padStart(2, '0')
+      var shi = date.getHours().toString().padStart(2, '0')
+      var fen = date.getMinutes().toString().padStart(2, '0')
+      var miao = date.getSeconds().toString().padStart(2, '0')
+      console.log(`${year}-${month}-${datr}  ${shi}:${fen}:${miao}`)
+    }
+    Friendly(new Date())
+
+    //  2. 给定用户的生日（ 年、 月、 日）， 计算该用户的年龄
+    //离生日还有多少天
+
+    function Age(year, month, date) {
+      //判断是不是闰年,闰年  如果生日在2月29   那么就是28生日
+      var nian = new Date().getFullYear() //获取现在的年份
+      if (nian % 4 === 0 && nian % 100 !== 0 || nian % 400 === 0) {
+        if (month === 2 || month === 02 && date === 29) {
+          date = 28
+        }
+      }
+      var kuaile = nian - year //今年减出生年得到 几岁
+      //获取今年生日
+      var niu = new Date(nian, month - 1, date) //因为月份是0开始算的,所以要减1
+      //判断今年的生日 的时间戳是否大于 当前的时间戳
+      if (niu > new Date()) {
+        kuaile--
+      }
+      console.log(kuaile)
+
+    }
+    Age(1998, 12, 13)
+
+    //  3. 根据系统当前的月份， 输出这一个月每一天的星期
+    //  2019 年6月1日： 星期六
+    //  2019 年6月2日： 星期日
+    //      .....
+    //  2019 年6月30日： 星期日
+
+    function xainqi() {
+      var nais = new Date()
+      var year = nais.getFullYear()
+      var month = nais.getMonth()
+      var tianshu = new Date(year, month + 1, 0).getDate() //月份必须加1,因为日数为0就是减1,就是前个月的最后一天
+      for (var i = 1; i <= tianshu; i++) {
+        console.log(`${year}年${month+1}月${i}日:${tian(year,month,i)}`)
+      }
+    }
+    xainqi()
+
+    function tian(year, month, i) {
+      var j = new Date(year, month, i).getDay()
+      switch (j) {
+        case 0:
+          return '星期日';
+        case 1:
+          return '星期一';
+        case 2:
+          return '星期二';
+        case 3:
+          return '星期三';
+        case 4:
+          return '星期四';
+        case 5:
+          return '星期五';
+        case 6:
+          return '星期六';
+      }
+    }
+
+    //计算还有多少天过生日
+    function Birthday(month, date) {
+      //获取当前时间
+      var shijian = new Date()
+
+      //获取今年生日时间
+      var jiannian = new Date(shijian.getFullYear(), month - 1, date)
+      console.log(shijian.getTime(), '====', jiannian.getTime())
+      //判断今年生日时间是否已经过了
+      if (shijian > jiannian) {
+        jiannian.setFullYear(shijian.getFullYear() + 1) //把今年+1年,超到明年
+        console.log('========')
+      }
+
+      //今年生日时间减当前时间
+      var jian = jiannian - shijian
+      console.log(jian)
+      //利用时间戳取天数
+      //向上取整
+      console.log(Math.ceil(jian / (24 * 60 * 60 * 1000) /* 一天的时间戳 */ ))
+    }
+    Birthday(4, 1)
+  </script>
+</body>
+
+</html>

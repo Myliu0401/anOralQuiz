@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        p {
+            font-size: 50px;
+            text-align: center;
+        }
+
+        button {
+            width: 150px;
+            height: 50px;
+            font-size: 30px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <p>倒计时: <span>10</span></p>
+    <p>点击数: <span>0</span></p>
+    <p>
+        <button>开始</button>
+        <button>重置</button>
+    </p>
+    <script>
+        var but = document.getElementsByTagName('button')
+        var span = document.getElementsByTagName('span')
+        var count = 1
+        var boolean = true
+        var bool = true
+        var spak
+        window.onclick = function (e) {
+            if (e.target === but[0] && bool) {
+                if (boolean) {
+                    spak = setInterval(function () {
+                        if (span[0].innerText == 0) {
+                            clearTimeout(spak)
+                            bool = false
+                        } else {
+                            var k = parseFloat(span[0].innerText)
+                            k--
+                            span[0].innerText = k
+                        }
+                    }, 1000)
+                    boolean = false
+                }
+                span[1].innerText = count++
+            } else if (e.target === but[1]) {
+                span[0].innerText = 10
+                span[1].innerText = 0
+                count = 1
+                clearTimeout(spak)
+                boolean = true
+                bool = true
+            }
+        }
+    </script>
+</body>
+
+</html>

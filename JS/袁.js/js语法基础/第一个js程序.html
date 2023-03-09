@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 浏览器环境中代码书写位置
+        //直接写在页面中 script 元素中的内           
+        document.write('hello js')
+    </script>
+
+    <!--
+        如果一个js元素引用外部文件,script元素内部不能写任何代码
+        script元素有一个可选的属性,text,该属性用于指定代码的类型,该属性值是MIME格式
+    -->
+    <script src="./script/第一个js.js" text="text/javascript"></script>
+
+    <!-- 
+                输出语句
+          所有输出语句都不是ES标椎   
+          document.write(),该语句用于将数据输出在页面
+          alert(), 在页面中弹出,弹出框
+          console.log(), 用于将数据显示在控制台
+
+               输入语句
+          所有的输入语句也不是ES标准
+          prompt(),以弹出框形式 
+              
+    -->
+
+    <!-- 
+          快捷键 ctrl + / 可以快速添加和取消单行注释
+          快捷键 alt + shift + a 可以快速添加和取消多注释
+     -->
+
+</body>
+
+</html>

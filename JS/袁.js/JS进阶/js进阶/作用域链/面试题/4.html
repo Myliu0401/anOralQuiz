@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function A(){ 
+            //i没有声明直接赋值,作用域也没有,所以直接被提到全局
+            for(i=0; i<10; i++){ //循环10圈
+                setTimeout(function (){ //所以产生10个一次性的计时器
+                    console.log(i)
+                },1000)
+            }
+        }
+        A() //10个10
+        console.log(i)//10
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+                   /*
+                      数学运算符
+                     ``` + - * / ``` 加减乘除
+                     ``` +  - ``` 正负
+                     ``` % ``` 摩尔
+                     ``` ++ -- ```
+                     ``` ** ```幂数 
+                    */
+                    //细节
+                    //小数点运算不精确
+                    //5.5 - 5.4
+                    //除数为0
+                    //如果被除数是正数,得到结果 Infinity (正无穷)
+                    //如果被除数是负数,得到结果 -Infinity (负无穷)
+                    //如果被除数是0,得到结果 NaN (非数)
+                    //NaN不等于任何东西
+                    //都是数字类型的
+                //-----------------------
+                    /* 
+                       typeof函数返回类型为string
+                       typeof函数比较特性,执行时可以不用写括号
+                       typeof 1/0 会得NaN,因为系统会把typeof 1看成一个表达式。
+                       isNaN函数,该函数用于判断数据是否为NaN,返回值是boollean
+                        isNaN函数会先调用Number(),在进行判断
+                         
+                       isFinite函数,用于判断数据是否为有限的,返回值是boollean
+                     */
+
+                  //幂数
+                  5**2 //5的2次方
+                  (-5)**2  //-5的2次方 
+
+               //-------------
+                  /* 其他类型使用算术运算 */
+                  //会发生隐式类型转换
+                  /*
+                     1.除加号之外的算术运算符
+                     将原始值类型转换成数学类型(自动转换),然后进行运算
+                     boollean:true -> 1  false -> 0 
+
+                     string:如果字符串内部是一个正确的数字,直接变为数字,如果是一个非数字,则得NaN
+                     如果字符串为空串(没有内容),调用Number(),会忽略前后空格(中间空格不会忽略),得0
+                     但能识别(Infinity) ,转换后还是Infinity
+                     不能把字符串的内部的东西当成表达式  +'1+1'=NaN
+                     NaN虽然是数字,但它和任何数字作任何运算,得到的结果都是NaN
+
+                     null:--> 0
+
+                     undefined: --> NaN
+
+                     Numder()转换英文几乎都会成NaN,除boollean和null外
+
+                     引用类型,会先转换成字符串类型,再转换成数字类型
+                     toString返回都是字符串类型的
+                     会调用toString返回里面的结果,再进行转换成数字类型                    
+                     ({}) 它的toString返回'[object Object]' Numder('[object Object]')==NaN
+                     所以+({}) == NaN
+                     ({})这样系统就会识别成表达式,就不会报错
+
+                      {} * 5 这样写会报错,系统会把对象识别成代码块
+
+                     // 使用算术运算符,系统会自动调用Numder(把数据放进来),得结果,再运算
+                   */
+                 //-------------------------
+                   /*    加号运算符 
+                     加号一边有字符串,含义变为字符串拼接
+                       1 + 'abc'
+                      会调用String(把数据写进来)方法,1变成字符串,再拼接 
+
+                     加号两边都没有字符串,但一边有对象,将对象转换为字符串,然后按照上面的规则进行
+                     ({})+1 引用值会调用toString()的返回值,toString的返回值是字符串
+                     然后调用String()把1变为字符串,再拼接=='[object Object]1'
+                       
+                   */  
+
+                    //练习  
+                                 //运算符优先级
+                    //说出下面的输出结果
+                    console.log(1+2*3)//7  先乘后加
+                    console.log(1+3%2) //2 先莫后加
+                    console.log(""+3%2) //'1' 先莫后加
+                    console.log(+""+3%2) //1  //把空串转换成数字,成0 3%2得1 0+1=1
+                    console.log(+{}+"") //'NaN' 把对象变成'[object Object]'再调用Number()得NaN最后得'NaN'
+                    console.log(100%4/0) //NaN 0除0得NaN
+                    console.log(null/null) //NaN 调用Number()得0 0除0得NaN
+                    var a
+                    console.log(a+{}+123) //'undefined[object Object]123'
+                    console.log(1+""+2+3) //'123'
+                    console.log({}*null) //NaN
+                    console.log(+""+100) //100
+
+
+                //作业
+                //1.温度转换器
+                //设置一个变量,保存摄氏度(c),将其转换为华氏温度(f)
+                //F = (9/5)c + 32
+
+                //2.利息计算器
+                //设置变量,分别存放本金、月数、年利率、计算利息
+
+                   
+    </script>
+</body>
+</html>

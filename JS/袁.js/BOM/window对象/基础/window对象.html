@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        iframe {
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="baidu">变百度</button>
+    <button class="naishi">奈斯</button>
+    <iframe src="" name="myifram"></iframe>
+    <script>
+        /* 
+              DOM相当于document相当于,BOM相当于window/浏览器
+
+               #window对象 : 浏览器注入的
+
+               ##自身方法
+                 open
+                 打开一个新窗口
+                 open(页面路径,打开目标,配置)
+                 
+                 *弹出的新窗口,是另一个window*
+                 相当于返回一个window
+
+                 alert
+                 弹出提示框
+                 confirm
+                 弹出提示框,按取消返回false,按确定返回true
+                 prompt
+                 弹出输入框
+                 document.write
+                 在文档流中写入内容,如果当前文档流不存在,则新开一个文档流
+                 页面在渲染过程,执行到它,就把它就如到dom树中,相当于加到页面中,如果页面渲染完成后
+                 在执行到它,就会新开一个文档,把它加入进去
+
+             //======================
+
+              ##对象属性
+                location:地址栏对象
+                 地址栏里的属性:可改可读
+                href属性:得到目前地址
+                其他属性:参考图片location 
+                reload()方法:刷新当前页面
+
+            //-------------------
+                navigator对象
+                其他属性参考navigator图片
+
+            //----------------------
+              history对象(历史记录)
+              以当前历史记录来跳转
+              go方法  参数为正:后跳转  为负:向前跳转
+              back方法  向后跳转
+              forword方法   向前跳转
+
+            //-----------------------  
+               console对象
+               log方法:打印对象的valueOf的返回值
+               dir方法:打印对象结构
+               time方法和timeEnd方法:用于计时
+               这两个方法为一对存在
+               time方法:为开始
+               timeEnd方法:为结束
+              
+
+
+            */
+
+        document.querySelector('.baidu').onclick = function () {
+            window.open('https://www.baidu.com', 'myifram')
+        }
+        document.querySelector('.naishi').onclick = function () {
+            window.open('text.html', null, 'width=300,height=300')
+            //返回一个window
+        }
+
+
+       console.time('测试') //开始
+       var sum 
+       for(var i=0; i<1000; i++){
+           sum += i
+       }
+       console.timeEnd('测试') //循环结束后打印
+
+
+    </script>
+</body>
+
+</html>

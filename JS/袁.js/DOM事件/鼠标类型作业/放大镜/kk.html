@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .aa {
+            width: 50px;
+            height: 50px;
+            background-color: lightslategrey;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="aa"></div>
+    <script>
+        var div = document.querySelector('div')
+        div.onmouseover = function (e) {
+            console.log('===')
+            div.style.left = Math.random() * 500  + 'px'
+            div.style.top = Math.random() * 500 + 10  + 'px'
+
+        }
+    </script>
+</body>
+
+</html>

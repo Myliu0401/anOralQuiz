@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+                      属性描述符:它表达了一个属性的相关信息(元数据),它本身就是一个对象 
+
+                  //--------------------------------------//
+                                 数据描述
+                      #数据属性:
+                      var obj = {
+                          a:'!23' //数据属性
+                      }
+                      obj.k = 1234 //数据属性
+
+                  //--------------------------------------//
+                                  存取器描述
+                      #存取器属性
+                       1.当给它赋值,会自动运行一个函数
+                       2.当获取它的值时,会自动运行一个函数 
+                             开启存取器属性
+                      **Object.defineProperty(对象,'属性名',{
+                          //配置 
+                          属性value:代表属性值  【这个属性属于数据描述】
+
+                        【    写下面的方法,上面的value属性就不能写,否则会报错
+                          方法get:function (){//这个属性必须配置方法
+                                每次调用属性时都会执行这个方法,相当于查看时会自动调用
+                               return 返回值,就成属性的值
+                          }
+                          方法set:function (val){//这个属性也必须配置方法
+                             //每次属性赋值时都会执行这个方法,形参就是表达式的结果      
+                             //比如:obj.x = 3 这个表达式为3 ,val 就为3
+                          }        
+                      }) 】这两个方法属于存取器
+
+
+             其他属性:
+               configurable:为true 或 false
+               //这个属性是设置是否可以重新定义或delete 等
+
+               writable:true
+               是否开启只读默认(默认为是)
+               在存取器中无效
+
+               enumerable:是否可遍历
+
+
+             //======================================//
+                 **Object.getOwnPropertyDescriptor**  
+                 获取某个对象的某个属性的属性描述符对象
+
+
+
+               */
+        var obj = {}
+        Object.defineProperty(obj, 'naishi', {
+            get: function () { //每次查看obj.naishi 时会执行这个函数
+                console.log('get')
+                return 1
+            },
+            set: function (val) { //每次对 obj.naishi = 3 赋值时会执行这个函数
+                console.log('来了') //相当于srt(3) 把赋的值当成实参
+            }
+        })
+
+        //======================================
+        function Gozhao(name, nianlin) {
+            this.name = name
+            /* this.nianlin = nianlin */
+            //年龄去取值范围是 0~100
+            //如果小于0 则赋值为0,   如果大于100 则赋值为100
+            var naishi
+            Object.defineProperty(this, 'nianlin', {
+                get: function () {
+                    console.log('进了')
+                    return nianlin
+                },
+                set: function (val) {
+                    console.log(val)
+                    if (val < 0) {
+                        nianlin = 0
+                    } else if (val > 100) {
+                        nianlin = 100
+                    }
+                    console.log(val)
+                }
+
+
+            })
+            this.nianlin = nianlin
+        }
+        var nuw = new Gozhao('小苗', 10000)
+
+        //====================================================//
+        //设置只读属性
+        var onp = {}
+        Object.defineProperty(onp, 'name', {
+            get: function () { //用存取器的方式
+                return 'abc'
+            }
+        })
+
+        var kpl = {}
+        Object.defineProperty(kpl, 'name', {
+            value: 'bcb',
+            writable: true //表示关闭只读,默认为只读
+        })
+
+
+      //=======================================//
+         var kopl = {
+             x:213
+         }  
+        var k = Object.getOwnPropertyDescriptor(kopl,'x')
+          //返回对象里的x属性,的信息
+    </script>
+</body>
+
+</html>

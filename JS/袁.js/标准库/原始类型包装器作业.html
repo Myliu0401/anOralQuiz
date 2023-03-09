@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //  1. 找到某个字符串中出现最多的字符， 打印字符和它出现的次数
+        var str =
+            '11122233333344444455555555fduiassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssshhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh66666677777777777779g'
+
+        function zifuchaun(str) {
+            var count = 0
+            var obj = {}
+            for (var i = 0; i < str.length; i++) {
+                if (obj[str[i]]) {
+                    obj[str[i]]++
+                } else {
+                    obj[str[i]] = 1
+                }
+            }
+            console.log(obj)
+            var str1
+            for (var prop in obj) {
+                if (!str1 || str1.value < obj[prop]) {
+                    str1 = {
+                        term: prop,
+                        value: obj[prop]
+                    }
+                    console.log(obj[prop])
+                }
+            }
+            console.log(`出现最多的是${str1.term}有${str1.value}次`)
+        }
+        zifuchaun(str)
+
+
+
+        //  2. 将一个字符串中单词之间的空格去掉， 然后把每个单词首字母转换成大写
+        // 比如： "hello world" - > "HelloWorld"
+        //变成大驼峰命名
+        var str = 'nihao! baidu naishi'
+        var str1 = "hello world"
+        //这个方法被限死,不灵活
+        function zhuanhuan(str) {
+            var st1 = str.split(' ')
+            // console.log(st1)
+            var str3 = ''
+            for (var i = 0; i < st1.length; i++) {
+                str3 += st1[i][0].toUpperCase() + st1[i].substr(1, st1[i].length)
+            }
+            console.log(str3)
+            console.log(st1)
+        }
+        zhuanhuan(str)
+        zhuanhuan(str1)
+
+        //较灵活
+        var naisi = ' qeqwe        g            4312414           111f'
+
+        function test(str) {
+            var str1 = str.split(' ')
+            console.log(str1)
+            var str0 = ''
+            for (var i = 0; i < str1.length; i++) {
+                if (str1[i].length > 0) {
+                    str0 += str1[i][0].toUpperCase() + str1[i].substr(1, str1[i].length)
+                }
+            }
+            console.log(str0)
+        }
+        test(naisi)
+
+        //另一种方法
+        var kk = ' ffhihusadhi hiuhafiu                 b b b b b b '
+
+        function leiliao(str) {
+            var arr = str.split(' ').filter(function (ims) {
+                return ims.length > 0
+            })
+            console.log(arr)
+            var str00 = ''
+            for (var i = 0; i < arr.length; i++) {
+                for (var j = 0; j < arr[i].length; j++) {
+                    if (j === 0) {
+                        str00 += arr[i][j].toUpperCase()
+                    } else {
+                        str00 += arr[i][j]
+                    }
+                }
+            }
+            console.log(str00)
+        }
+        leiliao(kk)
+
+        //另一种方式:更灵活
+        function camel(srt) {
+            var str1 = ''
+            var str2 = ' \t\n\r'
+            for (var i = 0; i < str.length; i++) {
+                if (!str2.includes(str[i])) { //不是str2内容之一就进来
+                    if (str2.includes(str[i - 1]) || i === 0) { //i-1 看他前面是不是str2内容之一,i===0就是如第一位是undefined
+                        str1 += str[i].toUpperCase()
+                    } else {
+                        str1 += str[i]
+                    }
+                }
+            }
+            console.log(str1)
+        }
+        camel(str)
+
+
+        //全部利用数组和字符串中的方法
+        function Method(naishi) {
+            var arr = naishi.split(' ').filter(function (ims) {
+                return ims.length > 0
+            }).map(function (ims) {
+                return ims[0].toUpperCase() + ims.substr(1).toLowerCase()
+            }).join('')
+            console.log(arr)
+        }
+        Method(kk)
+
+
+
+
+
+
+
+        //  3. 书写一个函数， 产生一个指定长度的随机字符串， 字符串中只能包含大写字母、 小写字母、 数字
+        function shuiji(str) {
+            var str1 = ''
+            var ji
+            for (var i = 0; i < str; i++) {
+                var newi = Math.random()
+                console.log(newi)
+                if (newi < 0.333) {
+                    ji = parseInt(Math.random() * (91 - 65) + 65)
+                } else if (newi < 0.6) {
+                    ji = parseInt(Math.random() * (123 - 97) + 97)
+                } else {
+                    ji = parseInt(Math.random() * (58 - 48) + 48)
+                }
+                str1 += String.fromCharCode(ji)
+                console.log(ji)
+            }
+            console.log(str1)
+        }
+
+        //另一种方法 代码1更为简洁
+        function random(Oh) {
+            var zfc = 'qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM0123456789'
+            console.log(zfc.length)
+            var str = ''
+            for (var i = 0; i < Oh; i++) {
+               str +=  zfc[parseInt(Math.random() * (62 - 0))]             
+            }
+            console.log(str)
+        }
+        random(21)
+
+
+
+        //  4. 将字符串按照字符编码的顺序重新升序排序
+        var str6 = '1321g8f012h9f80h2ur438xga923guisuf9814fv/.;[=-a'
+        var str5 = '987654321'
+
+        //算法方式
+        function baixuan(str) {
+            var arr = str.split('') //因为原始类型,不能有属性和方法,所以要转换成数组
+            var niu
+            for (var i = 0; i < arr.length; i++) {
+                for (var j = 1; j < arr.length - i; j++) {
+                    if (arr[j - 1].charCodeAt() > arr[j].charCodeAt()) {
+                        niu = arr[j - 1]
+                        arr[j - 1] = arr[j]
+                        arr[j] = niu
+                    }
+                }
+            }
+            console.log(arr.join(''))
+        }
+        baixuan(str6)
+
+        //普通方式
+        console.log(str6.split('').sort().join(''))
+
+
+
+        //   5. 从一个标准的身份证号中取出用户的出生年月日和性别， 保存到对象中
+        //   例如， "524713199703020014"
+        //   得到对象：
+        //   birthYear: 1997
+        //   birthMonth: 3
+        //   birthDay: 2
+        //   gender: "男" // 性别看倒数第二位，奇数为男，偶数为女
+        var str7 = "524713199703020014"
+
+        function shengfuzheng(str) {
+            var obj = {
+                birthMonth: parseInt(str.substr(10, 2)),
+                birthYear: parseInt(str.substr(6, 4)),
+                birthDay: parseInt(str.substr(12, 2)),
+                gender: str[17] % 2 === 1 ? '男' : '女'
+            }
+            console.log(obj)
+        }
+        shengfuzheng(str7)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+                     #递归
+                      函数直接或间接调用自身 
+
+
+
+                     #执行栈
+                      任何代码的执行都必须有一个执行环境,执行环境为代码的执行提供支持
+                      执行环境是放到执行栈中的
+                      每个函数的调用,都需要创建一个函数执行环境,函数调用结束,执行环境销毁
+                      执行栈有相对固定的大小,如果执行环境太多,执行栈无容纳,就会报错
+
+                     #尾递归
+                      如果一个函数最后一条语句是调用函数,并且调用函数不是表达式的一部分,则该函数称之为尾递归。
+                      某些语言或执行环境会对尾递归进行优化,他们会理解销毁当前函数,避免执行栈空间
+                      
+                      如果是最后一行是调用别的函数,就叫尾调用。尾调用也会进行优化
+                 */
+
+        //用递归写斐波拉契数列的n位的值
+        function test(n) {
+            if (n === 1 || n === 2) {
+                return 1
+            }
+            return test(n - 1) + test(n - 2)
+        }
+        //原理:如test(5),运行函数,执行到return时  又运行test(n-1)和test(n-2) 这两个表达式才知道结果
+        //运行到test(1) 或 test(2) 就返回1 
+
+        //用递归写阶层
+        //阶层就是 .....5*4*3*2*1
+        function jie(n) {
+            if (n === 1) {
+                return 1
+            }
+            return n * jie(n - 1)
+        }
+
+
+        //汉诺塔-----递归
+        function hanluo(no1, no2, no3, n) {     //A  B  C 3    A  C  B 2   A  B  C 1
+            if (n === 1){                                      
+                console.log(`${no1}-->${no3}`)
+            }else{
+               hanluo(no1,no3,no2,n-1)
+               console.log(`${no1}-->${no3}`)
+               hanluo(no2,no1,no3,n-1)         //C  A  B 2   
+            }
+        }
+        hanluo('A','B','C',3)
+
+    //原理:  hanluo(A,B,C,3)
+    // n-1 = 2   hanluo(A,C,B)
+    // n-1 = 1   hanluo(A,B,C)     if(n===1){no1(A)--->no3(B)}
+        
+    </script>
+</body>
+
+</html>

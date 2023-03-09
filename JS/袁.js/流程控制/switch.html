@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+                       //switch语句,可以用if判断语句代替
+                       /*
+                          switch(表达式){
+                              case 数据: 
+                                代码块
+                                break //强制停止
+
+                                default//则否
+                                代码块
+                          }
+                       
+                        */
+                       /*
+                          1.计算表达式的返回值,依次和case后面的数据进行严格相等的比较,如果某个相等,停止比较,然后
+                            运行其内部的代码块,再然后,依次运行之后的所有代码块。
+                          2.在case分支内部,使用break语句,可以立即停止switch语句
+                          3.default表示前面的所有case都不于表达式返回值匹配时运行。可以省略
+                        */
+
+                        var a = '奈斯'
+                        switch(a){
+                            case '奈斯':console.log('bbb') ;break;
+
+                            default :console.log('aaaaa')
+                        }
+    </script>
+</body>
+</html>

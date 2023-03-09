@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .naishi {
+            width: 250px;
+            height: 250px;
+            background-color: lightskyblue;
+            border: solid 1px red;
+            position: relative;
+        }
+
+        .divbb {
+            width: 190px;
+            height: 220px;
+            border: solid 1px;
+            background-color: rosybrown;
+            display: none;
+            position: absolute;
+            /* box-sizing: border-box; */
+        }
+
+        p {
+            border-bottom: solid 1px;
+            margin: 0;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        .f {
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="divid" class="naishi">
+        <div id="divbb" class="divbb">
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+            <p>4</p>
+            <p>5</p>
+            <p>6</p>
+            <p id="f" class="f">7</p>
+        </div>
+    </div>
+    <script>
+        var div = document.getElementById('divid')
+        var divbb = document.getElementById('divbb')
+        div.oncontextmenu = function (e) { //按下抬起时触发
+            e.preventDefault()
+            if (e.target === div) {
+                divbb.style.left = e.offsetX + 'px'
+                divbb.style.top = e.offsetY + 'px'
+                divbb.style.display = 'block'
+            }
+        }
+        div.onmousedown = function (e) { //按下时触发
+            console.log('===')
+            if (e.target === div) {
+                divbb.style.display = 'none'
+            }
+        }
+    </script>
+</body>
+
+</html>

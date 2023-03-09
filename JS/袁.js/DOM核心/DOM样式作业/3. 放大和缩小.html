@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container {
+            overflow: hidden;
+            border: 2px solid;
+            width: 200px;
+            height: 200px;
+            position: relative;
+            line-height: 200px;
+            text-align: center;
+            font-size: 100px;
+            font-family: 宋体;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        刘
+    </div>
+    <p>
+        <button>放大</button>
+        <button>缩小</button>
+    </p>
+    <script>
+        var but = document.querySelectorAll('button')
+        var div = document.querySelector('.container')
+        but[0].onclick = function () {
+            var naishi = parseInt(getComputedStyle(div).fontSize)
+            div.style.fontSize = naishi + 10 + 'px'
+            console.log(naishi)
+        }
+        but[1].onclick = function () {
+            var naishi = parseInt(getComputedStyle(div).fontSize)
+            if (naishi <= 10) {
+                div.style.fontSize = '10px'
+            } else {
+                 div.style.fontSize = naishi - 10 + 'px' 
+            }
+        }
+    </script>
+</body>
+
+</html>

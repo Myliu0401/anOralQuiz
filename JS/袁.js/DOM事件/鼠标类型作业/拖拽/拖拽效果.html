@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .naishi {
+            width: 120px;
+            height: 120px;
+            background-color: #008c8c;
+            border-radius: 50%;
+            position: absolute;
+            display: inline-block;
+            cursor: move;
+            
+        }
+
+        p {
+            text-align: center;
+            line-height: 40px;
+            font-size: 40px;
+            color: midnightblue;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="naishi" id="div1">
+
+    </div>
+    <script>
+        var div = document.querySelector('div')
+        var zhong = getComputedStyle(div)
+        var left = parseInt(zhong.left)
+        var top1 = parseInt(zhong.top)
+
+        /* div.onmousedown = function (e) {
+            if (e.button !== 0) {
+                return
+            }
+            console.log('进来了')
+            window.onmousemove = function (e) {
+                console.log('1')
+                left += e.movementX
+                top1 += e.movementY
+                div.style.left = left + 'px'
+                div.style.top = top1 + 'px'
+            }
+            window.onmouseup = window.onmouseleave = function (e) {
+                if (e.button === 0) {
+                    window.onmousemove = null
+                }
+            }
+        }
+        window.onclick = function (){
+            console.log('来料')
+        } */
+
+        //另外一种方式
+        div.onmousedown = function (e) {
+            if (e.button !== 0) {
+                return
+            }
+            var left = e.clientX
+            var top = e.clientY
+            var XY = getComputedStyle(div)
+            var x = parseInt(XY.left)
+            var y = parseInt(XY.top)
+            window.onmousemove = function (e) {
+                var Y = e.clientY - top
+                var X = e.clientX - left
+                div.style.left = X + x + 'px'
+                div.style.top = Y + y + 'px'
+            }
+            window.onmouseup = /* window.onmouseleave = */ function (e) {
+                if (e.button === 0) {
+                    window.onmousemove = null
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

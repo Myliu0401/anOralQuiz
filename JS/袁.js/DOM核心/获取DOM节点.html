@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p></p>
+    <p id="naishi">奈斯
+        <i></i>
+        <i></i>
+    </p>
+    <script>
+        /*
+               #获取dom节点                                          没有获取到就是null
+                 全局对象woindow中有属性document,代表的是整个文档节点  节点都是对象,节点套节点
+                                                                    document是最外层的节点,也就是最外层的对象
+                                                                    document是文档节点,不是元素节点
+                ##旧的获取元素节点的方式
+                
+                   document.body：获取body元素节点
+                   document.head：获取head元素节点
+                   document.links：获取页面上所有的超链接元素节点，类数组
+                   document.anchors：获取页面上所有的锚链接(具有name属性)元素节点
+                   document.forms：获取页面中所有的form元素节点
+
+               ##新的获取元素节点的方式
+                 #通过方法获取
+                     document.getElementsById:通过id获取对应id的元素
+                     document.getElementsByTagName:通过元素的名称获取对应的元素(类数组)
+                     document.getElementsByClassName:通过元素的class属性名获取对应的元素(类数组) ie9以下无效
+                     document.getElementsByName:通过name属性名来获取该元素
+                     document.querySelector:通过css选择器获取元素(得到匹配的第一个),  ie8以下无效
+                     document.querySelectorAll:通过css选择器获取元素(得到所有匹配元素) ,ie8以下无效
+                 细节:
+                    1.在所有的得到类数组的方法中,除了querySelectorAll,其他的方法都是实时的更新的
+                       也就是querySelectorAll方法得到多少就多少,再删除或添加,它都是原来得到哪些,没变   
+                    2.getElementsById得到元素执行效率最高
+                    3.书写了id的元素,会自动成为window对象的属性。它是一个实时的单对象。
+                       id的属性名就是属性,值就是元素
+
+
+                    4.getElementsByTagName、getElementsByClassName、querySelector、querySelectorAll 可以作为其他元素节点对象的方法使用
+                       也就是选中他们的子节点,因为元素也是对象,里面有这些方法
+                       相当于对象套对象一层一层选中
+
+                 ### 根据节点关系获取节点:节点里面都有这些属性 
+                         没有获取到就是null
+                    parentNode:获取父(元素、文档)节点   
+                    previousSibling:获取上个兄弟节点
+                    nextSibling:获取下一个兄弟节点
+                    childNodes:获取所有的子节点 (类数组) 也是实时的
+                    firstChild:获取第一个子节点
+                    lastChild:获取最后一个子节点
+                    attributes:获取某个元素的属性节点(类数组)
+
+                  只获取元素节点
+                      parentElement:获取父元素节点(最高一层是html,因为docuemtns不是元素节点)
+                      previousElementSibling:获取上个兄弟元素节点 
+                      nextElementSibling:获取下个兄弟元素节点  
+                      children:获取所有的子元素节点
+                      firstElementChild:获取第一个子元素节点
+                      lastElementChild:获取最后一个子元素节点
+
+                  获取节点信息
+                         nodeName:获取节点名称(元素节点名称为大写)
+                         nodeValue:获取节点的值
+                         nodeType:获取节点的数字(以数字判断节点的类型)
+                    
+                     */
+
+        var p = document.getElementById('naishi')
+        var m = document.getElementsByTagName('body')[0]
+    </script>
+</body>
+
+</html>

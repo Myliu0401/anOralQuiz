@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+               //累计:1到100相加的和
+               var coumt = 0
+               for(var i=1; i<=100; i++){
+                  coumt += i                 
+               }
+               console.log(coumt)
+               
+               //1到10相乘
+               var nim = 1 //必须设为1,因为0乘任何数都为0
+             for(var j=1; j<=10; j++){
+                 nim *= j
+             }
+               console.log(nim)
+
+               //1-100所有奇数相加
+               var jishu = 0
+               for(var k=1; k<=100; k++){
+                   if(k%2!==0){
+                     jishu += k
+                   }
+               }
+               console.log(jishu)
+
+             //查找:135到165之间是否存在能整除26的数字,如果找到就,打印并结束循环
+             var boer = false
+               for(var h=135; h<=165; h++){
+                    if(h%26==0){
+                        boer = true
+                       console.log('找到了'+h)
+                       break
+                    }
+               }  
+               if(boer){
+                   console.log('有')
+               }else{
+                   console.log('没有')
+               }
+
+             //打印所有135-185能整除26的数字
+             for(var y=135; y<=185; y++){
+                 if(y%26===0){
+                     console.log(y)
+                 }
+             }  
+
+            //打印135-185之间,第一个能被26整除的数,如果不存在就输出不存在
+             var boolean = true
+             for(var t=135; t<=185; t++){
+                 if(t%26==0){
+                     console.log(t)
+                     boolean = false
+                     break
+                 }              
+             } 
+             if(boolean){
+                 console.log('不存在')
+             }
+                     
+            //判断1-100以内的质数
+            //质数:一个大于1的整数,只能被1和自身整除
+            var num = 0
+            for(var zhi=1; zhi<=100; zhi++){
+                for(var shu=1; shu<=zhi; shu++){
+                    if(zhi%shu==0){
+                        num ++
+                    }
+                }
+                if(num==2){
+                    console.log(zhi)
+                }
+                num = 0
+            } 
+             
+          //判断是否为质数
+          //利用除1和自身之间,能否被整除,除1和自身这两个数,他们之间的
+           var shuzi = 99
+           var bool = false
+           for(var u=2; u<=shuzi-1; u++){//2就是除掉1, shuzi-1就是去掉自身
+               if(shuzi%u==0){//取模不能乱放的位置
+                   bool = true
+                   break //因为他们除1和自身之间,有一个能被整除就不是质数,所以直接用结束循环
+               }
+           }
+           if(bool || shuzi<=1){ //有点小缺陷,所以必须判断是不是1
+               console.log('不是质数')
+           }else{
+               console.log('是质数')
+           }
+
+          //另一种方法判断质数,进行没个数判断
+            var zhishu = 97
+            var bianlian = 0
+            for(var i=1; i<=zhishu; i++){
+                if(zhishu%i===0){ //取模不能乱放的位置
+                   bianlian ++
+                }
+            }
+            if(bianlian===2){
+                console.log('是质数')
+            }else{
+                console.log('不是质数')
+            }
+            */
+          //嵌套循环的方法判断质数
+          //1-100的质数,另一种方式判断
+      //     for(var i=1; i<=100; i++){ //遍历1到100
+      //      var boolean = false //变量为false
+      //         for(var j=2; j<=i-1; j++){ //除1和自身,两者之间的数,。。因为1和自身绝对能整除
+      //            if(i%j===0){ //两者之间只要能整除就进来
+      //                boolean = true //开关变为开
+      //                break //结束掉这次循环
+      //            }
+      //         }
+      //         if(i>1 && !boolean){ //2 
+      //             console.log(i)
+      //         }
+      //     }
+
+           for(var i=1; i<=100; i++){
+               var boolean = true
+               for(var j=2; j<=i-1; j++){
+                   if(i%j==0){
+                       boolean = false
+                       break
+                   }
+               }
+               if(i>1 && boolean){
+                   console.log(i)
+               }
+           }
+         
+           
+            
+    </script>
+</body>
+</html>

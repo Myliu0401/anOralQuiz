@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       .banner {
+    width: 520px;
+    height: 280px;
+    /* background: red; */
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    border: solid 2px;
+}
+.banner .imgs{
+    overflow: hidden;
+}
+
+.banner .imgs img{
+    width: 520px;
+    height: 280px;
+    display: block;
+}
+
+.banner .imgs a{
+    float: left;
+}
+
+.banner .dots{
+    position: absolute;
+    background: rgba(255,255,255,.3);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: 12px;
+    padding: 2px 4px;
+    border-radius: 8px;
+}
+
+.banner .dots span{
+    float: left;
+    width: 8px;
+    height: 8px;
+    margin: 2px;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.banner .dots span.active{
+    background: #f40;
+}
+
+.banner:hover .arrow{
+    display: block;
+}
+
+.banner .arrow{
+    display: none;
+}
+
+.banner .arrow .item{
+    position: absolute;
+    top: 100px;
+    background: rgba(0,0,0,.3);
+    color: #fff;
+    width: 20px;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+.banner .arrow .item:hover{
+    background: rgba(0,0,0,.5);
+}
+
+.banner .arrow .left{
+    left: 0;
+    border-radius: 0 17px 17px 0;
+}
+
+.banner .arrow .right{
+    right: 0;
+    border-radius: 17px 0 0 17px;
+    padding-left: 7px;
+    box-sizing: border-box;
+}
+
+    </style>
+</head>
+
+<body>
+        <div class="banner">
+                <div class="imgs">
+                    <a href=""><img src="img/1.jpg" alt=""></a>
+                    <a href=""><img src="img/2.webp" alt=""></a>
+                    <a href=""><img src="img/3.jpg" alt=""></a>
+                </div>
+                <div class="dots">
+                </div>
+        
+                <div class="arrow">
+                    <div class="item left">&lt;</div>
+                    <div class="item right">&gt;</div>
+                </div>
+            </div>
+            <script src="./index.js"> 
+            </script>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var obj = {
+            a: 123,
+            b: 345,
+            c: 213143,
+            d: '俩俩俩呢',
+            __proto__: {
+                k: '奈斯',
+                p: '迷死',
+            },
+            oko: {
+                y: 231,
+                u: 123,
+                h: {
+                    fa: 412
+                }
+            },
+            arr: [1, 2, 3, 4, [8, 7, 6, 5], 42]
+        }
+        var arr = [1, 2, 3, 4, 6, 5, 6, 7, 8, 9, [3, 4, 5, 6, ['5555'], 7], 6]
+        arr.__proto__.p = '爱'
+        arr.__proto__.k = '你'
+
+        var string = '134'
+
+        function Clone(fu, zi) {
+            var zi = zi ? zi : {}
+            var fanfa = Object.prototype.toString
+            var arr = '[object Array]'
+            var obj = '[object Object]'
+            if (typeof (fu) === 'object') {
+                for (var prop in fu) {
+                    if (fu.hasOwnProperty(prop)) {
+                        if (fu[prop] !== null && typeof (fu[prop]) === 'object') {
+                            if (fanfa.call(fu[prop]) === arr) {
+                                zi[prop] = []
+                            } else if (fanfa.call(fu[prop] === obj)) {
+                                zi[prop] = {}
+                            }
+                            Clone(fu[prop], zi[prop])
+                        } else {
+                            zi[prop] = fu[prop]
+                        }
+                    }
+                };
+                return zi
+            }
+        }
+
+
+
+        //另一种方式克隆
+
+        function clone(obj, boolean) {
+            if (typeof (obj) === 'object') {
+                if (Array.isArray(obj)) {
+                    if (boolean) {
+                        var arr = []
+                        for (var prop in obj) {
+                            if (obj.hasOwnProperty(prop)) {
+                                arr[prop] = clone(obj[prop], boolean)
+                            }
+                        }
+                        return arr
+                    } else {
+                        return obj.slice()
+                    }
+                } else {
+                    var Obj = {}
+                    if (boolean) {
+                        for (var prop in obj) {
+                            if (obj.hasOwnProperty(prop)) {
+                                Obj[prop] = clone(obj[prop], boolean)
+                            }
+                        }
+                        return Obj
+                    } else {
+                        for (var prop in obj) {
+                            if (obj.hasOwnProperty(prop)) {
+                                Obj[prop] = obj[prop]
+                            }
+                        }
+                        return Obj
+                    }
+                }
+            } else {
+                return obj
+            }
+        }
+    </script>
+</body>
+
+</html>

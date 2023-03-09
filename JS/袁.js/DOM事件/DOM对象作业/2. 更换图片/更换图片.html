@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div1">
+
+    </div>
+    <div>
+        <img src="./img/1.jpg">
+    </div>
+    <script>
+        var img = document.querySelector('img')
+        var div1 = document.getElementById('div1')
+        var arr = [
+            "./img/1.jpg",
+            "./img/2.jpg",
+            "./img/3.jpg",
+            "./img/4.jpg",
+            "./img/5.jpg"
+        ]
+        arr.forEach(function (ims, i) {
+            var but = document.createElement('button')
+            but.style.marginRight = '10px'
+            but.innerText = `第${i+1}张图片`
+            div1.appendChild(but)
+            but.onclick = function () {
+                img.src = `./img/${i+1}.jpg`
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+                   对象混合
+                两个对象混合,产生一个新对象
+
+                对象1混合到对象2
+              以对象1做为基础,有同名的属性,则以对象1的,没同名也进行复制,装进一个新对象里
+                反之则相反 
+            
+            */
+
+        var obj = {
+            a: '刘',
+            b: '玉',
+            c: '联',
+        }
+        var obj1 = {
+            d: '林',
+            e: '培',
+            f: '璇',
+            c: '林刘'
+        }
+        var obj2 = {
+            o: 213,
+            p: '090'
+        }
+        var obj3 = {
+            h: '奈斯',
+            u: '迷死'
+        }
+
+        function hunhe(obj, obj1) { //将对象obj1混合到obj对象
+            var obj2 = {} //创建一个新对象
+            for (var prop in obj1) { //循环要混合的对象
+                obj2[prop] = obj1[prop]
+            }
+            for (var prop in obj) { //循环被混合对象
+                if (!(prop in obj2)) {
+                    obj2[prop] = obj[prop]
+                }
+            }
+            return obj2
+        }
+
+        /* console.log(Object.assign(obj,obj1)) */ //将obj1混合到obj里
+        //这个静态方法,是混合对象方法
+
+
+        console.log(Object.assign({}, obj, obj1, obj2, obj3)) //这样就不会导致污染其他对象
+    </script>
+</body>
+
+</html>

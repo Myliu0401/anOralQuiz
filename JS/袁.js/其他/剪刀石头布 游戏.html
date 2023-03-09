@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //15.将猜拳游戏升级，记录系统和玩家的积分,获胜者加1分,平局和输者不计分
+        /*
+            可参考以下效果
+            游戏开始
+            ---------第一轮---------
+            系统:0分，玩家:0分
+            你的出拳:剪刀
+            系统出拳:布
+            你赢了
+            ---------第二轮---------
+            系统:0分,玩家:1分
+            你的出拳:石头
+            系统出拳:布
+            你输了
+            ---------游戏结束--------
+            系统:1分,玩家:1分                  
+         */
+        var bianlian = 0 //定义次数,系统赢的总次数
+        var yonhu = 0 //定义用户次数,用户总次数
+        var lun = 0 //游戏的次数,的几轮
+        var boolean = true // 定义游戏开始,但是只能一次
+        //进入游戏阶段 
+        while (true) {
+            if (boolean) {
+                console.log('=====游戏开始=====')
+                boolean = false
+            }
+            //用户出拳
+            var yonxi = prompt('请出拳:剪刀、石头、布')
+            var yonci = 0 //用户的积分
+            var xici = 0 //系统的积分
+            //判断用户出拳是否正确
+            if (yonxi === '剪刀' || yonxi === '石头' || yonxi === '布') {
+                lun++
+                var shuijishu = Math.random()
+                var xitong
+                if (shuijishu > 0.330) { //根据随机数来设置计算机出拳
+                    xitong = '剪刀'
+                } else if (shuijishu > 0.600) {
+                    xitong = '石头'
+                } else {
+                    xitong = '布'
+                }
+                //判断系统与计算机谁赢
+                if (yonxi === '剪刀' && xitong === '布' || yonxi === '石头' && xitong === '剪刀' ||
+                    yonxi === '布' && xitong === '石头') { //设置用户与计算机的输赢
+                    yonhu++
+                    yonci++
+                    console.log(`------第${lun}轮------`)
+                    console.log(`系统:${xici}分,用户:${yonci}分\n你的出拳:${yonxi}\n系统的出拳:${xitong}`)
+                    console.log('你赢了')
+                } else if (yonxi === xitong) {
+                    console.log(`------第${lun}轮------`)
+                    console.log(`系统:${xici}分,用户:${yonci}分\n你的出拳:${yonxi}\n系统的出拳:${xitong}`)
+                    console.log('平局')
+                } else {
+                    bianlian++
+                    xici++
+                    console.log(`------第${lun}轮------`)
+                    console.log(`系统:${xici}分,用户:${yonci}分\n你的出拳:${yonxi}\n系统的出拳:${xitong}`)
+                    console.log('你输了')
+                }
+
+                //用户出拳错误 
+            } else if (yonxi !== null) {
+                console.log('你的出拳有问题,请重新出拳')
+                console.log('=====游戏结束=====')
+                break //用户出拳错误,停止循环,游戏结束
+            }
+            //点击取消,游戏结束
+            if (yonxi == null) {
+                console.log('=====游戏结束=====')
+                if (yonhu > bianlian) {
+                    console.log(`用户最终的积分${yonhu}分,系统最终的积分${bianlian}分`)
+                    console.log('你最终赢的比赛')
+                } else if (yonhu == bianlian) {
+                    console.log(`用户最终的积分${yonhu}分,系统最终的积分${bianlian}分}`)
+                    console.log('平局')
+                } else {
+                    console.log(`用户最终的积分${yonhu}分,系统最终的积分${bianlian}分`)
+                    console.log('你最终输的比赛')
+                }
+                break //点击取消,强制停止循环,游戏结束
+            }
+        }
+       
+    </script>
+</body>
+
+</html>

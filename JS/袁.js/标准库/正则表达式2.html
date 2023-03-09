@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+           创建正则表达式对象
+            
+             1.#字面量
+             var xxx = /规则/gmi      后面加g 表示全局搜索
+
+             2. #构造函数
+              new RegExp('规则','gmi')
+             
+              也可以直接写 RegExp()不写new
+              和有写new的区别:  
+                  var sf = /规则/
+                  new RegExp(sf) // 返回一个与 sf 一样 但不是同一个对象
+                   (正则表示与其他不同,new 出来的函数对象有toString,原型也有,原型的原型也有)
+
+                 不使用new 
+                  RegExp(sf)  返回sf这个对象 地址与sf变量一样
+
+             #标志位  
+                   标志位加在最后斜杠后面   
+                g 表示全局 搜索
+                i 表示忽略大小写
+                m 表示多行匹配
+
+            #正则表达式的原型成员
+              属性: (只读)
+                 global  表示是否开启全局搜索   
+                 ignoreCase 表示是否开启忽略大小写
+                 multiline 表示是否开启多行匹配
+                 source    表示目前的规则
+                  
+                  (可读可改)
+                 lastIndex:表示当前光标的位置(会根据test方法的调用而变化)
+
+              方法:
+               1. test('数据')   表示数据是否匹配得到
+                在开启 全局搜索情况下
+                 var str = /abc/g
+                 str.test('111abc111abc') //会先扫到abc 返回 true  
+                 str.test('111abc111abc') //再次调用 会在上次的基础上继续扫 扫到第二个 abc 返回true
+                 str.test('111abc111abc') //继续调用 此时已经停在最后的单词边界 后面扫不到 返回 false
+                 str.test('111abc111abc') //调用就重新来   扫到为false就重新来
+
+                没有开启全局搜索
+                  每次都是从0开始,每次匹配到后lastIndex光标都会重新回到0
+
+               正则表达式,默认情况下,使用贪婪匹配模式
+                 意思:能匹配多 就 不匹配少
+                 var reg = /\d+/g
+                 var str = '12334fsfds2314vs'
+                 reg.test(str) //每次都会吃到数字不能吃 光标 0 到 5   、  5  到  14
+                 在规则的量词后面就?号,就会变成非贪婪模式 吃少不吃多
+ 
+              2.exec('数据')进行匹配    
+              在开启全局搜索的情况下
+              返回一个数组,这个数组装着数据的一切信息             
+                 0:匹配到的数据
+                 groups:undefined (一旦使用捕获组加上命名后,undefined就会变成对象)
+                 index:光标 (表示匹配到的,的数据第一位的下标)(会受到lastIndex属性的影响)
+                 input:表示进行扫描的数据
+              如果匹配不到返回null
+ 
+             不开启全局搜索
+              因为每个光标都会回到匹配到的起始位,所以每次都会防回同一个数组
+
+
+           ##字符串对象中的正则   
+             原型上
+               match(正则规则) 
+               在开启全局搜索的情况下  会把匹配的结果 push进数组并把数组返回
+
+               没开启全局搜索
+                 返回一个数组里面装着信息
+
+              search(正则规则) 无论是否开启全局搜索,始终得到第一个匹配到的数据首位的下标 (找不到就是-1) 
+              split(这里也可以写正则规则,数据) 以规则为条件进行分割 push进数组并返回 
+              可以写第二个实参,表示分割多少部分
+
+              replace(规则,数据)
+              将匹配得到的数据,用实参2进行替换,不会改变原始值
+              第二个参数可以写回调用函数,函数的第一个参数就是规则匹配到的结果,第二个参数....就代表捕获组 
+              回调函数返回什么就替换什么
+
+
+         */
+ 
+             var reg = /abcd/g
+             var str = 'fqqhfoabcdabcdabcdabcdabcdabcdabcdabcd'
+             //查找匹配到多少次
+             var count = 0
+               while(reg.test(str)){
+                    count++
+               }
+               console.log(count)
+
+             //得到所有的匹配结果和位置
+              var reg1 = /abc/g
+              var str1 = '12317abcabcabcabcabcabcabcabc231'
+              var nio = reg1.exec(str1)
+              while(nio){
+                  console.log(`匹配的结果${nio[0]},位置${nio.index}`)
+                  nio = reg1.exec(str1)
+              }
+      
+
+    </script>
+</body>
+
+</html>

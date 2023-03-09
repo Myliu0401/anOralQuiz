@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+                  /*
+                     #函数表达式
+                      JS中,函数也是一个数据,语法上,函数可以用于任何需要数据的地方 
+
+                      函数做为数据赋给变量,这个函数就会成为表达式
+
+                       JS中,函数是一等公民
+                       函数是一个引用类型,将其赋值给某个变量时,变量中保存的是函数的地址
+
+                      @回调函数,就是把函数当做参数传进函数,在函数里面执行
+
+
+                     #this关键字   
+                       this无法赋值,也就是没办法改变this
+                         this = 123 //没办法改变this指向
+                       1.在全局作用域中,this关键字固定指向全局对象
+                       2.在局部中this,取决于函数如何被调用
+                         1.函数直接调用,this指向全局
+                         2.通过对象调用,this指向调用的对象,谁调用this,this就指向谁
+                         3.如果new 了函数,this就会指向一个空对象,最后retrun this
+                           这个对象的名就是函数名,函数对象
+
+                   */
+
+                   var fun = function (){}()  //可以不用写名字,因为函数,变成表达式会忽略自己的引用 
+                   //fun变量同样会被提到脚本块的顶部,且成为window对象的属性
+                   //但fun它的值是函数表达式,如果用执行符号执行,表达式就变成立即执行函数,执行后就销毁
+                   //fun变量的值就没有了
+                   /*                          GO就是window对象
+                      变量提升 fun变量被提到顶部,并且成为window对象的属性--->GO:fun=undefined
+                      代码一行一行执行,执行到 fun = function (){}() 函数表达式执行,销毁自身,就没有了,就没法赋到window的fun变量
+                      所以就全局里的fun就成undefined
+                    */
+                     var arr = [12,3,4,5,function test(){
+                         console.log(this) //this就指向arr
+                     }]
+
+                       var obj = {
+                           a:123,
+                           b:function (){
+                               k = 3
+                               console.log(this) //thsi就指向obj
+                           }
+                       }
+                       var obj1 = {
+                           a:123,
+                           c:{
+                               a:443,
+                               b:{
+                                   a:12344,
+                                   d:function (){
+                                       console.log(this)
+                                   }
+                               }
+                           }
+                       }
+                       obj1.c.b.d()//this指向b    obj.c看做一个整体
+
+                     var obj6 = {
+                         xin:'林',
+                         ming:'培璇',
+                         func:function (){
+                             console.log(this.xin,this.ming)
+                         }
+                     }  
+                       var k = obj6.func
+                       k()
+                       obj6.func()
+                    
+             //单对象模式,也叫命名空间模式          
+
+    </script>
+</body>
+</html>

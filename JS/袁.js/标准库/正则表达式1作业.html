@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1. 写一个正则表达式， 匹配手机号
+        //  11 位， 第一位是1
+        //       /^1\d{10}$/
+
+
+        //  2. 姓名必须是3 - 6 位的中文
+        //      /^[\u4e00-\u9fa5]{3,6}$/
+
+        //  3. 密码必须是6 - 12 位的字符， 只能包含数字、 字母、 下划线
+        //       / ^\w{6,12}$/
+
+        //  4. 写一个正则表达式， 匹配邮箱
+        //  xxxxxx @xxxxx.xxxx.xxxx
+        //        /^\w+@\w+(\.[a-zA-Z]+){1,2}$/   //要把.转义,因为.表示任意字符
+
+
+        //  5. 匹配一个座机号
+        //  xxx - xxxxxxxx
+        //  前面： 1 - 3 个数字
+        //  后面： 4 - 8 个数字
+        //   /^\d{1,3}-\d{4,8}$/
+
+
+
+        //  6. 匹配一个正数
+        //   /^\d+(\.\d+)?$/
+
+        //  7. 匹配一个小数
+        //  / ^-?\d+\.\d+$/
+
+        //  8. 匹配一个整数
+        //  /^-?\d+(\.0+)?$/
+    </script>
+</body>
+
+</html>

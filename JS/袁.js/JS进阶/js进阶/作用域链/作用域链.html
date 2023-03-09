@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+               /* 
+                  #作用域链
+                   1.AO对象中包含一个额外的属性,该属性指向创建该AO的函数本身(是谁的AO就指向谁)
+                   2.每个函数在创建时,会有一个隐藏的属性···[[scope]]···,它指向创建该函数时的VO    
+                   3.当访问一个变量时,会先查找自身VO中是否存在,如果不存在,则依次查找···[[scope]]···属性           
+                    某些浏览器会优化作用域,函数的···[[scope]]···中仅保留需要用到的数据
+               
+                */
+
+            
+
+
+               var a = 1
+               function A(){
+                   console.log(a) //1
+               }
+               function Special(){
+                   var a = 5 
+                   var B = A 
+                   B()
+               }
+               Special()
+
+
+
+
+
+
+              /*   function test(){
+                    var k = 1
+                    return  function (a){
+                         console.log(++k)
+                    }
+                }
+              var t = test() */
+              //test函数执行完毕销毁上下文
+              //因为垃圾回收器只回收,找不到的,test函数的AO可以被返回的匿名函数找到,所以没被回收
+    </script>
+</body>
+</html>

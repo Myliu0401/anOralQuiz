@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .mi {
+            width: 150px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            background-color: lightblue;
+            cursor: pointer;
+        }
+
+        .hi {
+            width: 150px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            background-color: grey;
+            cursor: pointer;
+            margin: 2px 0;
+            border: solid 2px #008c8c;
+            box-sizing: border-box;
+        }
+
+        .ps {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="naishi">
+
+    </div>
+    <script>
+        var arr = [{
+                ming: '菜单一',
+                shangp: ['商品一', '商品二', '商品三', '商品四']
+            },
+            {
+                ming: '菜单二',
+                shangp: ['商品一', '商品二', '商品三', '商品四']
+            },
+            {
+                ming: '菜单三',
+                shangp: ['商品一', '商品二', '商品三', '商品四']
+            },
+            {
+                ming: '菜单四',
+                shangp: ['商品一', '商品二', '商品三', '商品四']
+            }
+        ]
+
+        var div = document.getElementById('naishi')
+        var cre = document.createDocumentFragment()
+
+        function jian(ming) {
+            var naishi = document.createElement('dt')
+            naishi.innerText = ming
+            naishi.className = 'mi'
+            return naishi
+        }
+
+        function sk(shangp) {
+            var p = document.createElement('p')
+            p.innerText = shangp
+            p.className = 'hi'
+            return p
+        }
+        arr.forEach(function (ims) {
+            cre.appendChild(jian(ims.ming))
+            var dd = document.createElement('dd')
+            dd.className = 'ps'
+            ims.shangp.forEach(function (ims) {
+                dd.appendChild(sk(ims))
+            })
+            cre.appendChild(dd)
+        })
+        div.appendChild(cre)
+        div.onclick = function (e) {
+            if (e.target.tagName === 'DT') {
+                if (e.target.nextElementSibling.style.display === 'block' || e.target.nextElementSibling.style
+                    .display === '') {
+                    e.target.nextElementSibling.style.display = 'none'
+                } else {
+                    e.target.nextElementSibling.style.display = 'block'
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+       
+            #原型和原型链
+             所有对象都是通过  ····new 函数····· 创建的
+
+             所有函数都是对象
+              所以函数中也可以有属性
+              所有对象都是引用类型
+
+            ##原型  prototype  (只有函数有,对象不是函数,所以对象没有)
+            所有函数都有一个属性:prototype,指向函数的原型对象。。称之为函数原型
+            **自己创建的函数,原型里只有两个个属性**,constructor:这个属性指向创建的函数本身
+             函数 prototype ----> 原型      原型 constructor----> 函数
+               
+            js默认的构造函数,的原型里都有自己的属性或方法
+            自己创建的函数原型里只有两个属性constructor 和 __proto__
+
+           ##隐式原型 __proto__ (只有对象有,函数也是对象,所以函数也有,数组也是对象,所以也有)
+           所有对象都有一个属性：__proto__ 称为隐式原型,指向函数原型对象
+           默认情况下,隐式原型指向创建该对象的函数的原型
+           当访问一个对象的成员时:
+           1.看该对象自身是否拥有该成员,如果有就直接使用
+           2.看该对象的隐式原型是否拥有该成员,如果有直接使用
+         
+            猴子补丁:在函数原型中加入成员,以增强起对象的功能,猴子补丁会导致原型污染
+
+           ##原型链
+            特殊点:Function的__proto__指向自身的prototype
+                  Object的prototype的__proto__指向null
+
+            
+       */
+
+
+        function test() {
+            return
+        }
+        console.log(new test()) //是通过new 函数生成对象,但new的三部曲最后一步,被重写了
+        //所以原型是Objcet
+
+
+
+        //将类数组转换成真数组
+        Array.prototype.slice.call(/* 类数组 */)
+    </script>
+</body>
+
+</html>

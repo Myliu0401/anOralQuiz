@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+           函数管道:将多个单参函数组合起来,形成一个新的函数,这些函数中,前一个函数的输出是后一个函数的输入
+           函数管道必须是单参
+           */
+
+        var str = 'heLLo nihao aiai'
+        //========================下面的方法都是单参函数==================//
+
+        //将字符串中每个单词首字母大写
+        function Capitalization(string) {
+            return string.replace(/\b(\w)(\w*)\b/g, function ($, $1, $2) {
+                return $1.toUpperCase() + $2
+            })
+        }
+
+        //将字符串中每个单词除首字母外,其他字母小写
+        var str1 = 'heLLo nihAo aiai'
+
+        function Alowercaseletter(str1) {
+            return str1.replace(/\b(\w)(\w*)\b/g, function ($, $1, $2) {
+                /* var str = ''
+                for (var prop in $2) {
+                   str += $2[prop].toLowerCase()
+                }
+                return $1+str */
+                return $1 + $2.toLowerCase()
+            })
+        }
+
+        //去除任何空白字符
+        function Goblank(str) {
+            return str.replace(/\s+/g, '')
+        }
+
+        //第一个单词首字母变小写
+        function Firstsmall(str) {
+            return str.replace(/\w/, function ($) {
+                return $.toLowerCase()
+            })
+        }
+
+        //函数管道
+        function Functionpipeline() {
+            var arr = Array.from(arguments)
+            /*  return function (val) {
+                 for (var prop in arr) {
+                     val = arr[prop](val)
+                 }
+                 return val
+             } */
+
+
+            //另一种方式
+            return function (val) {
+                return arr.reduce(function (valss, hanshu) {
+                    return hanshu(valss)
+                }, val)
+            }
+        }
+        var naishi = Functionpipeline(Capitalization, Alowercaseletter, Goblank, Firstsmall)
+        console.log(naishi(str1))
+    </script>
+</body>
+
+</html>

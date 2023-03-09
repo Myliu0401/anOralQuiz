@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .DIV {
+            width: 300px;
+            height: 300px;
+            border: solid 1px;
+            float: left;
+            background-clip: padding-box;
+            position: relative;
+            margin: 20px;
+        }
+
+        .div {
+
+            border: solid 1px lightblue;
+            position: absolute;
+            box-sizing: border-box;
+            background-color: rgba(245, 245, 146, 0.5);
+            display: none;
+            cursor: move;
+
+        }
+
+        .dadiv {
+            width: 500px;
+            height: 500px;
+            border: solid 1px mediumseagreen;
+            float: left;
+            margin-left: 10px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="DIV" class="DIV">
+        <div id="div" class="div"></div>
+    </div>
+    <div id="dadiv" class="dadiv">
+
+    </div>
+    <script src="./重来.js">
+    </script>
+</body>
+
+</html>

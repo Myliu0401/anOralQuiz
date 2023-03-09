@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //w3c不推崇直接使用系统成员__protot__
+
+        //静态方法,就是直接写到函数里面的
+        //**Object.getPrototypeOf(对象)//这个静态方法,是本身创建在Object函数里面的
+           //获取对象的隐式原型
+           var obj = {} //getPrototypeOf()这个方法是放在Object函数身上
+           //Object.grtPrototypeOf(obj) === obj.__protot__
+
+        //**Object.prototype.isPrototyprOf(对象) 
+         //这个方法就写在Object的原型上,所以创建的函数对象可以直接调用 = obj.isPrototypeOf()  
+         //判断当前对象(this)是否在指定的原型链上
+         function A(){}
+         var niu = new A()
+         Object.prototype.isPrototypeOf(niu)//判断Object的原型有没有在niu对象的原型上
+
+       //------------------------------------------------------
+           //判断
+           Object.getPrototypeOf(niu).isPrototypeOf(obj) //true
+           //niu的原型有没有在obj的原型上
+
+       //------------------------------------------------------  
+
+        //**对象 instanceof 函数
+        //判断函数的原型是否在对象的原型上
+        obj instanceof Object //这个对象的原型上有没有Object函数的原型
+
+        //**Object.create(对象) 也可以是null
+        //创建一个新对象,其隐式原型指向指定对象
+          var p = {x:123,t:456}
+          Object.create(p)//创建一个新对象,但这个新对象的隐式原型是p这个对象
+          //新建的对象里面就没有constructor,因为只有原型对象里面有这个constructor。而新对象的原型是p对象,只是一个普通的对象
+
+        //**Object.prototype.hasOwnProperty(属性名)
+         //判断一个对象 自身 是否拥有某个属性
+          var ok = {m:'mm',a:'213'}
+          var opj = Object.create(ok)
+          opj.hasOwnProperty('x')//看这个x属性是不是自己身上的
+          opj.b='234';opj.o='423';opj.h='abc';opj.u='bibi' //这写都是自己身上的属性
+          //把opj对象自己身上的属性 遍历出来
+           for(var prop in opj){
+               if(opj.hasOwnProperty(prop)){
+                   console.log(prop)
+               }else{
+
+               }
+           }
+
+        //--------------------------------------------
+           //**类数组转换成真数组——————真数组就是原型链上必须有Array.prototype   
+                     
+
+
+        //**实现继承   
+           //默认情况下所有构造函数的父类都是Object
+           function a(){}
+           var niu = new a()
+           //niu对象的隐式原型指向Object的原型,所以Object函数是niu对象的父类
+         //---圣杯模式实现继承    比较新的写法
+         test.prototype.lin = function (){
+             console.log('大家好我叫'+this.zhong + '今年' +1 +"岁")
+         }
+           function test(Nom,opk,ckd){
+             this.Nom = Nom;
+             this.opk = opk;
+             this.ckd = ckd;
+             this.zhong = this.Nom + " " + this.opk
+           }  
+            function VIP(Nom,opk,ckd,jinqian){
+               test.call(this,Nom,opk,ckd) //如果没加call,那么test函数中的this就指向全局
+               //this.p(Nom,opk,ckd)
+               this.jinqian = jinqian
+           }
+           function vip(zilie,fulei){
+                zilie.prototype = Object.create(fulei.prototype)
+                zilie.prototype.constructor = zilie
+                zilie.prototype.p = fulei.prototype
+                //zilei.prototype.p = fulei //就vip函数的原型里面有这个p属性,而p属性就是test()
+           }
+           vip(VIP,test)
+           VIP.prototype.peixuan = function (){
+               console.log('升级了')
+               this.jinqian += 2
+           }         
+            var vip = new VIP('诸葛','联',1,100)
+
+        //----------------------------------------------------------------
+          //圣杯模式  旧的写法
+          function A(){
+
+          }    
+          function B(){
+
+          }
+          function He(A1,B1){
+              function F(){}
+              
+              F.prototype = B1.prototype
+              A1.prototype = new F() //这个只能写在这里,因为__protot__指向原型,如果是先new 再给原型,就还是原来的原型
+              A1.prototype.constructor = A1
+              A1.prototype.uber = B1.prototype
+          }
+          
+          He(A,B)
+          var a = new A()
+          var b = new B()
+          A.prototype.op=function (){
+    console.log('你还好吗')
+}
+          B.prototype.pl=function (){
+    console.log('呢你')
+}
+        
+        //-----------------------------------------------------
+          //圣杯模式  完美写法
+           function sheng(){}
+           function bei(){}
+         var inegher = (function (){
+                var p = function (){}
+                return function (Target,Origin){
+                    p.prototype = Origin.prototype
+                    Target.prototype = new p()
+                    Target.prototype.constructor = Target;
+                    Target.prototype.uber = Origin.prototype
+                }
+          }())
+          inegher(sheng,bei)
+          var a = new sheng()
+          var b = new bei()
+          
+        
+          
+
+
+
+
+
+
+    </script>
+</body>
+</html>

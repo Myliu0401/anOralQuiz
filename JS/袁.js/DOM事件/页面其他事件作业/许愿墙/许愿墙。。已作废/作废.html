@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .naishi {
+            width: 250px;
+            height: 300px;
+            border-radius: 10px;
+            background-color: lightskyblue;
+            position: fixed;
+            cursor: move;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="naishi" id="op"></div>
+    <script>
+        var div = document.querySelector('div')
+        var l = document.documentElement.clientWidth
+        var t = document.documentElement.clientHeight
+        var style = getComputedStyle(div)
+        var left = parseFloat(style.width)
+        var lp = parseFloat(style.height)
+        console.log(lp)
+        console.log(left)
+
+        div.style.left = Math.random() * ((l - left) - 0) - 0 + 'px'
+        div.style.top = Math.random() * ((t - lp) - 0) - 0 + 'px'
+        var hom = parseFloat(getComputedStyle(div).left) / l 
+        console.log(hom)
+        window.onresize = function () {
+            div.style.left = hom * document.documentElement.clientWidth + 'px'
+            console.log('来了')
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+             #Object
+             new Object()  //括号里面写 null 或 undefined 或 不写, 不写就是undefined
+                             会得到一个空对象
+                             
+                           //如果写 数字、字符串、布尔..最终会被转换成 new 原始类型()  
+
+             #静态方法或属性:写在函数或对象身上
+                   
+             Object函数身上的 keys(引用类型)方法
+               输入引用类会获取引用类型的属性,然后装进一个数组并返回,如果没输入参数就会报错
+               如果输入原始类型会返回一个空数组
+             Object.values() 是获取属性值,并装进数组返回,其他盒keys方法一样
+             Object.entries() 是获取属性名和属性值,装进数组并返回,一个数组里面装着数组
+           
+             Object.assign(被混合的对象,要混合的对象)//将要混合的对象,混合到被混合对象里。并返回第一个实参对象
+             这个方法会导致被混合的对象发生变化
+             这个方法可以有多个实参对象,始终都是拿第一个实参对象,进行赋值,所以第一个对象会发生变化
+
+
+              #动态方法或属性:写在原型上
+                *所有对象,都拥有Object的所有实例成员*
+                 toString方法:得到某个对象的字符串格式
+                 默认情况下,该方法返回'[object Object]'
+
+                 valueOf方法:得到某个对象的值
+                 默认情况下,返回对象本身,得到自己
+
+                 constructor方法:得到 new谁 就得到谁 (只有原型才有这个方法)
+
+                *在js中,当自动的进行类型转换时,如果要对一个对象进行转换,实际上是先调用对象的valuOf方法
+                然后再调用返回结果的toString方法,将得到的结果进行进一步转换
+                如果调用valueOf方法后得到是原始类型,那么就不再继续调用这个结果的toString方法
+                
+
+              #Function
+                所有new Function 都会返回一个函数, 所有new 函数 都会返回一个对象
+                除Array外。。。。
+                函数的本质也是对象 
+
+                函数静态属性的:length 指向形参的个数
+
+                *所有函数都具有Function中的实例成员*  (通过原型找到)
+                *语法:arguments：在函数中使用,获取该函数调用时,传递的所有实参*
+                *arguments是一个类数组(也称为伪数组:没有通过Array构造函数创建的,类似于数组结构的对象)
+                 伪数组会缺少大量的数组原型的方法
+                *arguments数组中的值,会与对应的形参应式*
+
+                length属性:代表形参数量
+
+                #原型成员
+                  apply方法:调用函数,同时指定函数中的this指向(改函数的this指向)
+                            函数.apply(指定this,[实参,实参....])
+
+                  call方法:调用函数,也是改变函数的this指向       
+                            函数.call(指定this,实参,实参.....)
+
+                  apply和call的作用:改变this指向
+                               不同:传参不同        
+
+                  bind方法:得到一个函数,该函数的this始终指向指定的值
+                           函数.bind(指定this,实参,实参...)             
+
+
+                 #类数组转换成真数组
+                   利用数组的原型上的silce方法。silce方法内部原理,this指向调用者,没有传参的话,就把thsi返回
+                   silce函数里的this指向调用者
+                   [].silce.call(aruments)  //silce里的this就会指向aruments,在经过骚操作,push进空数组并返回                    
+
+               
+           */
+  
+            function test(a,b){
+                b = 3
+                console.log(arguments)
+                console.log(b)
+                arguments[1] = 444
+                console.log(b)
+              
+            }
+            test(123,123,123,undefined)
+
+              
+              function tesp(){
+                arguments['kp'] = '123abc'
+                arguments['lp'] = 'fa'
+                console.log(arguments)
+                var niu = [].slice.call(arguments)
+                console.log(niu)
+              }
+              tesp(1,2,3,4,5)
+
+      
+
+    </script>
+</body>
+
+</html>

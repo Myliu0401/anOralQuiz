@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*    //   1. 提示用户输入数组的长度， 以及数组每一项的值， 然后输出该数组
+        var po = +prompt('请输入数组的长度')
+        if (po > 0 || !isNaN(po)) {
+            var arr = new Array()
+            for (var i = 1; i <= po; i++) {
+                arr.push(prompt(`请输入第${i}项`))
+            }
+            console.log(arr)
+        } else if (isNaN(NaN)) {
+            console.log('你的有入有误')
+        }
+
+
+
+
+
+        //    2. 初始化一个数字数组， 然后求该数组所有项之和
+        var arr = [1, 2, 3, 4, 5, 6, 7]
+        var coun = 0
+        for (var prop in arr) {
+            coun += arr[prop]
+        }
+        console.log(coun)
+
+
+
+        //    3. 初始化一个数字数组， 然后输出数组中所有的奇数
+        var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+        for (var prop in arr) {
+            if (arr[prop] % 2 == 1) {
+                console.log(arr[prop])
+            }
+        }
+
+
+      */
+        /*    //    4. 初始化一个数字数组， 然后输出数组中所有的素数
+            var arr = [131, 412, 412, 42, 4, 5, 75, 421, 6, 543, 23, 21, 97]
+            for (var prop in arr) {
+                var coun = 0
+                for (var j = 1; j <= arr[prop]; j++) {
+                    if (arr[prop] % j == 0) {
+                        coun++
+                    }
+                }
+                if (coun == 2) {
+                    console.log(arr[prop]+'@')
+                }
+            }
+         */
+
+
+
+        //    5. 斐波拉契数列是这样一种数列： 1 1 2 3 5 8 13......
+        //        数列前两位为1， 第n位 = 第n - 1 位 + 第n - 2 位
+        //    让用户输入斐波拉契数列的长度， 在控制台中打印该长度的斐波拉契数列
+        /*     var shule = +prompt('请输入长度')
+             if (!isNaN(NaN) || shule > 0) {
+                 var coun = 1,
+                     son = 1,
+                     kon
+                 var arr = []
+                 for (var i = 1; i <= shule; i++) {
+                     if (i === 1 || i === 2) {
+                         arr.push(1)
+                     } else {
+                         kon = coun + son
+                         arr.push(kon)
+                         son = coun
+                         coun = kon
+                     //arr[i] = arr[i-1] + arr[i-2] 另一种方式,循环i要改成0
+                     }
+                 }
+                 console.log(arr)
+             } else if (isNaN(NaN) || shule === 0) {
+                 console.log('输入有误')
+             }
+
+
+          */
+
+
+
+        //    6. 定义一个用户数组， 数组的每一项是一个用户对象， 用户对象中包含账号和密码， 
+        //     随意初始化一些对象放入数组中。 然后提示用户输入账号和密码， 判断是否登录成功
+        /*    var arr = [{
+                    zhaohao: 'a123',
+                    mima: '12345'
+                },
+                {
+                    zhaohao: 'b123',
+                    mima: '1234567'
+                },
+                {
+                    zhaohao: 'c123',
+                    mima: '12345678'
+                }
+            ]
+            var zha = prompt('请输入账号')
+            var mi = prompt('请输入密码')
+            for (var i = 0; i < arr.length; i++) {
+                if (zha === arr[i]['zhaohao'] && mi === arr[i]['mima']) {
+                    console.log('登录成功')
+                    break
+                } else if (zha === arr[i]['zhaohao'] && mi !== arr[i]['mima']) {
+                    console.log('密码错误')
+                    break
+                } else if (zha !== arr[i]['zhaohao'] && mi === arr[i]['mima']) {
+                    console.log('账号错误')
+                    break
+                } else if (i + 1 === arr.length) {
+                    console.log('没有此账号,和密码错误')
+                }
+            }
+            //更简易的方式
+              var boolean = false 
+              for(var i=0; i<arr.length; i++){
+                  var y = arr[i]
+                  if(y.zhaohao===zha && y.mima===mi){
+                      boolean = true
+                      break
+                  }
+              }
+              if(boolean){
+                  console.log('登录成功')
+              }else{
+                  console.log('登录失败')
+              }
+
+
+
+               */
+
+
+
+
+
+        //    7. 初始化一个5 * 5 的二维数组， 数组每一项是一个数字， 计算对角线之和
+        //这是加4个角之和
+        var arr = [
+            [100, 2, 3, 4, 100],
+            [1, 2, 3, 4, 5],
+            [1, 2, 3, 4, 5],
+            [1, 2, 3, 4, 5],
+            [100, 2, 3, 4, 100]
+        ]
+        var sum = 0
+        var boolean = true
+        var blen = true
+        for (var i = 0; i < arr.length; i++) {
+            for (var j = 1; j <= arr[i].length; j++) {
+                if (boolean) {
+                    sum += arr[i][j - 1]
+                    boolean = false
+                } else if (j === arr[i].length - 1 && blen) {
+                    boolean = true
+                    blen = false
+                }
+            }
+            if (i + 1 === arr.length - 1) {
+                blen = true
+                boolean = true
+            }
+        }
+        console.log(sum)
+
+        //这是加对角线之和
+        var arr = [
+            [1, 4, 6, 7, 1, ],
+            [6, 1, 5, 1, 6, ],
+            [7, 4, 1, 7, 2, ],
+            [8, 1, 1, 1, 3, ],
+            [1, 4, 6, 7, 1, ]
+        ]
+        var a = 0
+        var k = 0
+        for (var i = 0; i < arr.length; i++) {
+            for (var j = 0; j < arr[i].length; j++) {
+                if (j === a) {
+                    k += arr[i][j]
+                    a = NaN
+                }
+            }
+            a = i + 1
+        }
+        // var l = arr.length/2 
+        // var p = arr[l].length/2
+        var a = 0
+        for (var i = 0; i < arr.length; i++) {
+            a++
+            for (var j = 0; j < arr[i].length; j++) {
+                if (j === arr[i].length - a) {
+                    k += arr[i][j]
+                }
+            }
+        }
+        console.log(k)
+
+        //更灵活的方式求对角线之和
+        // [5,4,6,7,9,]
+        // [6,4,5,7,6,]
+        // [7,4,4,7,2,]
+        // [8,4,1,2,3,]
+        // [9,4,6,7,1,]
+        var sum = 0
+        for (var i = 0; i < arr.length; i++) {
+            for (var j = 0; j < arr[i].length; j++) {
+                if (i === j || j === arr[i].length - (i + 1) /*更加灵活的条件i+j==arr.length-1*/ ) {
+                    sum += arr[i][j]
+                }
+            }
+        }
+        console.log(sum)
+
+
+
+
+        //    8. 初始化一个数字数组（ 数据随意）， 对该数组进行升序排序， 然后输出结果
+
+        //    思路提示：
+
+        //    数组的排序有多种算法可以完成， 这里介绍其中一种： 冒泡排序算法
+
+        //    冒泡排序算法的原理如下：
+        //        -
+        //        比较相邻的元素。 如果第一个比第二个大， 就交换他们两个。 -
+        //        对每一对相邻元素做同样的工作， 从开始第一对到结尾的最后一对。 在这一点， 最后的元素应该会是最大的数。 -
+        //        针对所有的元素重复以上的步骤， 除了已排好序的元素。
+
+        var arr = [123, 41, 421, 4, 12, 521, 5, 13, 5, 1123, 41, 4, 143, 2]
+        for (var i = 0; i < arr.length; i++) {
+            var str
+            for (var j = 1; j <= arr.length; j++) {
+                if (arr[i] > arr[j + i]) { //升序
+                    str = arr[i]
+                    arr[i] = arr[j + i]
+                    arr[j + i] = str
+                } else if (arr[i] < arr[j + i]) { //降序
+                    /*    str = arr[j+i]
+                        arr[j+i] = arr[i]
+                        arr[i] = str   */
+                }
+            }
+        }
+        console.log(arr)
+
+        //另一种方式
+        var arr7 = [123, 41, 421, 4, 12, 521, 5, 13, 5, 1123, 41, 4, 143, 2]
+        //  var arr7 = [7, 6, 5, 4, 3, 2, 1]
+        for (var i = 0; i < arr7.length; i++) {
+            var str
+            // var coun = 0
+            for (var j = 1; j <= arr7.length - i; j++) {
+                if (arr7[j - 1 /*coun*/ ] > arr7[j]) { //升序
+                    //  str = arr7[coun]
+                    //  arr7[coun] = arr7[j]
+                    //  arr7[j] = str
+                } else if (arr7[j - 1 /*coun*/ ] < arr7[j]) { //降序
+                    str = arr7[j]
+                    arr7[j] = arr7[j - 1 /*coun*/ ]
+                    arr7[j - 1 /*coun*/ ] = str
+                }
+                //  coun ++
+            }
+        }
+        console.log(arr7)
+
+
+
+
+
+
+
+
+        //    9. 有一个数组， 存放了一些数字， 找出出现频率最高的数字
+        //(在测试里的骚操作)
+
+
+           //另一种方式
+           var arrs = [1,1,1,1,1,1,2,2,2,2,2,3,3,3,4,34,4,4,6,6,6,6,6,6]
+           var obj = {}
+           for(var i=0; i<arrs.length; i++){
+               if(!obj[arrs[i]]){
+                   obj[arrs[i]] = arrs[i]
+               }
+           }
+           console.log(obj) //去重后装进对象,值和属性就是数组去重后的
+           for(var prop in obj){
+               var coun = 0
+               for(var i=0; i<arrs.length; i++){
+                   if(obj[prop]===arrs[i]){
+                       coun ++
+                   }
+               }
+               obj[prop] = coun
+           }
+           console.log(obj) //对象值,就是属性出现的次数
+           var boolean = true
+           for(var prop in obj){
+               if(boolean){
+                   var liu = obj[prop]
+                   boolean = false
+               }
+               if(liu<obj[prop]){
+                   liu = obj[prop]
+               }
+           } 
+           console.log(liu)  //次数,最多的次数
+           for(var prop in obj){
+               if(obj[prop]===liu){ //进行匹配,谁看对象的属性值,能匹配到就打印
+                   console.log(`${prop}出现频率最高,出现${obj[prop]}次`)
+               } //属性为数字去重后的值,属性值为属性出现的次数
+           }
+
+
+           //更灵活的方式
+            var arrk = [1,1,1,1,1,1,2,2,2,2,2,3,3,3,4,34,4,4,6,6,6,6,6,6]
+            var obj4 = {}
+            for(var i=0; i<arrk.length; i++){
+                if(!obj4[arrk[i]]){
+                    obj4[arrk[i]] = 1
+                }else{
+                    obj4[arrk[i]]++ 
+                }
+            }
+           var duixiang 
+           for(var prop in obj4){
+               if(!duixiang || obj4[prop]>duixiang.zhi){
+                   duixiang={  //把属性名和属性值装进一个对象赋给它
+                       ming : +prop,
+                       zhi : obj4[prop]
+                   }
+               }
+           }
+           console.log(`${duixiang['ming']}出现频率最高,出现${duixiang['zhi']}次`)
+           
+
+
+
+
+
+
+
+
+
+
+
+        // 10.求数组里的最大值   不会改变原数组
+        var arr8 = [777, 333, 44, 555, 7, 8, 9, 888, 666, 111]
+        var klm = arr8[0]
+        for (var i = 0; i < arr8.length; i++) {
+            if (klm < arr8[i]) {
+                klm = arr8[i]
+            }
+        }
+        console.log(klm)
+        //另一种更复杂的方式  但会改变原数组(10才是最好的)
+        var arr11 = [1, 2, 3, 4, 5, 6, 7, 100, 9, 8, 7, 6, 54]
+        for (var i = 1; i <= arr11.length; i++) {
+            if (i !== arr11.length) {
+                if (arr11[0] > arr11[i]) {
+                    continue
+                } else {
+                    arr11[0] = arr11[i]
+                }
+            }
+        }
+        console.log(arr11[0])
+
+
+
+        //11.求数组中的最小值
+        var arr9 = [0, 9, 6, 4, 2, 44, 222, 55, 666, -1, 2, 3, 4, 5]
+        var opk = arr9[0]
+        for (var i = 0; i < arr9.length; i++) {
+            if (opk > arr9[i]) {
+                opk = arr9[i]
+            }
+        }
+        console.log(opk)
+
+
+
+
+        
+    </script>
+</body>
+
+</html>

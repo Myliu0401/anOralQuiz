@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+               函数节流:事件触发,启动计时器,时机成熟执行函数,无论触发多少次事件,都是固定时间,执行函数
+                       停止触发事件,就停止计时器执行函数
+
+               触发事件:都是保证每一段时间执行一次        
+         */
+
+
+        //用计时器的方式
+        function Clone(fanfa, shijian) {
+            var trimg;
+            return function () {
+                if (trimg) {
+                    return
+                }
+                trimg = setTimeout(function () {
+                    fanfa()
+                    trimg = null
+                }, shijian)
+            }
+        }
+        var hanshu = Clone(function () {
+            console.log('性感的分割线=============-===============')
+        }, 1000)
+
+        window.onresize = function () {
+            hanshu()
+        }
+
+
+        //利用时间戳的方式
+        //第一次触发事件时,会马上执行
+
+        function clone(yeshi, haomiao) {
+            var trimg
+            return function () {
+                if (!trimg || new Date().getTime() - haomiao >= trimg) {
+                    trimg = new Date().getTime()
+                    yeshi()
+                }
+            }
+        }
+        var naishi = clone(function () {
+            console.log('奈斯')
+        }, 1000)
+        window.onresize = function () {
+            naishi()
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .iddiv {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            border: solid 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button>开始</button>
+    <button>停止</button>
+    <div class="iddiv"></div>
+    <script src="./动画插件.js">
+    </script>
+    <script>
+        /* 
+           动画插件
+           transition
+           1.css3的属性,有兼容性问题
+           2.动画难以停止,难以恢复
+        
+        */
+
+        var div = document.querySelector('.iddiv')
+        var but = document.getElementsByTagName('button')
+        var naishi = new Animationplug.Mixedobject({
+            totaltime: 5000,
+            timeinterval: 30,
+            initial: { //初始值
+                left: 100,
+                top: 100,
+                r: 0,
+                g: 0,
+                b: 0
+            },
+            target: { //目标值
+                left: 1000,
+                top: 500,
+                r: 250,
+                g: 100,
+                b: 100
+            },
+            start: function () {
+                console.log('开始')
+            },
+            Close: function () {
+                console.log('停止')
+                console.log(naishi.obj.currentstate)
+            },
+            Motionfunc: function () {
+                div.style.left = this.left + 'px';
+                div.style.top = this.top + 'px'
+                div.style.background = `rgb(${this.r},${this.g},${this.b})`;
+                /* console.log(this.left) */
+            }
+        })
+
+        but[0].onclick = function () {
+            naishi.open()
+        }
+        but[1].onclick = function () {
+            naishi.shut()
+        }
+    </script>
+
+</body>
+
+</html>

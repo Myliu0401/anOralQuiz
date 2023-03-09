@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+                 #String    字符串是一个伪数组
+                   
+                       反斜杠和+号都可以换行
+                       '111111111111\
+                        222222222222'
+                        '33333333333'+
+                        '44444444444'
+      
+                   静态方法:
+                         fromCharCode(数据):根据Unicode编码来创建字符串,看参数与编码那个对应就创建那个
+                         fromCodePoint(数据):和上面一样都是根据编码来的,只是这个方法会对参数进行扫描,匹配不到就会报错
+
+                   原型成员:
+                          length:原型的length属性,为0,只能读
+                           字符串对象中的length属性就是字符串的长度
+                       方法:
+                        charAt:得到指定位置的字符 如果指定没有就返回空串  
+                               与属性访问形式不同 xx[x] 属性访问形式没有指定位就是undefined
+
+                        charCodeAt:得到的是指定位的字符编码,指定位没有就返回NaN
+                        concat():拼接字符串,并返回,于数组的concat同名,但不是同一个
+                                 数组的concat是拼接在数组,字符串的concat是拼接在字符串
+
+                        includes(数据):查找有没有这个字符串,返回boolean类型
+                         var str = '123'  str.includes('1') 数值会被转换成字符串再查找
+
+                        endsWith(数据):查看是不是以数据为结尾,返回boolean类型,如果数据是空串永远为true     
+                        startsWith():查看是某个数据开头。和endsWith对应
+
+                        indexOf:
+                        lastIndexOf:
+                        这两个和数组的方法一样,都是查找索引
+
+                        padStart(实参1,实参2):根据调用者,进行判断实参1多少位,不够进行填充实参2上去
+                                             在调用者的前面添加,实参2
+                        padEnd()在末尾填充,和padStart相对应
+                        repeat(数据):把调用者,变成数据个,拼接在一起并返回
+                        silce() 和数组一样,但是是返回字符串,因为不是同一个
+              
+                        substr(实参1,实参2):从实参1,也就是索引.开始取,实参2带表长度,实参2多少就取多少
+                                           如果字符串不够,就全部取出    
+                                           也可以是负数    
+
+                        substring()和silce一样,但是负数会被转换成0,silce不会         
+                        当参数1大于参数2条件不够,没法取时,会自动调换参数位置,silce方法不会            
+          
+                        toLowerCase()将字符串转换成小写
+                        toUpperCase()将字符串转换成大写
+                        trim()去除字符串首尾空格
+                        trimRight()去除字符串右边的空格
+                        trimLeft()去除字符串左边的空格
+                        split()分割字符串,并push进数组,返回一个数组
+
+
+                 #Numder
+                   new 构造器(数据)  返回一个原始类型的对象
+                       构造器(数据)  返回一个原始值
+                   静态方法:
+                          
+                          isNaN方法:判断是否为NaN,返回boolean类型                             
+                          isFinite方法:判断数据是否为有限,返回boolean类型                         
+                          parseFloat:将一个数据转换为小数,(但由于js在存储特殊,所以整数转后都一样)
+                          parseInt:将一个数据转换为整数,直接去除小数点部分
+                          上面这几种方法window对象也有
+                          parseInt和parseFloat的内部原理:
+                            会调用数据的toString得结果,再根据第一位对不对应数字编码,对应就转换成数字
+                            如果没找到则返回NaN,左右空格字符串会自动忽略
+                            如果依次往下找,后面不对应就直接返回前面对应的
+                            空字符串没法对应也是NaN
+
+                          parseInt,可以传入第二个参数,表示将给定的数据,识别成第二个参数进行,最后转换成10进制的结果
+                                   第一位数据,在第二个参数进制中无效就返回NaN,后面不对应的就直接忽略,把前面转换的结果返回  
+                           
+                          isInteger方法:判断数据是否为整型,返回boolean类型(小数点后如果都是0,也是整型)
+
+                        原型上的成员
+                          toFixed(数据):会根据数据保留小数点位数,但会四舍五入,并返回字符类型
+                          toPrecision(数据):以指定的精度返回一数字字符串,保留指定位数据
+                          //这两个都是返回数字字符串
+
+
+
+                 #Boolean 
+                   //没有什么方法
+                   toString: 
+                   valueOf: 返回自己
+
+
+
+              */
+
+
+
+        //得到一个最小值到最大值之间的随机整数  
+        //利用Math.random()返回一个0~1的随机数,1取不到
+        //如果乘于3,最小值 0  最大值3,3取不到
+        //*3+2 最小值为0*3=0 0+2 ==2 最小值为2     1*3=3 + 2 == 5 最大值为5
+        //2 到 5 的随机数  ,因为随机数为小数点,所以取整,最大值取不到
+        //有bug   为负数的时候最大值没法取到,负数是最大只能取最大值减2
+        function shuiji(min, max) {
+            //想取到最大值 max ++,
+            return parseInt(Math.random() * (max - min) + min)
+            //             Math.floor(向上去整) 1.1 == 2 -5.5 ==6
+        }
+
+        // toFixed
+        var a = 123
+        var a = a.toFixed(2)
+        console.log(a) //没有小数点就会在后面加0 就会变成123.00
+
+        //这两个都是返回数字字符串
+
+        //toPrecision
+        var b = 123.123
+        b.toPrecision(2) //会用科学计算法,包留两位
+        //如果超过小数点位数,就会去除(数据)后面的数
+
+
+
+        //利用fromCharCode方法创建26个字母
+        var str = ''
+        for (var i = 65; i < 65 + 26; i++) {
+            str += String.fromCharCode(i)
+        }
+        console.log(str)
+
+
+        var sf = '1237'
+        console.log(sf.padStart(6,'~'))
+
+    </script>
+</body>
+
+</html>

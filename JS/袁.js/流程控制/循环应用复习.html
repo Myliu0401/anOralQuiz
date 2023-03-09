@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+          //1.累计:1到100相加的和
+           var cumt = 0
+           for(var i=1; i<=100; i++){
+                 cumt += i
+           }
+           console.log(cumt)
+
+          //2.  1到10相乘
+         var bianlian = 1
+         for(var i=1; i<=10; i++){
+             bianlian *= i
+         }
+         console.log(bianlian)
+
+          //3.    1-100所有奇数相加
+           var qishu = 0
+          for(var i=1; i<=100; i++){
+              if(i%2==1){
+                  qishu += i
+              }
+          }
+          console.log(qishu)
+
+          //4.求出10的阶层
+          var jiecheng = 1
+            for(var i=1; i<=10; i++){
+                jiecheng *= i
+            }
+            console.log(jiecheng)
+
+         //5.查找:135到165之间是否存在能整除26的数字,如果找到就,打印并结束循环
+         //如果找不到就输出没有,找得到就输出有
+         var boolean = false
+          for(var i=135; i<=165; i++){
+              if(i%26==0){
+                  boolean = true
+                var p = i
+                  break
+              }
+          }
+          if(boolean){
+              console.log('有:'+p)
+          }else{
+              console.log('没有')
+          }
+           
+         //6.打印所有135-185能整除26的数字
+          for(var i=135; i<=185; i++){
+              if(i%26==0){
+                  console.log(i)
+              }
+          }  
+
+         //7.打印135-185之间,第一个能被26整除的数,如果不存在就输出不存在 
+         var boolean = true
+         for(var i=135; i<=185; i++){
+             if(i%26==0){
+                 console.log('我是的一个:'+i)
+                 boolean = false
+                 break
+             }
+         }
+          if(boolean){
+              console.log('不存在')
+          }
+
+        //-----------------------------
+               //判断质数
+         //质数:一个大于1的整数,只能被1和自身整除
+         //也就是只能被整除两次,就是1和自身
+           var zhishu = 97
+           var bianlian = 0
+           for(var i=1; i<=zhishu; i++){
+               if(zhishu%i==0){
+                  bianlian ++
+               }           
+           }if(bianlian==2){
+                   console.log(zhishu+':是质数')
+               }else{
+                   console.log(zhishu+':不是质数')
+               }
+
+           //判断是否为质数 --- 另一种方式
+             var boolean = true
+             var zhishu = 98
+             for(var i=2; i<=zhishu-1; i++){
+                if(zhishu%i==0){
+                    boolean = false
+                   break
+                }
+             }
+             if(boolean && zhishu>1){
+                console.log(zhishu+':是质数')
+             }else{
+                console.log(zhishu+':不是质数')
+             }
+ 
+
+               //判断1-100以内的质数
+           //嵌套循环的方法判断,利用除自身和1外
+           var geshu = 0
+             for(var i=1; i<=100; i++){
+                 var boolean = true
+                 for(var j=2; j<=i-1; j++){
+                     if(i%j==0){
+                         boolean = false
+                         break
+                     }
+                 }
+                 if(boolean && i>1){
+                    geshu ++
+                     console.log(i)
+                     console.log(geshu)
+                 }
+             }  
+
+             //嵌套循环的方法判断,每个数字都进行判断
+             var geshu = 0
+               for(var i=1; i<=100; i++){
+                   var com = 0
+                   for(var j=1; j<=i; j++){
+                       if(i%j==0){
+                            com ++
+                       }
+                   }
+                   if(com==2){
+                    geshu ++
+                       console.log(i)
+                       console.log(geshu)
+                   }
+               } 
+                 
+ 
+
+
+    </script>
+</body>
+</html>

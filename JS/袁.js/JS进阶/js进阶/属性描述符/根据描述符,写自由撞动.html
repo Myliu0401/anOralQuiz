@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            /* border: solid 1px; */
+            border-radius: 50%;
+            position: absolute
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        /*  var dom = document.querySelector('div') */
+        var obj = {
+            dom: document.querySelector('div'),
+            width: 100,
+            height: 100,
+            X: 0,
+            Y: 0,
+            xdiv: 2,
+            ydiv: 2,
+            _x: 0,
+            _y: 0,
+            shjian: 17
+        }
+        Object.defineProperty(obj, "X", {
+            get: function () {
+                return this._x;
+            },
+            set: function (val) {
+                if (val < 0) {
+                    val = 0;
+                } else if (val > document.documentElement.clientWidth - this.width) {
+                    val = document.documentElement.clientWidth - this.width;
+                }
+                this._x = val;
+                this.dom.style.left = val + "px";
+            }
+        })
+        Object.defineProperty(obj, "Y", {
+            configurable:false, //这个属性是设置是否可以重新定义或delete 等
+            get: function () {
+                return this._y;
+            },
+            set: function (val) {
+                if (val < 0) {
+                    val = 0;
+                } else if (val > document.documentElement.clientHeight - this.height) {
+                    val = document.documentElement.clientHeight - this.height;
+                }
+                this._y = val;
+                this.dom.style.top = val + "px";
+            }
+        })
+        
+ 
+        /* setInterval(function () {
+            obj.X += obj.xdiv
+            obj.Y += obj.ydiv
+            if (obj.Y === document.documentElement.clientHeight - obj.height ||
+                obj.Y === 0) { //因为负负得正 所以要 ||obj.Y === 0
+                obj.ydiv = -obj.ydiv
+            }
+            if (obj.X === document.documentElement.clientWidth - obj.width ||
+                obj.X === 0) {
+                obj.xdiv = -obj.xdiv
+            }
+        }, 16) */
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+                    /*
+                         数据类型
+                       原始类型:numder  string   boollean  unedfined  null
+                       引用类型: object  function    
+                     */
+
+                     //在变量中存储对象
+                      var k = {
+                          name:'heoll',
+                          pwl:123
+                      }
+
+                     //通过读取对象中的某个属性
+                      k.name
+
+                     //当读取的属性不存在时,会得到unedfined
+                     //当读取变量不处在时会,报错(变量未经声明就访问会报错)
+
+                     //原始类型undefined和null不可有属性,和方法
+                     //var m    m.a == 报错  (包装类的问题)
+
+      
+      //定义一个变量,存放对象,包含姓名、年龄、性别、女朋友(姓名、年龄、性别)
+      var liu = {
+              name:'liu',
+              ming:'yulian',
+              xinbie:'男',
+              nvyou:{
+                  name:'lin',
+                  ming:'peixuan',
+              }
+          }
+//定义一个变量,存放对象,包含姓名、年龄、性别、女朋友、女朋友和第一个变量的女朋友是一样的,两个女朋友
+          var liu1 = {
+              name:'liu1',
+              ming:'yulian1',
+              xinbie:'男1',
+              nvyou:{
+                  name:'lin1',
+                  ming:'peixuan1'
+              },
+              nvyou1:liu.nvyou   
+          }
+//输出第一个的女朋友姓名,和第二个女朋友姓名
+    console.log(liu.nvyou.name," ",liu1.nvyou1.name)
+
+        /*
+                删除属性  
+             delete 变量名.属性名    直接删除属性
+             liu.nvyou = undefined  删除属性值,属性还是存在的
+             
+             没办法删除有 var 声明的 
+         */
+
+        var pop = 'nvyou' 
+        /*
+               查看,使用表达式的方式    查看原型,在底层会隐式---xx['xxx']
+               对象变量['属性名']
+               liu['nvyou']
+               liu[pop]
+
+               某些属性名中包含特殊字符
+               实际上,js对属性名的命名要求并不严格,属性可以是任何形式的名字
+
+               *属性名只能是字符串,如果书写成数字会被转换成字符串*
+               liu[0] --- 如果这样写会被隐式转成 --- ['0'],表达式查看属性是英文的,就不会被隐式转换
+               数字类型比较特殊
+             
+               *属性名本身就是一个字符串文本*
+                浏览器会隐式的把对象的属性名,转换成字符串
+               所以用表达式的方式查看时xx['xx']。要加字符串
+              
+        */
+            
+
+            /*
+                           全局对象
+                js大部分的宿组环境,都会提供一个特殊的对象,该对象可以直接在js代码中访问
+                该对象叫做全局对象
+
+                在浏览器环境中,全局对象为window,表示窗口    
+                在全局对象中的所有属性,可以直接使用,不用写上对象名
+                浏览器会自动window.xxx['xxx']  所以访问时不用写上window对象名
+                所有在全局中声明的,都归window所有
+
+                如果全局变量没有赋值,则不会覆盖window对象上的同名属性
+                var a 
+                console.log(window)//因为window对象里面,本身没有a属性,所以a称为window对象的属性
+
+                如果变量于window上的属性同名,在变量没有赋值,经过预编译最后还是window里面本身那个
+                                    
+             */
+             var console  //于window上的属性同名,但没有赋值,会被window对象忽略掉,不会被覆盖,相当于没被提进window
+             console.log(console)
+
+             var name = undefined //window里面的name比较特殊,赋任何值都会被转换成字符串形式
+             console.log(name,typeof(name))
+
+
+         
+    </script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        p {
+            width: 100px;
+            height: 200px;
+            border: solid 1px;
+            overflow: auto;
+
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem itaque sunt numquam, nesciunt officiis dicta esse!
+        Incidunt repellat, necessitatibus earum dicta quaerat soluta sed exercitationem, labore autem omnis aspernatur.
+        Quasi exercitationem laboriosam quidem odio dolore magni error voluptatum fuga odit maxime, saepe, consectetur
+        commodi ratione modi quaerat dolor, corporis blanditiis? Tempora ad molestias dolor optio id eum ipsa
+        reiciendis, nihil inventore! Saepe nesciunt dolorum culpa dolor earum tenetur molestiae animi obcaecati,
+        recusandae magni nobis vitae odit quibusdam, voluptas expedita pariatur. Ut explicabo rem perspiciatis ea ullam
+        esse maiores asperiores exercitationem dignissimos suscipit, molestiae ad incidunt officia quo praesentium rerum
+        veritatis!
+    </p>
+    <button id="button">回到顶部</button>
+    <textarea id="naishi"></textarea>
+    <textarea id="kop"></textarea>
+    <script>
+        /*
+             beforeunload:window的事件,关闭窗口时运行,可以阻止关闭窗口(谷歌用不了,就是关闭窗口时会弹出显示,显示内容就是返回的字符串)
+             unload:window的事件,关闭窗口时运行(目前,没法显示效果) 
+
+             scroll:窗口发生滚动时运行的事件(window的scrollTop属性和scrollLeft属性在html元素数身上和body身上)
+             也可以在标签上注册
+              在标签上注册可以通过scrollTop和scrollLeft,获取和设置滚动距离
+
+            resize (因为是窗口所以只能在window)
+            窗口尺寸发生改变时运触发的事件,监听的是视口尺寸 
+
+            contextmenu
+            右键菜单事件
+
+            paste
+            粘贴事件
+                       这两个事件可以阻止默认行为
+            copy
+            复制事件
+               
+           */
+
+
+           /* 
+
+                       transitionend 事件在 CSS 完成过渡后触发。
+                       每过渡一次触发一下
+                       只能用dom2的方式注册
+           
+           
+           */
+
+        var p = document.querySelector('p')
+        p.onscroll = function () {
+            console.log(this.scrollTop, this.scrollLeft)
+        }
+        document.getElementById('button').onclick = function () {
+            p.scrollTop = 0
+            p.scrollLeft = 0
+        }
+        window.onresize = function () {
+            console.log('来拉老弟')
+        }
+        document.documentElement.onresize = function () {
+            console.lao('奈斯')
+        }
+
+        var test = document.getElementById('naishi')
+        test.onpaste = function (e) {
+            console.log(test.value)
+            console.log(e.clipboardData.getData('text/plain')) //这个参数是普通文本类型
+            //clipboardData.setData('text/plain',内容)设置普通文本数据,并把内容返回在剪切板
+            //事件源里面的clipboardData对象原型理的getData方法(参数就文件类型),会根据参数类型返回粘贴的内容
+            //这个getData方法是获取数据
+            //clearData方法是清空数据
+            console.log('上面')
+        }
+
+
+        //------
+        var kop = document.getElementById('kop')
+        kop.onpaste = function () {
+            console.log(this.value+'空')
+            this.value = '来着奈斯:' + this.value
+            console.log(this.value)
+        }
+    </script>
+</body>
+
+</html>

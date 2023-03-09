@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 120px;
+            height: 120px;
+            background-color: #655bc4;
+            border-radius: 50%;
+            border: solid 1px red;
+            position: fixed;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div"></div>
+    <script>
+        var div = document.getElementById('div')
+        var lEFT, l, t
+        var TOP
+        var count = 0
+        setInterval(function () {
+            var style = getComputedStyle(div)
+            var obj = jiajia(style)
+            if (obj.left < 0) {
+                paduan(1, obj, '+', '+')
+            } else if (obj.left > obj.maxwidth) {
+                paduan(2, obj, '+', '-')
+            } else if (obj.top < 0) {
+                paduan(3, obj, '+', '-')
+            } else if (obj.top > obj.maxheight) {
+                paduan(4, obj, '-', '+')
+            }
+            div.style.left = k ? k.L + 'px' : parseFloat(count += 2) + 'px'
+            div.style.top = k ? k.T + 'px' : parseFloat(count += 2) + 'px'
+
+        }, 100)
+        //获取距离和位置信息
+        function jiajia(style) {
+            return {
+                left: parseFloat(style.left),
+                top: parseFloat(style.top),
+                maxheight: document.documentElement.clientHeight - 120,
+                maxwidth: document.documentElement.clientWidth - 120
+            }
+        }
+
+        function paduan(jia, obj) {
+            if (jia === 1) {
+                return {
+                    l: obj.left + 2,
+                    t: obj.top + 2
+                }
+            } else if (jia === 2) {
+                return {
+                    l: obj.left - 2,
+                    t: obj.top + 2
+                }
+            } else if (jia === 3) {
+                return {
+                    l: obj.left - 2,
+                    t: obj.top + 2
+                }
+            } else if (jia === 4) {
+                return {
+                    l: obj.left + 2,
+                    t: obj.top - 2
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

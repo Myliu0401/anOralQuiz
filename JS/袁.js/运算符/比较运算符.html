@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+            /* 
+                比较运算符
+               大小比较:  >     <      >=     <=
+               相等比较:  ==    !=     ===     !==
+
+               比较运算符的返回类型是:boolean
+
+               算术运算符的优先级高于比较运算符
+               2+5>=5 ==true
+               会先算2+5=5  再进行比较5>=5
+            */
+            /*  
+               细节
+                   大小比较
+                1. 两个字符号串比较大小,比较的是字符串的字符编码    (只有两个都是字符串才是进行字符编码比较)
+                 'AB' > 'AC'  会第一个A和A比,再B和C比
+                              A为65 65>65就已经为false了
+                 '11' > '1'   第一个1和1比, 再第二个1和1比,但比较值没有1了,就会跟0比
+                              1为45 45>45就已经为false了     
+
+                2.如果一个不是字符串,并且两个都是原始类型,将它们都转换为数字进行比较
+                   '10' > 20
+                   会先把10转换成数字的10再进行比较
+
+                  NaN(非数)不等于任何数,所以于任何东西比较都为false 
+                  Infinity比任何数字都大
+                  -Infinity比任何数字都小
+
+                3.如果其中一个对象,将对象转换为原始类型然后,按照规则1或规则2进行比较
+                  也就是调用toString()方法的结果,进行比较
+             */
+               
+                console.log('1' >= 10) //隐式转换得 1 再进行比较 得false
+                console.log('2' > true) //........ 2 > 1 ==false
+                console.log(NaN > 0)   //NaN不等于任何数
+                console.log(3 > {})// 引用值,调用离自己最近的toString()方法得结果。因为有一边不是字符串,所以要继续把转换成数字,得NaN,==false
+                console.log(null > -1) //null隐式转换后得0 0大于-1 == true
+                console.log(undefined > -1)  //得NaN ==false
+                //隐式类型转换数字都是调用 Number(把数据写进来)方法
+
+                /*
+                     相等比较
+                   == : 相等比较,通常比较两个数据是否相等 
+                   != : 不相等比较  
+                    
+                     细节
+                    1.两端类型相同,直接比较两个数据本身是否相同 (引用类型比较的是地址)
+                     'ads' === 'abs ' 得false 数据本身内容不同
+                      var a = {}  var b = {}
+                      a == b 得 false 因为地址不同
+
+                    2.两端类型不同
+                    1).null 和 undefined 比较特殊,他们之间相等,但和其他原始类型比较,则不相等
+                       null == undefined ==true
+                       null == 0 为false 因为相等比较,null和undefined与其他类型比较都不相等 
+
+                    2).其他原始类型,比较时先转换为数字,再进行比较    
+                       '20' == 20 得true
+
+                    3).NaN与任何东西比较都为false,包括自身  
+
+                    4).Infinity和-Infinity只能自身相等 
+
+                    5).引用类型,调用离自身最近的toString方法 得结果后,再调用Number()得结果,再进行比较
+
+                      //====由于相等和不相等比较,对于不同类型的数据比较违反直觉,因此,通常我们不使用这种比较方式
+                            而是使用更加接近直觉的严格相等和严格不相等比较
+
+                               不会发生隐式类型转换
+                       ===:严格相等 ---> 两端的数据和类型必须相等
+                          1 === true 得false 
+
+                       !== : 严格不相等 ---> 两端的数据和类型必须不相等
+                 */
+    </script>
+</body>
+</html>

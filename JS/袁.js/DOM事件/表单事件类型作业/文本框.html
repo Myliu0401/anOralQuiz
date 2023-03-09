@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .input {
+            width: 200px;
+            height: 30px;
+            color: #cccccc;
+            font-size: 20px;
+        }
+
+        .naishi {
+            width: 200px;
+            height: 30px;
+            font-size: 20px;
+            color: #000000;
+        }
+    </style>
+</head>
+
+<body>
+    <input value="请输入奈斯" id="naishi" class="input">
+    <script>
+        var input = document.getElementById('naishi')
+        input.onfocus = function (e) { //聚焦事件
+            if (this.value === input.defaultValue) {
+                console.log('聚焦')
+                this.className = 'naishi'
+                this.value = ''
+                this.style.color = '#000'
+            } 
+        }
+        input.onblur = function () { //失焦事件
+            if (!this.value) {
+                console.log('失焦')
+                this.value = this.defaultValue
+                this.style.color = '#ccc'
+            } 
+        }
+    </script>
+</body>
+
+</html>

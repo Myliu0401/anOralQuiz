@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .DIVcontainer {  /* 游戏总架 */
+            width: 800px;
+            height: 600px;
+            border: solid 2px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+        p{ /* 提示 */
+            text-align: center;
+            font-size: 22px;
+        }
+        .DIVcontainer .Sky{ /* 天空 */
+            height: 100%;
+            width: 200%;
+            background: url('./img/sky.png');
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .DIVcontainer .earth{ /* 大地 */
+           height: 112px;
+           width: 200%;
+           position: absolute;
+           left: 0;
+           bottom: 0;
+           background: url('./img/land.png');
+        }
+        .DIVcontainer .littlebird{ /* 小鸟 */
+           width: 33px;
+           height: 26px;
+           position: absolute;
+           left: 130px;
+           top: 130px;
+           background: url('./img/bird.png');
+           background-position: 96px -10px;
+        }
+        .DIVcontainer .column{ /* 柱子 */
+            position: absolute;
+            width: 52px;
+        }
+        .DIVcontainer .upper{ /* 柱子下 */
+            background: url('./img/pipeDown.png') no-repeat;
+            background-position: left bottom;
+        }
+        .DIVcontainer .lower{ /* 柱子上 */
+            background:url('./img/pipeUp.png') no-repeat;
+        }
+        .DIVcontainer .Mongolia{ /* 蒙层 */
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: rgb(0, 0, 0, 0.4);
+            z-index: 1;
+            display: none;
+        }
+
+        .DIVcontainer .Mongolia p{
+            text-align: center;
+            line-height: 5;
+            color: #ffffff;
+            font-size: 78px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="DIVcontainer">
+        <div class="Sky"></div>
+        <div class="earth"></div>
+        <div class="littlebird"></div>
+        <div class="column upper"></div>
+        <div class="column lower"></div>
+        <div class="Mongolia">
+            <p>游戏结束</p>
+        </div>
+    </div>
+    <p>回车键开始/停止。空格键小鸟跳跃</p>
+    <script src="./像素鸟.js">
+    </script>
+</body>
+
+</html>

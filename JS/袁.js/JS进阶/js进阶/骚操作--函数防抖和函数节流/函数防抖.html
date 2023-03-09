@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input>
+    <script>
+        //高阶函数:在函数内部返回一个新的函数
+        //函数防抖:debounce  事件触发,启动计时器,时机成熟执行函数,每次触发事件,都会把还没有执行的计时器清空,重新来
+        function Antishake(Tremble, time) {
+            var trimg;
+            return function () {
+                clearTimeout(trimg)
+                var arg = arguments
+                trimg = setTimeout(function () {
+                    Tremble.apply(null, arg)
+                }, time)
+            }
+        }
+        var fun = function (width) {
+            console.log(width)
+            console.log(this)
+        }.bind(window)
+        var shijian = Antishake(fun, 1000)
+        window.onresize = function () {
+            shijian(document.documentElement.clientWidth)
+        }
+    //====================================//
+        function fan(fun, time) {
+            var trimg
+            return function () {
+                clearTimeout(trimg)
+                var arg = arguments
+                console.log(arg)
+                trimg = setTimeout(function () {
+                    fun.apply(null, arg)
+                }, time)
+            }
+        }
+        var funn = fan(function (arg, ins) {
+            console.log(arg)
+            console.log(ins)
+        }, 1000)
+        var input = document.querySelector('input')
+        input.oninput = function () {
+            funn(this.value, this)
+        }
+    </script>
+</body>
+
+</html>

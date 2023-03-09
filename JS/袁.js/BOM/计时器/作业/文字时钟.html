@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div">
+         <h1 id="h1"></h1>
+    </div>
+    <div>
+        <h1 id="h2"></h1>
+    </div>
+    <script>
+        var h1 = document.getElementById('h1')
+          function test(){
+            h1.innerHTML =  new Date().toLocaleString()
+          }
+          test()
+          setInterval(test,1000)
+     //==========================================================
+        var h2 = document.getElementById('h2')
+          function shizhon(){
+               var niu = new Date()
+               var nian = niu.getFullYear()
+               var yue = niu.getMonth()+1
+               var ren = niu.getDate()
+               var shi = niu.getHours()
+               var fen = niu.getMinutes()
+               var miao = niu.getSeconds()
+            h2.innerText = `${nian}年${yue}月${ren}日 | ${shi.toString().padStart(2,0)}时${fen.toString().padStart(2,0)}分${miao.toString().padStart(2,0)}秒`   
+          }
+          shizhon()
+          setInterval(shizhon,1000)
+    </script>
+</body>
+
+</html>

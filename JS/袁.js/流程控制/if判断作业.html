@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+              //1.提示用户输入一个三位数,若不是三位数,则提示用户输入有误；若是三位数，则判断该数能否被13整除
+              //3位数也就是100到999之间
+             //   var shuju = +prompt('请输入一个三位数')
+        /*       if(isNaN(shuju) || shuju<100 ||shuju > 999){ //满足这三个条件的,都输入有误
+                            document.write('输入有误')
+               }else{
+                 if(shuju%13===0){
+                     document.write('能被13整除')
+                 }else{
+                     document.write('不能被13整除')
+                 }
+               }      
+               */
+
+
+             //2.让用户输入一个成绩(0~100),判断这个成绩属于哪个范围并输出结果
+             //(A:90-100  B:70-89  C:60-69  D:40-59  E:0-39),若用户输入的不是0-100的数字,则输出有误
+          /*   var shuju = +prompt('请输入一个三位数')
+               if(isNaN(shuju) || shuju < 0 ||shuju > 100){ //满足这三个条件的,都输入有误
+                            document.write('输入有误')
+               }else{
+                 if(shuju>=90){
+                     document.write('A')
+                 }else if(shuju>=70){
+                     document.write('B')
+                 }else if(shuju>=50){
+                     document.write('C')
+                 }else if(shuju>=30){
+                     document.write('D')
+                 }else{
+                     document.write('E')
+                 }
+               }     
+               */
+
+
+             //3.根据世界卫生组织推崇的计算方法
+             /* 
+                计算方法为(身高cm - 80) * 70%
+                (身高cm - 70) * 60%
+                标准体重正负10%为正常体重,高于标准体重的10%为过重,低于标准体重的10%为过轻
+                编写程序,让用户输入性别、身高、体重、判断用户的健康状况
+                健康状况有3种:
+                1.你的体重正常,请继续保持
+                2.你的体重偏瘦,请加强营养
+                3.你的体重偏胖,请加强锻炼
+              */                  
+            /*    var xingbie = prompt('请输入性别')
+                var shengao = +prompt('请输入身高')
+                var tizhong = +prompt('请输入体重')                              
+               if(isNaN(shengao) || isNaN(tizhong) || xingbie !== '男' && xingbie !== '女'){
+                       document.write('输入有误')
+               }else{
+                   var biaozui
+                  if(xingbie === '男'){
+                        biaozui = (shengao - 80) * 0.7 //(男)计算标准体重
+                  }else{ 
+                        biaozui = (shengao - 70) * 0.6 //(女)计算标准体重
+                  }
+                  if(tizhong < biaozui * 0.9){ //判断是否低于标准体重的10%
+                        console.log('你的体重偏瘦,请加强营养')
+                  }else if(tizhong > biaozui * 1.1){ //判断是否高于标准体重的10%
+                      console.log('你的体重偏胖,请加强锻炼')
+                  }else{
+                      console.log('你的体重正常,请继续保持')
+                  }
+               }
+                */
+
+
+            //4.某理财公司推出一种理财服务,服务规则如下:
+            /*
+              若用户的理财金额在50万元以下，则每年的收益按照4%计算。
+              若用户的理财金额在50万元以上（包括50万），则每年收益按照4.5%计算。
+              若用户的理财金额超过200万，除了理财收益外，还要额外给予用户收益金额的10%
+              编写程序，让用户输入理财金额和理财年限，计算到期后的收益 
+             */
+       //          var jiner = +prompt('请输入理财金额') 
+       //          var nianxian = +prompt('请输入理财年限')
+       //          if(isNaN(jiner) || isNaN(nianxian) || jiner <= 0 && nianxian <= 0){
+       //              console.log('你的输入有误')
+       //          }else{
+       //              var lilv = 0.04  //利率
+       //              if(jiner >= 500000){
+       //                  lilv = 0.045  
+       //              }
+       //              var lixi = jiner * lilv * nianxian // 理财收益(利息)
+       //              if(jiner > 2000000){
+       //                  lixi += lixi * 0.1
+       //              }
+       //              console.log(`总收益${lixi}`)
+       //              
+       //          }
+
+
+
+             //5.编写一个用户和计算机猜拳的游戏，用户输入剪刀、石头或布，与计算机的出拳进行比较，判断胜负
+                 var yonhu = prompt('剪刀石头布')
+                 if(yonhu === '石头' || yonhu === '剪刀' || yonhu === '布'){
+                     //模拟计算机出拳
+                      var shuju = Math.random()
+                      var quanto
+                     if(shuju < 0.3){
+                        quanto = '石头'
+                     }else if(shuju>0.6){
+                        quanto = '剪刀'
+                     }else{
+                        quanto = '布'
+                     }
+                    // console.log(quanto)
+                     console.log(`你的出拳${yonhu},计算机${quanto}`)
+                  if(yonhu=='剪刀' && quanto=='布' || yonhu=='布' && quanto=='石头' || yonhu=='石头' && quanto=='剪刀'){
+                        console.log('用户胜')
+                  }else if(yonhu==quanto){
+                        console.log('平局')
+                  }else{
+                        console.log('计算机胜')
+                  }
+                 }else{
+                    console.log('你的输入有误')
+                 }
+              
+          
+                
+    </script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+                #原型链的应用
+                 ##基础方法
+                  w3c不推崇直接使用系统成员__proto__
+                   
+                    静态方法
+               **Object.getPrototyprOf(对象)**
+                 获取对象的隐式原型
+                相当于{}.__proto__
+
+                   动态方法
+               **Object.prototype.isPrototyprOf(对象)**
+                判断当前对象(this)是否在指定对象的原型链上   
+                 判断(Object.prototype)这个东西在不在(对象)的原型链上
+                 也相当于(对象)的原型链上有没有Object.prototype原型
+                
+
+              **对象 instanceof 函数**
+                对象 的原型链上有没有 函数的原型 
+               [] instanceof Array
+               数组的原型链上有没有 Array的原型
+
+
+               静态方法
+            **Object.create(引用类型)**
+             创建一个以(引用类型)作为隐式原型的类型
+                 var a = [1,2]
+                   Object.create(a)
+               创键一个以a做为原型的数组
+              (必须传参)
+            参数只能为引用类型,或null
+             为null,返回一个没有原型的对象
+
+             
+                 动态方法
+            **Object.prototype.hasOwnProperty(属性名)**  
+              判断一个对象**自身**是否拥有某个属性
+             var obj = {} 
+              obj.prototype.a=123
+              obj.hasOwnProperty(a) 为false,因为a是它原型上的,不是自身的 
+
+
+          **类数组转换为真数组**
+           Array.prototype.slice.call(类数组)
+
+
+         **实现继承**
+         默认情况下,所有构造函数的父类都是Object
+
+
+         圣杯模式  
+                
+          
+         */
+
+
+        var obj = {}
+        console.log(Object.getPrototypeOf(obj) === obj.__proto__)
+
+        var p = {
+            a: 123
+        }
+        console.log(Object.create(p))
+
+        console.log(Object.create(null))
+
+        var obj = {
+            a: 123,
+            b: 345,
+            c: 1231,
+            __proto__: {
+                k: 000,
+                l: 999
+            }
+        }
+        //遍历对象,不允许遍历原型
+        for (var prop in obj) {
+            if (obj.hasOwnProperty(prop)) {
+                console.log(prop + ':' + obj[prop])
+            }
+        }
+
+
+        //继承
+        //这种,会污染全局
+        function yuanxin(name, shui, vb) {
+            this.name = name
+            this.shui = shui
+            this.vb = vb
+        }
+        yuanxin.prototype.nashi = function () {
+            console.log('来啦,老弟')
+        }
+        var en = new yuanxin('18', '20', '21')
+
+        function VIPyuanxin(naishi, name, shui, vb) {
+            yuanxin.call(this, name, shui, vb)
+            this.naishi = naishi
+        }
+        VIPyuanxin.prototype.VIP = function () {
+            console.log('vip')
+        }
+        var vip = new VIPyuanxin('21', '22', '23', '24')
+
+
+        //继承:圣杯模式
+        function shen(a, b, c) { //父类
+            this.a = a
+            this.b = b
+            this.c = c
+        }
+        shen.prototype.fanfa = function () {
+            console.log(`奈斯${this.a},迷死${this.b},逼死${this.c}`)
+        }
+        var k = new shen(1, 2, 3)
+
+        function shengbei(zi, fu) {
+            zi.prototype = Object.create(fu.prototype)
+            zi.prototype.constructor = bei
+            zi.prototype.p = fu.prototype
+        }
+        shengbei(bei, shen)
+
+        function bei(a, b, c, d) { //子类拥有父类的原型
+            shen.call(this, a, b, c)
+            this.d = d
+        }
+        console.log(bei.prototype)
+        bei.prototype.fanfa1 = function () {
+            console.log(`伟死${this.a},累死${this.b},咪死${this.c},偶死${this.d}`)
+        }
+        var j = new bei(1, 2, 3, 4)
+
+
+        //另一种:圣杯模式
+        function A() {}
+        A.prototype.naishi = function () {
+            console.log('1')
+        }
+        var h = new A()
+
+        function B() {}
+
+        function fuzhu(zi, fu) {
+            var hanshu = function () {}
+            hanshu.prototype = fu.prototype
+            zi.prototype = new hanshu()
+            zi.prototype.constructor = zi
+            zi.prototype.fulei = fu
+        }
+        fuzhu(B, A)
+        B.prototype.naishi1 = function () {
+            console.log('2')
+        }
+        var y = new B()
+
+
+        //雅虎的圣杯模式:完美
+        function K() {}
+        K.prototype.naishi3 = function () {}
+
+        function G() {}
+        var fuzhu = (function () {
+            var F = function () {}
+            return function fuzhu(zi, fu) {
+                F.prototype = fu.prototype
+                zi.prototype = new F()
+                zi.prototype.constructor = zi
+                zi.prototype.fulei = fu
+            }
+        }())(G, K)
+        /* fuzhu(G,Y) */
+        G.prototype.fanfa2 = function () {}
+    </script>
+
+</body>
+
+</html>

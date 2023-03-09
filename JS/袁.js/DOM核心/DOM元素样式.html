@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .naishi {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: cornflowerblue;
+            font-size: 50px;
+            text-align: center;
+            line-height: 95px;
+            border: solid 1px #000000;
+        }
+
+        .yeshi {
+            width: 100px;
+            height: 100px;
+            background-color: #008c8c;
+            font-size: 50px;
+            color: rgb(5, 48, 236);
+            text-align: center;
+            line-height: 95px;
+            border: solid 1px #000000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="yeshi" style="background-color: lightcoral;">
+            北京
+    </div>
+    <input>
+    <script>
+           /*
+                 #控制DOM元素的类样式
+                   className:获取或设置元素的类名
+                   classList:dom4的新属性,是一个用于控制元素类名的对象 (ie10以下不兼容)
+                      方法:
+                         add('类名'):用于添加一个类名
+                         remove('类名'):用于移除一个类名
+                         contains('类名'):用于判断一个类名是否存在
+                         toggle('类名'):用于添加/移除一个类名 (自己判断有就移除,没有就添加)
+
+                 ##获取样式
+                   *CSS的短横岗线命名,需要转换为小驼峰命名*
+                     dom.style:得到*行内样式*对象 (可改)
+                     window.getComputedStyle(dom对象,'类名'):得到某个元素最终计算的样式 (只读)        
+                     如果写的二个参数,那就是得到第一个参数的伪元素
+
+                 ##设置样式
+                   dom.style.样式名 = 值
+                   在js中只能设置行内样式    
+            */
+        var img = document.querySelector('input')
+        var div = document.querySelector('.yeshi')
+        var count = 0
+        div.onclick = function () {
+            count++
+            if (count % 2 === 1) {
+                div.className = 'naishi'
+                div.innerText = '东京'
+            }else{
+                div.className = 'yeshi'
+                div.innerText = '北京'
+            }
+        }
+    </script>
+</body>
+
+</html>

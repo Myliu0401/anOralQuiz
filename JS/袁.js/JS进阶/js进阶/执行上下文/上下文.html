@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+                      #执行上下文
+                        函数执行上下文:一个函数运行之前,创建的一块内存空间,空间中包含有该函数执行所需要的数据,为
+                        该函数执行提供支持(执行函数时,会创建一个执行上下文)
+
+                         执行上下文栈:call stack,所有执行上下文组成的内存空间
+                         栈:一种数据结构,先进后出,后进先出
+                         全局执行上下文:所有js代码执行之前,都必须有该环境
+                         js引擎始终执行的是栈顶上下文
+
+                 函数执行完毕后就销毁执行上下文
+                     每次调用函数都会创建一个执行上下文,放进 call stack栈里 执行完毕后就销毁
+
+                     #执行上下文里的内容
+                      全局上下文里面装着:一个对象：有this对象、GO对象
+                      函数上下文里面装着:一个对象: 有this对象、AO对象
+                      
+                      对象里面装着 this对象
+                         this指向确定后函数才会执行
+                         this指向根据规则来确定
+                    1.this指向
+                    1). 直接调用函数,this指向全局对象(GO里的this指向全局)
+                    2). 在函数外,this指向全局对象 
+                    3). 通过对象调用,this指向对象
+                    4). new一个函数,this指向新对象
+
+                    GO:全局执行上下文对象里还装着GO对象
+                       GO对象里面装着window对象里面的 属性和方法
+
+                    AO:函数执行上下文对象里装着 AO
+                       AO对象里面装着,函数里面的变量和arguments
+                       这段过程会发生预编译
+                          全局里的GO也一样
+                          1.确定所有形参值以及特殊变量arguments
+                          2.确定函数中通过var 声明的变量,将它们的值设置为undefined,如果AO中已有该名称,则直接忽略
+                          3.确定函数中通字面量声明的函数,将它们的值设置为指向函数对象(也就是函数整体提升),
+                            如果AO中已存在该名称,则覆盖(因为函数为一等公民)
+
+                         如果在函数里面还有函数,则里面的函数的AO,在外面函数的AO基础上进行添加自己的东西   
+   
+                                 
+                  */
+
+                  var a = 2
+                  var k 
+                  function b(){
+                      var p = 1
+                      console.log(++a)
+                      function v(){
+                         console.log(++p)
+                      }
+                    k = v
+                  }
+                  b()
+                  b()
+                  k()
+                  k()
+
+    </script>
+</body>
+
+</html>

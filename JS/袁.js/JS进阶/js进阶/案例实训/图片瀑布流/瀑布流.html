@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 90%;
+            margin: 0 auto;
+            border: solid 2px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container"></div>
+    <script src="./瀑布流.js"></script>
+    <script>
+        var div = document.querySelector('.container')
+        var imgs = []
+        for(var i=0; i<=40; i++){
+            imgs.push(`./img/${i}.jpg`)
+        } 
+          Toconfigure.Waterfallflowmixing({
+            container:div,
+            imgSrcs:imgs
+          })
+    </script>
+</body>
+
+</html>

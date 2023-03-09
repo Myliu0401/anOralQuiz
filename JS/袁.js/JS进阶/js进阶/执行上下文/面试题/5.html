@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log(foo) //被函数整体提升覆盖,所以为fun
+        var foo = 'A' //变量提升
+        console.log(foo) //执行到'A' 覆盖函数 为'A'
+        var foo = function (){ //变量提升 //又赋盖掉'A' 
+            console.log('B')
+        }
+       console.log(foo) //fun
+       foo() //'B'
+       function foo(){ //函数整体提升
+           console.log('C')
+       }
+       console.log(foo) //fun 
+       foo() //函数执行 //'B'
+    </script>
+</body>
+</html>

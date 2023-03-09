@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+              /*
+                  #Math对象
+                    提供了一系列与数学相关的成员
+                    random方法:产生一个0~1之间的随机数
+                    PI属性:得到圆周率
+                    abs方法:求绝对值
+                    floor方法:对一个数向下取整(向小取整)
+                    ceil方法:对一个数向上去整(向大取整)
+                    max方法:得到一组数字的最大值；如果无参数,得到-Infinity
+                    min方法:得到一组数字的最小值；如果无参数,得到Infinity
+                    pow(x,y)方法:求x的y次方
+                    round方法:求四舍五入的整数
+
+                    atan2(y,x) 求夹角/求角度值.(最后得出的是弧度值)
+                    最终得出角度的公式
+                    弧度值/(圆周率/180) == 最终角度值
+
+                    最终把方块4边的角度变成 0 1 2 3 
+                    公式
+                    
+
+               */
+
+
+              console.log(Math.max(1,2,3,4,645,890,2,31,4,432))   //890
+              console.log(Math.min(11,31,432,4,2,1,4,321,4,21))   //1
+              console.log(Math.pow(2,3)) //2的3次方 === 8
+                
+              //四舍五入:小于或等于4舍去,大于或等于5进1
+              console.log(Math.round(1.5)) //2
+              console.log(Math.round(1.4)); //1
+               //负数要小于-1.5 
+              console.log(Math.round(-1.4)) //-1
+              console.log(Math.round(-1.6)) //-2
+              console.log(Math)
+    </script>
+</body>
+
+</html>

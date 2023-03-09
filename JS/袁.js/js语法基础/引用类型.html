@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+                     /* 原始类型的变量,存放具体的值 */
+                       var a = 123
+                       var b = a  //a会复制一份给b
+                       b = 456 //456会覆盖原来的123
+                    /* a */            /* b */
+                  //▎123 ▎          //▎123 ▎  //var b = a 把a房间内容直接复制给b房间
+                  //a开的房间          //b开的房间
+
+
+                     /* 引用类型的变量,存放的是内存地址 */                  
+                       var ab = {
+                           name:123
+                       } //出现对象字面量的位置,会新开辟一块内存空间,用于存放对象的内容
+                       var bc = ab
+                       bc.name = 333 //ab里的name也会跟着被改
+                //原理:引用值复制的是地址   每个声明的引用值变量地址都是唯一的
+                  /* ab */            /* 地址 */     
+                //▎地址  ▎→ → → → → ▎name:123 ▎             
+              //ab变量的房间              ↑
+                /* bc   */      //       ↑   // var bc = ab  引用值复制的是地址
+             //▎a的地址  ▎→ → → → → → → →   
+             //bc变量的房间 //bc.name = 333 同过地址找到房间改内容,ab也会跟着被改,因为指向同个房间 
+
+             var user1 = {
+                 name:'u1',
+                 address:{
+                     country:'中国',
+                     city:'广州'
+                 }
+             }
+             var user2 = {
+                 name:'u2',
+                 address:user1.address
+             }
+             user2.name = 'user2'
+             user2.address.city='成都'
+             console.log(user1.address.city,user2.address.city)
+
+
+             /*     js中的垃圾回收
+                js引擎,会定期的发现内存中无法访问的对象,该对象称为垃圾,js引擎会在合适的事间将其清理
+              */
+                 var obj = {name:123}
+                 obj = {name:456}
+                 //经过地址改动后   {name:123} 变为垃圾,因为它是存在的,但是无法访问到
+                 
+
+              /* 练习题 */
+            //说出以下程序是否有问题,问题在哪里?
+            var horse1 = {
+                name:'马',
+                position:{  //马在棋盘上的位置
+                    x:1,
+                    y:9
+                },
+                color:"red" // 马的颜色
+            }     
+
+            var horse2 = horse1;
+            horse2.position.x = 7;
+            var horse3 = horse1
+            horse3.name = '馬'
+            horse3.position.y = 0
+            horse3.color = 'black';
+            var horse4 = horse3 
+            horse4.position.x = 7
+            //有问题,因为使用都是同一个对象,任何一方改动,都会导致全部改动
+
+            //中国象棋中有4个马,每个马是一个对象,为了方便对象的创建,写出入下代码
+               //采用克隆方式,调用函数,生成新的,但内容一样的对象
+                  function kelong(fulei,zilei){
+                      var zilei = zilei || {} //以防万一
+                      var toS = Object.prototype.toString //拿最顶端toSteing的方法,用来判断
+                      var arr = '[object Array]' //数组的最顶端toString结果
+                      for(var prop in fulei){ //遍历出来
+                         if(fulei.hasOwnProperty(prop)){ //判断是不是自己身上的
+                            if(fulei[prop] !== null && typeof(fulei[prop]) == 'object'){
+                                if(toS.call(fulei[prop])==arr){
+                                    zilei[prop] = []
+                                }else{
+                                    zilei[prop] = {}
+                                }
+                                kelong(fulei[prop],zilei[prop])
+                            }else{
+                                zilei[prop] = fulei[prop]
+                            }
+                         }
+                      } 
+                      return zilei
+                  }
+
+           /* 第二道 */
+           //以下程序的输出结果是什么
+           var obj1 = {
+               a:'a1',
+               subObj:{
+                   prop:'p1'
+               }
+           };
+           var obj2 = {
+               a:'a2',
+               subObj:{
+                   prop:'p2'
+               }
+           }
+           obj2.subObj = obj1.subObj
+           obj2.subObj.prop = 'p3'
+           console.log(obj1.subObj.prop,obj2.subObj.prop)//'p3'  'p3'
+
+          /* 第三道 */
+          //将item的parent和child互换,不可创建新对象 
+          var item = {
+              name:'foo',
+              parent:{
+                  name:'bar'
+              },
+              child:{
+                  name:'goo'
+              }
+          }
+          var p = item.parent
+          item.parent = item.child
+          item.child = p
+
+
+
+    </script>
+</body>
+</html>

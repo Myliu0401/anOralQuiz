@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+     <script>
+                       /*
+                            模板字符串
+                          ``:模板字符串
+                        */
+                        var obj = {
+                            name:'刘',
+                            ming:'yulain',
+                            ninalin:18
+                        }
+                      // 输出:我叫xxx,今年xxx岁,性别是xxx,目前已成年(未成年)
+                      '我叫'+obj.name+'今年'+obj.ninalin+'岁了,性别是'+obj.ming+
+                      '目前'+(obj.ninalin >= 18 ? '已成年' : '未成年')
+                      //也可以用复合赋值符号 += 进行拼接
+                      //k+=obj.name
+
+
+                   //模板字符串就可以解决拼接困难的问题
+                   `我叫${obj.name},今年${obj.ninalin}岁,性别是${obj.ming},目前${(obj.ninalin >= 18 ? '已成年' : '未成年')}`
+                   //表达式的结果会替换掉${}
+
+
+                   /*
+                         类型转换不会影响原数据 
+                     var a = '1'
+                    var y = a * 2
+                    console.log(y)//a在运算是,隐式转换成1,然后参与运算
+                    console.log(typeof(a))//但a是不会变的,只是参与运算时变
+                    */
+
+                  /*
+                        复合的赋值运算符
+                        +=   -=   /=   %=    *=
+
+                        var b = 2
+                       等同于 b = b+=2 加后赋给自身
+
+                                  b*=2 乘后赋值自身
+
+                                  b-=2 减后赋给自身
+
+                                       除后赋给自身
+      
+                                       取莫后赋给自身
+      
+                                       乘后赋给自身
+
+                         x * = 1 + 2 === 6
+                       等同于 x *= (1 + 2) === 6
+                        
+                         
+                   */
+
+
+
+
+                   /*
+                       void运算符
+                           一元运算符
+
+                       写法:
+                          1.普通写法:``` void 表达式```
+                          2.函数写法:``` void(表达式)```
+
+                          无论执行,什么表达式,都是返回undefined
+
+                         优先级也比较高,所以用括号括起来比较妥当 
+                       
+                    */
+
+
+
+
+
+                    /*
+                         typeof运算符
+                            一元运算符
+                             
+                          写法:
+                             1.普通写法:``` typeof 表达式```
+                             2.函数写法:``` typeof(表达式)```
+
+                         typrof也是一个运算符,只是,是返回类型的运算符
+                           typrof 1+2 //会成'number2'
+                           因为typeof运算符优先级比较高 所以先算typrof 1 === 'number'+2 
+                           所以表达方式加括号,比较妥当
+
+                           typrof是返回表达式的类型的运算符其实就是运算符
+                           typrof返回的类型属于字符串
+                            
+
+
+                     */
+
+
+
+                     /*
+                           逗号运算符
+
+                           书写:表达方式1,表达式2
+                           依次运行两个表达式,返回表达式2
+                           也就是返回最后一个
+
+                           逗号运算符比赋值符号更低
+
+                      */
+                      var x = 2 
+                      x = x++ * 2, x++ * 2,x++ * 2
+
+
+                    (function (){} + 123)==='function (){}123'
+
+                         
+     </script>
+</body>
+</html>

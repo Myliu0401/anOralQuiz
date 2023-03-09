@@ -1,0 +1,93 @@
+/* 框架 */
+.subject {
+  width: 520px;
+  height: 280px;
+  /* border: solid 2px; */
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 装图片 */
+.subject .imgs {
+  overflow: hidden;
+}
+
+/* 移入框架 */
+.subject:hover .xiaodian {
+  display: block;
+}
+
+/* 图片 */
+.subject .imgs img {
+  width: 520px;
+  height: 280px;
+  display: block;
+  float: left;
+}
+
+/* 小点框架 */
+.subject .qiehuan {
+  /* width: 61px; */
+  position: absolute;
+  background: rgba(255, 255, 255, 0.3);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  bottom: 12px;
+  padding: 2px 4px;
+  border-radius: 8px;
+}
+
+/* 每个小点 */
+.subject .qiehuan span {
+  float: left;
+  width: 8px;
+  height: 8px;
+  margin: 2px;
+  background: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* 选中的小点 */
+.subject .qiehuan .xuanzhong {
+  background-color: #ca1634;
+}
+
+/* 最开始切换标志的隐藏 */
+.subject .xiaodian {
+  display: none;
+}
+
+/* 切换标志移入的效果 */
+.subject .xiaodian span:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+
+/* 切换标志框架 */
+.subject .xiaodian span {
+  position: absolute;
+  top: 100px;
+  font-size: 30px;
+  width: 33px;
+  background-color: rgba(0, 0, 0, 0.3);
+  line-height: 36px;
+}
+
+/* 切换标志的浮动 */
+.subject .xiaodian .left {
+  left: 0;
+  border-radius: 0 25px 25px 0;
+  padding-bottom: 3px;
+}
+
+/* 切换标志的浮动 */
+.subject .xiaodian .reigth {
+  right: 0;
+  padding-left: 10px;
+  box-sizing: border-box;
+  border-radius: 25px 0 0 25px;
+  padding-bottom: 3px;
+}

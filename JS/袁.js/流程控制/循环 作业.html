@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+                  
+                  var r = 3,c = 5
+                  for(var i=1; i<=r; i++){
+                      var xinhao = ""
+                      for(var j=1; j<=c; j++){
+                          xinhao += "*"
+                      }
+                      console.log(xinhao)
+                  }
+         
+
+        /*
+             //1.在控制台中输出100个*
+                for(var i=1; i<=100; i++){
+                    console.log('*')
+                }
+        */
+        /*
+             //2.让用户输入*号的数量,然后输出对应数量的*
+                  var bianlian = +prompt('请输入*号的数量')
+                  if(bianlian){
+                      var f1 = ""
+                      for(var i=0; i<bianlian; i++){
+                          f1 += "*"                          
+                      }
+                      console.log(f1)
+                  }else{
+                      console.log('输入有误')
+                  }
+          */
+          /*    
+             //3.输出一个3行5列的*号
+                 var b1 = ""
+                 var b2 = ""
+                 var b3 = "" 
+                 for(var i=1; i<=15; i++){
+                     if(i<=5){
+                         b1 += "*"
+                     }else if(i<=10){
+                         b2 += "*"
+                     }else{
+                         b3 += "*"
+                     }
+                 }
+                 console.log(b1+'\n'+b2+'\n'+b3)
+                // 另一种方式
+                 var r = 3,c = 5
+                  for(var i=1; i<=r; i++){
+                      var xinhao = ""
+                      for(var j=1; j<=c; j++){
+                          xinhao += "*"
+                      }
+                      console.log(xinhao)
+                  }
+               */
+              /*
+             //4.用*号输出一个5行的直角三角形
+                   var k1 = ""
+                   var m = 5
+                 for(var i=1; i<=m; i++){
+                     if(i<=m){
+                         k1 += "*"
+                         console.log(k1)
+                     }
+                 }
+                  //另一种方式
+                  var a = 5
+                   for(var i=1; i<=a; i++){
+                       var str = ""
+                       for(var j=1; j<=i; j++){
+                           str += "*"
+                       }
+                       console.log(str)
+                   }
+              */
+             //5.用*号输出一个5行的等腰三角形
+                 var r = 5
+                 for(var i=1; i<=r; i++){
+                     var str = ""
+                    // 拼接空格
+                     for(var j=i; j<=r-1; j++){ //每一行减一个空格,头行有4个空格,所以r-1 
+                        str += " "
+                     }
+                     //拼接*号....*号的规律2*i-1
+                     for(var j=1; j<=(2*i-1); j++){ //*好每一行为2*i减一
+                         str += "*"
+                     }
+                     console.log(str)
+                     
+                 }
+
+
+             
+        //     //6.输出1-100的所有数字
+        //       for(var i=1; i<=100; i++){
+        //           console.log(i)
+        //       }
+        //    
+        //  
+        //     //7.输出1-100之间的所有奇数
+        //       for(var i=1; i<=100; i++){
+        //           if(i%2==1){
+        //               console.log(i)
+        //           }
+        //       }  
+        //    
+        //     //8.求1-100之间所有数字之和
+        //       var niu = 0
+        //       for(var i=1; i<=100; i++){
+        //           niu += i
+        //       }  
+        //       console.log(niu)
+//
+        //     //9.求1-100之间所有奇数之和
+        //       var qishu = 0
+        //       for(var i=1; i<=100; i++){
+        //           if(i%2==1){
+        //               qishu += i
+        //           }
+        //       }  
+        //       console.log(qishu)
+        //    
+        //      //10.求1-10之间所有数字的积 
+        //          var p = 1
+        //          for(var i=1; i<=10; i++){
+        //              p *= i  
+        //          }
+        //          console.log(p)
+//
+//
+//
+        //      
+        //      //11.判断数字233是不是质数
+        //      var k = 233
+        //      var boolean = true
+        //      for(var i=2; i<=k-1; i++){
+        //          if(k%i==0){
+        //             boolean = false
+        //             break
+        //          }
+        //      }
+        //      if(boolean && k>1){
+        //          console.log('是质数')
+        //      }else{
+        //          console.log('不是质数')
+        //      }
+//
+        //      //12.输出1-100中的所有质数
+        //       for(var i=1; i<=100; i++){
+        //           var boolean = true
+        //           for(var j=2; j<=i-1; j++){
+        //               if(i%j==0){
+        //                   boolean = false
+        //               }
+        //           }
+        //           if(boolean && i>1){
+        //               console.log(i)
+        //           }
+        //       }
+               
+
+               //13.求1-100之间的所有质数值和
+               var bon = 0
+                for(var i=1; i<=100; i++){
+                    var boolean = true
+                    for(var j=2; j<=i-1; j++){
+                        if(i%j==0){
+                            boolean = false
+                        }
+                    }
+                    if(boolean && i>1){
+                        bon += i
+                    }
+                }
+                console.log(bon)
+
+                //14.输出99乘法表。
+            //   for(var i=1; i<=9; i++){
+            //       for(var k=i; k<=9; k++){
+            //          var j = i * k
+            //          console.log(i+'*'+k+'='+j)
+            //       }
+            //   }
+              
+                 for(var i=1; i<=9; i++){
+                     var str = ""
+                     for(var j=1; j<=i; j++){
+                         k = i*j
+                         str += `${j}*${i}=${k}\t`
+                     }
+                     console.log(`${str}`)
+                 }
+
+             
+
+
+             //15.将猜拳游戏升级，记录系统和玩家的积分,获胜者加1分,平局和输者不计分
+              /*
+                  可参考以下效果
+                  游戏开始
+                  ---------第一轮---------
+                  系统:0分，玩家:0分
+                  你的出拳:剪刀
+                  系统出拳:布
+                  你赢了
+                  ---------第二轮---------
+                  系统:0分,玩家:1分
+                  你的出拳:石头
+                  系统出拳:布
+                  你输了
+                  ---------游戏结束--------
+                  系统:1分,玩家:1分                  
+               */
+
+  /*             var chuquan = prompt('出拳:剪刀石头布')
+               if(chuquan == '剪刀' || chuquan == '石头' || chuquan == '布'){                  
+                   var bianlian = 0, xitongquan=0
+                    var xito = Math.random()
+                    var xitong
+                 //系统出拳   
+                    if(xito>0.33){
+                       xitong = '剪刀'
+                    }else if(xito>0.66){
+                      xitong = '石头'
+                    }else{
+                      xitong = '布'  
+                    }
+                 
+                 //判断分数
+                    // 比如：   false                                     false                                      true               
+                  if(chuquan=='剪刀' && xitong=='布' || chuquan=='石头' && xitong=='剪刀' || chuquan=='布' && xitong=='石头' ){
+                      bianlian ++
+                    //  console.log('用户加1')
+                  }else if(chuquan == xitong){
+                    // console.log('平局')
+                  }else{
+                      xitongquan++
+                    // console.log('系统加1')
+                  }         
+         
+                 //最后对比
+                  if(bianlian>xitongquan){
+                      console.log(`------第一轮------\n系统的分数:${xitongquan},玩家的分数:${bianlian}\n你的出拳:${chuquan}\n系统的出拳:${xitong}\n你赢了`)
+                  }else if(bianlian<xitongquan){
+                    console.log(`------第一轮------\n系统的分数:${xitongquan},玩家的分数:${bianlian}\n你的出拳:${chuquan}\n系统的出拳:${xitong}\n你输了`)
+                  }else{
+                    console.log(`------第一轮------\n系统的分数:${xitongquan},玩家的分数:${bianlian}\n你的出拳:${chuquan}\n系统的出拳:${xitong}\n平局`)
+                  }
+
+                //第二轮开始
+                  var chuquan = prompt('再来:出拳') 
+                  if(chuquan == '剪刀' || chuquan == '石头' || chuquan == '布'){
+                     var mi = Math.random()
+                     var xitong
+                     var yonhu = 0,xi = 0
+                    //判断系统出拳 
+                     if(mi>0.33){
+                        xitong = '剪刀'
+                    }else if(mi>0.66){
+                        xitong = '石头'
+                    }else{
+                        xitong = '布'  
+                    }
+                   
+                   //判断分数
+                    if(chuquan=='剪刀' && xitong=='布' || chuquan=='石头' && xitong=='剪刀' || chuquan=='布' && xitong=='石头' ){
+                        yonhu ++
+                    //  console.log('用户加1')
+                  }else if(chuquan == xitong){
+                    // console.log('平局')
+                  }else{
+                    xi ++
+                    // console.log('系统加1')
+                  }  
+
+                  //最后对比
+                  if(yonhu>xi){
+                      console.log(`------第二轮------\n系统的分数:${xi},玩家的分数:${yonhu}\n你的出拳:${chuquan}\n系统的出拳:${xitong}\n你赢了`)
+                  }else if(yonhu<xi){
+                    console.log(`------第二轮------\n系统的分数:${xi},玩家的分数:${yonhu}\n你的出拳:${chuquan}\n系统的出拳:${xitong}\n你输了`)
+                  }else{
+                    console.log(`------第二轮------\n系统的分数:${xi},玩家的分数:${yonhu}\n你的出拳:${chuquan}\n系统的出拳:${xitong}\n平局`)
+                  }
+
+                  //游戏结束
+                  console.log(`------游戏结束------\n你的分数:${yonhu+bianlian}\n系统的分数:${xi+xitongquan}`)
+                     
+                  }else{
+                      console.log('你的出拳有误')
+                  }
+               }else{
+                   console.log('你的出拳有误')
+               }
+            */   
+           
+    </script>
+</body>
+</html>

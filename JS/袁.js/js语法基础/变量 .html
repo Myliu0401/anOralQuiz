@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+                     什么是变量
+                    变量是一块内存空间用于保存数据
+                    内存:存取速度快,数据易丢失
+                    硬盘:存取速度慢,数据悠久保存
+                    计算机程序运行仅于内存打交道 
+                 */
+
+        /*
+           *如何使用变量*
+           变量声明(定义)
+           var 变量名
+           var abc
+           变量声明后它是只为unedfined
+
+           向变量的内存空间存放数据
+           var abc = 'abc'
+
+           变量的值是可变的
+           新的值会覆盖旧的值
+            abc = 'bcd'
+          
+         */
+
+        var a
+        console.log(a, typeof (a))
+        a = 1
+        console.log(a, typeof (a))
+        a = '1'
+        console.log(a, typeof (a))
+
+        /*
+                变量的名称
+            也叫标识符,标识符的命名规范
+            1.只能以英文字母、下划线、$符号开头    
+            2.其他位置可以出现数字、英文字母、下划线、$符号
+            3.如果有多个单词,使用驼峰命名法就是单词首字母大写
+              小驼峰:除第一个单词外,首字母大写
+              大驼峰:每个单词首字母大写  
+
+            语法糖:就是变量声明赋值一起写
+            var a = 123
+            var a = 123,b=456,c=789        
+
+            任何可以写数据的地方,都可以写变量
+            若使用一个未经声明的变量会报错          
+            例外,typeof得到类型时,可以是未经声明 会返回一个字符串的unedfined
+         */
+
+         /*
+                   js中存在变量提升
+               所有变量声明,会自动提到代码的最顶部     
+               但是,这种提升不会超过脚本块
+                 
+                 js允许定义同名的变量
+               同名的变量提升后会变成一个
+               同名的变量提升后会覆盖上一个同名的变量  
+          */
+
+          var g = 3
+          console.log(g)
+          var g 
+          console.log(g)
+
+
+     
+
+
+    </script>
+</body>
+
+</html>

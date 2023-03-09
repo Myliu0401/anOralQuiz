@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+                 #错误处理
+                   js中的错误分为:
+                     1.语法错误:会导致当前脚本块无法执行
+                     2.运行错误
+                       1.运行报错:会导致当前脚本块后续代码无法执行
+                       2.运行结果不符合预期 
+
+                  #调试错误
+                    1.控制台打印     
+                    2.断点调试
+
+                  #抛出错误
+                      错误在js中本质上是一个对象,抛出错误的语法为:
+                    
+                    throw new Error('信息')  
+
+                 错误对象的构造函数为Error   
+                     new Error 返回的对象里:
+                      message:错误信息
+                      stack:错误堆栈  
+
+
+                 ##捕获错误
+                   try{
+                      1
+                   }catch(错误对象){
+                      2
+                   }finally{
+                       3
+                   }   
+                  当运行代码1的时候，如果发生错误，立即停止代码1的执行，转而执行代码2，
+                  错误对象为抛出的错误对象。无论代码1和代码2是否，最终都将执行代码3
+              */
+
+        //var ni = prompt('奈斯')
+
+        var k = new Error()
+        console.dir(k)
+        //dir函数是查看参数的内部结构(查看错误信息的内部结构)
+        var obj = {
+            a: 123
+        }
+        console.dir(obj)
+
+
+        function A() { //A执行后遇到B  B执行        1
+            B() //整个B执行完毕                    
+            console.log('奈斯') //A继续执行打印
+        }
+
+        function B() { //B执行  遇到C   C执行               2
+            try {
+                C() //这相当于抛出的错误        4
+                console.log('linpeixuan')
+
+                //没有错误,就不会执行catch  
+            } catch (err) { //err接收错误    catch会为它的参数err创建作用域       5
+                console.log(err) //将错误的信息打印    6
+                //这里写了 return 也会执行finally  finally是必须执行的
+            } finally {
+                console.log('处理完毕') // 在打印这个   7
+            }
+
+        }
+
+        function C() {
+            throw new TypeError('奈斯米西米西') //产生错误,抛出错误      3
+        }
+        A()
+        
+        function D(){
+          throw new Error()
+        }
+        var k = D() 
+        console.log(k)
+         
+</script>
+</body>
+
+</html>

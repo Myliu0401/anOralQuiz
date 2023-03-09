@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 120px;
+            height: 120px;
+            background-color: red;
+            border-radius: 50%;
+            position: fixed;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+
+    </div>
+    <script>
+        var obj = {
+            width: 120,
+            height: 120,
+            div: document.getElementsByTagName('div')[0],
+            zhi: 2,
+            gao: 2,
+            left: 0,
+            kop: 0,
+        }
+
+        setInterval(function () {
+            var style = getComputedStyle(obj.div)
+            var left = parseFloat(style.left)
+            var top = parseFloat(style.top)
+            if (left > document.documentElement.clientWidth - obj.width) {
+                obj.left = document.documentElement.clientWidth - obj.width
+                obj.zhi = -2
+            }
+            if (left < 0) {
+                obj.zhi = 2
+            }
+            if (top > document.documentElement.clientHeight - obj.height) {
+                obj.kop = document.documentElement.clientHeight - obj.height
+                obj.gao = -2
+            }
+            if (top < 0) {
+                obj.gao = 2
+            }
+            obj.div.style.left = (obj.left += obj.zhi) + 'px'
+            obj.div.style.top = (obj.kop += obj.gao) + 'px'
+        }, 7)
+        setInterval(function (){
+            obj.div.style.backgroundColor = `rgb(${parseInt(Math.random()*(255-0)+0)},
+            ${parseInt(Math.random()*(255-0)+0)},${parseInt(Math.random()*(255-0)+0)})`
+        },700)
+    </script>
+</body>
+
+</html>
