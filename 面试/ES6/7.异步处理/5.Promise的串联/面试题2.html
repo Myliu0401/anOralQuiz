@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        const obj = new Promise((resolve, reject) => {
+            throw 2; //会推向reject状态
+        });
+                   
+
+        const obj1 = obj.then((mi) => {
+            return mi * 2
+        }, (mi) => { //执行
+            return mi * 3  //没有出错,所以推向resolve状态
+        });
+
+        obj1.then((si) => { //执行
+            console.log(si * 3) //18
+        }, (si) => {
+            console.log(si * 4)
+        })
+    </script>
+</body>
+
+</html>

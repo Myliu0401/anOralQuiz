@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        //需要被继承的父类
+        function Fulei(type, name, xin, get) {
+            this.type = type;
+            this.name = name;
+            this.xin = xin;
+            this.get = get;
+        }
+
+        Fulei.prototype.Bink = function () {
+            console.log(this.type)
+            console.log(this.name)
+            console.log(this.xin)
+        }
+
+        var obj = new Fulei('动物', '狗', '公')
+
+
+        //需要继承父类上的所有实列成员
+        function Zilei(name, xin, get) {
+
+            //借用call方法
+            Fulei.call(this, '动物', name, xin, get)
+            //同过new Zilei后 this就会变成对象,zilei和fulei的this是同一个
+
+        }
+
+        var obj1 = new Zilei('骆驼', '公', 18)
+        //Fulei的原型上的成员继承不过来
+
+
+        //通过ES6的方法来继承
+        Object.setPrototypeOf(Zilei.prototype, Fulei.prototype) // 第一个参数对象的隐式原型设置为第二个对象
+        //Zilei函数的原型对象 的隐式原型 是Fulei的原型对象
+           
+        /*    变成这样
+            Fulei函数的原型 <------prototype------ Fulei函数
+                  ↑
+                  | __proto__  
+                  |
+            Zilei函数的原型 <------prototype------ Zilei函数
+                    ↑                                  |
+                    |                                  | new 
+                    |                                  |
+                    |                                  ↓
+                    -------------------------------Zilei对象 
+                           __proto__
+        
+        
+         */
+
+    </script>
+</body>
+
+</html>

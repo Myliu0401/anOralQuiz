@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+            
+            const obj = new Promise((chneg,shi)=>{
+                console.log(afadsf) //不会被阻塞到,会抛出错误
+                 throw new Error('未捕获'); //会将整个对象作为错误,并且推向已决阶段的reject状态,抛给catchable函数
+                 console.log('迷死') //不会被执行,因为会直接跳出
+            })
+            console.log('11')
+            obj.then(()=>{
+
+            },(misi)=>{
+                console.log(misi) //会被执行
+            })
+             console.log('-------')
+    
+    
+    </script>
+</body>
+</html>

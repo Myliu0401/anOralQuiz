@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function* Gr() {
+            let mi = yield 123;
+            console.log(mi)
+            mi = yield 1234 + mi
+            console.log(mi)
+        }
+
+        const obj = Gr();
+    </script>
+</body>
+
+</html>

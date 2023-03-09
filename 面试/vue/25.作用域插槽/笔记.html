@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+                     作用域插槽的原理
+                        如： 
+                            父组件 
+                            <div>
+                               <h1>fdasffe</h1>
+                               <ABC>
+                                   <template v-slot:datas="datas">
+                                       <ul>
+                                          <li>.......
+                                        </ul>
+                                   </template>
+                                 
+                                <ABC/> ====================>子组件    
+                            </div>
+         
+
+                            子组件
+                            <div>
+                               <slot name="datas" :cont="comunt"></slot>
+                            </div>
+
+
+                            相当于父组件传递 一个函数给子组件
+                            function datas(datas){
+                                ...... 
+
+                                return [虚拟节点...]
+                            }
+
+
+                            子组件进行匹配后调用对应的函数
+                            datas({ cont, })
+
+
+                            子组件实例上可以从两个属性获取到传过来的作用域插槽的函数
+                            $slots           //装普通插槽的运行结果
+                            $scopedSlots     //装插槽函数
+        
+        
+        */
+    </script>
+</body>
+</html>

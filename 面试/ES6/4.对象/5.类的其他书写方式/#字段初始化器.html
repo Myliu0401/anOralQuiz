@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        const biName = 'bink'
+        class Ailmen {
+            /* constructor(type, name, get, deb) {
+                this.type = type;
+                this.name = name;
+                this.get = get;
+                this.deb = deb;
+            }; */ //可以简写成字段初始化器
+            type = 1;
+            name = 2;
+            get = 3;
+            deb = 4;
+            //相当于在构造器中写 this.xxx = xxx
+
+
+
+            //如果函数使用字段初始化器,这个函数也会变成对象上的成员
+            //比如:
+            misi = () => {
+                console.log(this) //这个this是对象
+            }
+
+
+            [biName]() {
+                console.log(this.type, this.name, this.get, this.deb)
+                console.log(arguments)
+            }
+        }
+
+        const obj = new Ailmen('人', '林培璇', '21', 'Love')
+    </script>
+</body>
+
+</html>

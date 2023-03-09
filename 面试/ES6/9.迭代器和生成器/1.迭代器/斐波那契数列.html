@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //用循环实现斐波那契数列
+        function g(num) {
+            let a = 1;
+            let b = 0;
+            let c;
+            for (let i = 0; i < num; i++) {
+                c = a + b;
+                b = a;
+                a = c;
+            }
+            console.log(c)
+        }
+        g(5)
+
+        //数组实现斐波那契数列只能写多少拿多少
+
+        //用迭代器实现可以无限
+        function diedaiFbnqsl() {
+            let per1 = 1,
+                per2 = 1; //当前值的前一位和前二位
+            let n = 1; //当前是第几位    
+
+            return {
+                next() {
+                    if (n++ <= 2) {
+                        value = 1;
+                    } else {
+                        value = per1 + per2;
+                        per2 = per1;
+                        per1 = value;
+                    }
+                    return {
+                        value,
+                        done: false, //可以无限迭代
+                    }
+                }
+            }
+        }
+
+        const obj = diedaiFbnqsl();
+    </script>
+</body>
+
+</html>

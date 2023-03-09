@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //输出的顺序
+        const obj = new Promise((resolve, reject) => {
+            resolve('3')
+            console.log('5') //第一输出
+            setTimeout(() => {
+                console.log('2') //最后输出
+            },0)
+            console.log('1') //第二输出
+        });
+
+        //因为是异步函数,就算上面立即是resolve状态也不会立即输出,因为同步代码还没执行完成
+        obj.then(() => {
+            console.log('4') //第四输出
+        }, () => {
+            console.log('6') //不输出,因为上面函数中只推向已决阶段的resolve状态
+        });
+
+
+        console.log('0') //的三输出
+    </script>
+</body>
+
+</html>

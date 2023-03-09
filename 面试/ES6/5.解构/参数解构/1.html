@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+                    #参数解构
+                     在形参位置直接进行解构
+             */
+
+        const obj = {
+            name: '林培璇',
+            get: 21,
+            liuyulian: {
+                ai: 'love'
+            }
+        }
+
+        function jiego({name, get, liuyulian: {ai}}) {
+            console.log(name, get, ai)
+        }
+
+        jiego(obj)
+
+
+
+        //=======================以前
+          function ajxa(obj){
+             let obj1 = {
+                 url : 'https',
+                 get:'/get'
+             }
+
+             const obja = {
+                 ...obj1,
+                 ...obj, //有传就进行覆盖
+             }
+             console.log(obja)
+          }
+           
+          const aobj = {
+              url : 'https',
+              get:'/'
+          }
+
+          ajxa(aobj)
+
+
+          //================================利用解构
+            function ajxxa({url = 'https:',get = '/get'} = {}){ //如果没传参,就用默认值
+                 console.log(url,get)
+            }
+
+            ajxxa(obj)
+          
+    </script>
+</body>
+
+</html>

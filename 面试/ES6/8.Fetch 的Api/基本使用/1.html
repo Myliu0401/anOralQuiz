@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>点击获取省份</button>
+    <script>
+               /* 
+                       请求测试地址:http://101.132.72.36:5100/api/local
+
+                       使用 fetch 函数即可立即向服务器发送网络请求
+
+
+                       ## 参数
+                       该函数有两个参数:
+                       1.必填,字符串,请求地址
+                       2.选填,对象,请求配置
+
+                       **请求配置对象**
+                       method:字符串,请求方式,默认值GET
+                       headers:对象,请求头信息
+                       body：请求体的内容,必须匹配请求头中的 Content-Type
+                       mode:字符串,请求模式
+                       credentials:如何携带凭证(cookie)....
+                       cache:配置缓存模式
+               
+               
+               */
+
+               
+
+             function MyFetch(){
+                const url = "https://open.duyiedu.com/jq/person";
+                const data = {
+                    method:'POST', //请求方式 //get的请求内容写在url里
+                    headers:{
+                        'Content-Type':'json',
+                        a:123
+                    },
+                    //必须与Content-Type属性配合,属性是什么格式的,就传什么格式的
+                    body:'{"des":"我是谁","src":"./src/img/5.png","sex":"f","name":"刘莹"}'
+                }
+                 fetch(url)
+             } 
+
+             document.getElementsByTagName('button')[0].onclick = function (){
+                 MyFetch()
+             }
+    </script>
+</body>
+
+</html>

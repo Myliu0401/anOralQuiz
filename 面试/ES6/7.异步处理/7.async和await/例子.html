@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+         
+            小明向3个女神表白,有一个同意就停止表白,没同意就继续
+         
+         */
+
+        async function pro() {
+            let sun;
+            if (Math.random() < 0.3) {
+                sun = true;
+            } else {
+                sun = false;
+            }
+            return sun;
+        }
+
+        async function pro1() {
+            console.log('await上面的代码不是异步的')
+            await pro() ? console.log('女神1同意') : console.log('女神1拒绝了') || await pro() ? console.log('女神2同意') :
+                console.log('女神2拒绝了') || await pro() ? console.log('女神3同意') : console.log('没戏了！！！')
+        }
+        console.log(pro1())
+        console.log('来了')
+
+        //相当于
+
+        /* 
+        
+          async function pro1(){
+              console.log('await上面的代码不是异步的')
+              return new Promise((resolve,reject)=>{
+                    pro().then((a)=>{
+                       a ? xxx.log ? pro().then((a)=>{
+                           a? xxx.log : pro().then((a)=>{
+                               a? xxx.log : xxx.log
+                           })
+                       })   
+                    })
+              })
+          }
+        
+        */
+
+
+        
+    </script>
+</body>
+
+</html>

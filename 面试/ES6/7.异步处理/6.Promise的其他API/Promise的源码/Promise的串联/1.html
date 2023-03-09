@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./MyPromise.js"></script>
+    <script>
+        const pro = new MyPromise((resolved, reject) => {
+            setTimeout(() => {
+                resolved(1)
+            }, 6000)
+        })
+        const obj3 = pro.then((data) => {
+            console.log(data)
+            return '迷死'
+        }).then((data) => {
+            console.log(12)
+        }).then((data) => {
+            console.log(34)
+        }).then((data) => {
+            console.log(56)
+            return pro
+        }).then((data) => {
+            console.log(data)
+        })
+
+
+        /*  const pro1 = new Promise((resolved,reject)=>{
+             resolved(123)
+         })
+         pro1.then(()=>{
+             return '迷死'
+         }) */
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+              动态路由： 
+                   在路由配置对象中，如果地址(path属性)有一部分需要动态变更则使用 :xxx 表达式
+                   如： 
+                     url地址是 /article/cate/3  
+                     而 3是动态的，可以变动的。
+                     想要让路由配置中也可以动态匹配到，则在配置中的path属性中加上 :xxxx ，这一部分就会动态匹配。
+                       {
+                           path: "/article/cate/:categoryId",
+                           name: "CategoryBlog",
+                           component: Blog
+                        }
+
+
+              动态路由导航：  
+                    <router-link :to="{
+                       name: 'CategoryBlog',
+                       params: {
+                           categoryId: 3           
+                       }                    
+                    }">to article of category 3</router-link>     
+                    如果点击这个标签，那么会匹配 路由配置中 name值跟 这个标签to特性对象中name值相同的路由。
+                    
+            
+              编程式导航： 
+                   <router-link></router-link>除了超链接跳转导航外，还允许在代码中跳转页面。
+                   this.$router.push("跳转地址"); // 普通跳转  会匹配路由配置中path值跟跳转地址相同的路由
+                   this.$router.push({ // 命名路由跳转
+                     name:"Blog"   //会匹配路由配置中name值相同的路由，并且将该匹配到的路由的path值作为地址栏的地址
+                   })
+                   
+                   this.$router.go(-1); // 回退。类似于 history.go
+
+
+               $route
+                  在vue中安装 vue-router 时，就会向vue的原型上添加 $route属性。
+                  route属性是一个对象，对象里面的 params属性对象，就会有动态路由path属性中 :xxx表达式的值。
+                  一旦params属性里面的值变更，是route整个对象被替换，不会只更改里面的值。
+
+               
+               $router
+                  同样在vue中安装 vue-router 时，也会向vue的原型上添加 $router属性。
+                  $router属性为一个对象， 对象里面的属性：
+                     push函数，表示跳转导航
+                        参数为 url地址中的路径
+                        也可以为对象 { 
+                                   name:"Blog"  表示将匹配路由配置中name值与其name值相同的路由，并且将该配置到的路由的path值作为地址栏地址的路径
+                                 }
+                   
+                     go(数字)函数   类似于 history.go
+
+
+
+
+                watch
+                   vue配置对象中可以配置watch属性，表示监听器。
+                   利用watch配置，可以直接观察某个数据的变化，变化时可以做一些处理
+                   watch为对象
+                    如果想监听vue实例对象上某个属性,或原型上的属性。
+                   watch: {
+                        vue实例上的属性(newVal, oldVal){  //vue实例上该属性发生变化就会执行该函数
+                                  // newVal： 新的值
+                                   // oldVal：旧的值
+                        },
+
+                        完整的写法
+                        vue实例上的属性: {
+                               handler(newVal, oldVal){}, //条件符合，执行的函数
+                               deep: false, // 是否监听该数据内部属性的变化，默认 false
+                               immediate: false // 是否立即执行一次 handler，默认 false
+                             }
+                        
+                        如果只想监听对象里面的某个属性，如：
+                        ["$route.params"](newVal, oldVal){
+                          // newVal：this.$route.params 新的值，等同 this.$route.params
+                          // oldVal：this.$route.params 旧的值
+                        },
+
+                        完整的写法
+                        ["$route.params"]: {
+                            handler(newVal, oldVal){},
+                            deep: false, // 是否监听该数据内部属性的变化，默认 false
+                            immediate: false // 是否立即执行一次 handler，默认 false
+                          }
+                                            
+                        
+                    }
+
+
+
+                  v-html指令
+                      v-html="html的字符串"
+                      vue就会将带有该指令的dom的innerHTML设置为该指令的值
+
+                      如果在插值表达式中写html字符串vue会对齐进行转义，最终不能生成html,只能使用v-html指令才会将指令
+                      的值设置为该dom的innerHTML。
+                      因为vue为了安全起见，会对html字符串进行转义，除非使用v-html指令。
+              
+        
+        */
+    </script>
+</body>
+</html>

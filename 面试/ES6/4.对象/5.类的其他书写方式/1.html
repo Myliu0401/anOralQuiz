@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+             /* 
+                ##类的其他书写方式
+
+                 #可计算得成员名
+                    跟 计算属性名 一样
+             
+                 # get 和 set修饰符
+                 写法：根原型上的位置一样。
+                  方法前面 加上 get修饰符，当读取某个属性时会运行该函数
+                  加上 set修饰符，当修改某个属性时会运行该函数
+                 使用getter和setter控制的属性,不在原型上
+                    跟ES5的  Object.defineProperty 可定义某个对象成员属性的读取和设置 差不多
+             
+                
+                 #静态成员
+                  构造函数本身的成员
+                  使用static关键字定义的成员即静态成员
+                  语法: static 属性   static吐音：是 茶（潮汕话）特
+
+
+                 #字段初始化器(ES7) 
+                  构造器中的属性可以简写,和不用写构造器 （可以不用写constructor构造器）
+                   语法:直接在类中写 属性 = xxx; 也就相当于在构造器中 this.xxx = xxx
+
+                  使用static的字段初始化器,添加的是静态成员
+                  没有用static,添加的是原型上的属性，除了字段初始化器
+                  箭头函数在字段初始化器位置上,指向当前对象
+
+                  除了使用static关键字是在,静态成员上,其他使用字段初始化器都是在对象成员上,因为
+                  相当于在构造器中this = xxx
+
+
+                 #类表达式
+                  相当于匿名的类
+                   
+             
+             
+             */
+
+
+
+
+    </script>
+</body>
+
+</html>

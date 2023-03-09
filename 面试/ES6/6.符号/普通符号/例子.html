@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+                
+                   #符号属性不能被访问
+                    因为每个符号都不一样 
+               */
+
+        var clobj = (function () {
+            const fuhao = Symbol('这一个不能被外界访问的属性') //返回一个对象,因为这个符号没有被全局拿到,所以访问不了
+                                                             //每个符号有是独一无二的
+            return {                                        
+                shengming: 3000,
+                fanyu: 100,
+                gongji: 70,
+
+                kaizhang() { 
+                    let dom = this.fanyu * this[fuhao](1.1, 0.4)
+                    console.log(dom)
+                },
+
+                [fuhao](max, min) {
+                    return Math.random() * (max - min) + min;
+                },
+
+            }
+
+        }())
+     
+        //clobj.fuhao() // 会报错
+
+
+
+
+    </script>
+</body>
+
+</html>

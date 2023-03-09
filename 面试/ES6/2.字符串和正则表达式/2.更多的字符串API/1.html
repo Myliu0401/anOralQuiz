@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        /* 
+                     #更多的API
+
+                     以下均为字符串的实例(原型)方法
+
+                      includes  吐音：英古路
+                     判断字符串中是否包含指定的字符串 
+                     返回布尔值
+
+                      
+                       startsWith   吐音：是待伟
+                     判断字符串中是否以指定的字符串开始
+                     返回布尔值
+                     
+                       endsWith  吐音：应（潮汕话）伟
+                     判断字符串中是否以指定的字符串结束
+                     返回布尔值  
+
+
+                       repeat  吐音：氯屁
+                     将字符串重复指定的次数,然后返回一个新字符串  
+                
+              
+              
+              */
+
+        const str = '偶买噶妮妮呢';
+
+        '偶买噶妮妮呢'.includes('噶') //看字符串里面有没有这个字,返回 true
+        '偶买噶妮妮呢'.includes('噶', 2) //从指定的索引下开始查找
+
+
+        console.log(str + '是否以偶开头', str.startsWith('偶'))//也可以传第二个参数作为限制条件
+        console.log(str + '是否以呢结束', str.endsWith('呢'))//也可以传第二个参数作为限制条件
+
+        const hf = '爱心'
+        console.log('重复3次', hf.repeat(3))
+    </script>
+</body>
+
+</html>

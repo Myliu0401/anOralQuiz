@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="conset"></div>
+    <script>
+        //不用代理,和反射实现观察者
+        function guancazhi(target) {
+            const div = document.querySelector('#conset');
+            const obj = {}; //相当于代理对象
+            const arr = Object.keys(target); //将需要代理的对象里面的属性名取出,放进数组
+         
+            for (const prop of arr) { //迭代,将数组的值迭代出来
+                Object.defineProperty(obj, prop, { //对代理对象,进行属性描述符操作
+                    get() { //通过代理查属性
+                        return target[prop];
+                    },
+                    set(val) { //通过代理赋值
+                        target[prop] = val;
+                        xuanran()
+                    },
+                    enumerable: true,
+                })
+
+            }
+            xuanran()
+
+            function xuanran() {
+                let html = ''
+
+                for (const prop of Object.keys(obj)) {
+                    html += `<p><span>${prop}:</span><span>${obj[prop]}</span></p>`
+                }
+                div.innerHTML = html;
+            }
+
+
+            return obj;
+
+        }
+
+        const obj1 = {
+            a: 123,
+            b: 234,
+        }
+        const daili = guancazhi(obj1)
+    </script>
+</body>
+
+</html>

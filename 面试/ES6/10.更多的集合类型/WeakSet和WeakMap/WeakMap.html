@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <ul>
+        <!-- 如果存在,那么WeakMap集合里就有一个对象 -->
+        <li>1</li>
+
+        <!-- 如果存在,那么WeakMap集合里就有一个对象 -->
+        <li>2</li>
+
+        <!-- 如果存在,那么WeakMap集合里就有一个对象 -->
+        <li>3</li>
+    </ul>
+    <script>
+        let arr = document.querySelectorAll('li');
+
+        const wmap = new WeakMap();
+
+        for (let i = 0; i < arr.length; i++) {
+
+            wmap.set(arr[i], {
+                id: arr[i].innerText,
+                name: `姓名${arr[i].innerText}`
+            })
+
+        }
+
+        console.log(wmap)
+
+        arr = null; //将arr重新赋值,li标签还在 页面,所以还能找到,所以wmap集合不会被垃圾回收
+
+
+        document.querySelector('li').remove();
+        //页面第一个li标签,删除后,除了wmap集合,就没能找到它了,所以wmap集合里面相应的也会被垃圾回收掉
+
+
+        console.log(wmap)
+        arr = null; //受垃圾回收过程的影响,所以再写一次
+
+
+        //
+    </script>
+</body>
+
+</html>

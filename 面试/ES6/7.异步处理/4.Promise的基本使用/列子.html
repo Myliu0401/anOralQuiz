@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function biaobai(i) {
+            return new Promise(function (resolve, reject) {
+                console.log(`向女神${i}表白`)
+                setTimeout(() => {
+                    if (Math.random() < 0.1) {
+                        //推向已决阶段的  resolve 状态
+                        resolve(i)
+
+                    } else {
+                        //也是推向已决阶段 reject 状态
+                        reject(i)
+
+                    }
+                }, 3000)
+            });
+        }
+       
+
+        //小明同时向20个女神表白
+        for (let i = 1; i <= 20; i++) {
+            biaobai(i).then((index) => {
+                console.log('女神'+index+'同意')
+            }, (index) => {
+                console.log('女神'+index+'拒绝')
+            })
+        }
+
+
+
+
+
+
+
+
+
+
+
+     
+    </script>
+</body>
+
+</html>

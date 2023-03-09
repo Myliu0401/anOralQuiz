@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function* Gr() {
+            yield 123;
+            yield 456;
+            yield 789;
+        }
+        const obj = Gr();
+
+        /* 
+        
+             当调用return方法时,生成器函数提前结束,并且返回对象
+             return方法可以传参,参数会直接赋给value属性值
+        
+        
+        */
+
+
+        //========================throw
+        function* GR() {
+            yield 123;
+            yield 456;
+            yield 789;
+        }
+        const obj1 = GR()
+
+    </script>
+</body>
+
+</html>

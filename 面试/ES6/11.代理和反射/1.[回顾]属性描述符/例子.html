@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p>
+        <span>姓名:</span>
+        <span id="name"></span>
+    </p>
+    <p>
+        <span>年龄:</span>
+        <span id="age"></span>
+    </p>
+    <script>
+        const pei = document.querySelector('#name');
+        const xuan = document.querySelector('#age');
+
+        const obj = {}; //用来装属性
+
+        //当运行时,会往obj对象里面加属性
+        Object.defineProperties(obj, {
+
+            name: {
+                get() {
+                    if (pei.innerText === '姓名:') {
+
+                        return pei.innerText
+                    } else {
+                        return pei.innerText = '林培璇'
+                    }
+                },
+                set(val) {
+                    if (val === 'string' && val === '林培璇520') {
+                        val = val;
+                    }
+
+                    pei.innerText = val;
+
+                }
+            },
+
+            age: {
+                get() {
+                    if (xuan.innerText === '年龄:') {
+                        return xuan.innerText;
+                    } else {
+                        return xuan.innerText = 21;
+                    }
+                },
+                set(val) {
+                    if (val < 0) {
+                        val = 0;
+                    } else if (val > 100) {
+                        val = 100;
+                    }
+
+                    xuan.innerText = val;
+                },
+
+            }
+
+        })
+
+
+
+
+
+        //
+    </script>
+</body>
+
+</html>

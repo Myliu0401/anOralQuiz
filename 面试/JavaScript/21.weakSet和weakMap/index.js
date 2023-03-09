@@ -28,7 +28,7 @@
 
 
         WeakMap
-           key必须是对象
+           key必须是引用类型
            obj.set(对象, 值)
           weakMap不支持迭代方法
 

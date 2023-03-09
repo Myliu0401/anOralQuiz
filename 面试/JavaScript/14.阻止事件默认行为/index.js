@@ -4,13 +4,13 @@
 
    
        阻止默认行为方式汇总
-          cancelabel属性
+          cancelabel属性   吐音：轻筷了亩（潮汕话）
             该属性是在事件源对象上的，返回一个布尔值，表示元素是否可以取消默认行为
 
-          preventDfault方法
+          preventDfault方法   吐音：喷瓶（潮汕话）B 伐
              该方法也是在事件源对象上的，执行该方法会取消默认行为，无返回值
 
-          returnValue属性
+          returnValue属性 
              该属性也是在事件源对象上的，默认值是true，表示允许默认行为，设置为false就会取消默认行为
 
           return false

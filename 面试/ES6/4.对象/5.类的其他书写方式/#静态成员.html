@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        const biName = 'bink'
+        class Ailmen {
+            constructor(type, name, get, deb) {
+                this.type = type;
+                this.name = name;
+                this.get = get;
+                this.deb = deb;
+            };
+            [biName]() {
+                console.log(this.type, this.name, this.get, this.deb)
+                console.log(arguments)
+            }
+
+
+         //=========================会成Ailmen函数的静态成员
+            static jin = '蜜豆';
+            static tai = '肯豆';
+            static func() {
+                console.log(this.jin, this.tai)
+            }
+        }
+
+        const obj = new Ailmen('人', '林培璇', '21', 'Love')
+        Ailmen.func();
+    </script>
+</body>
+
+</html>

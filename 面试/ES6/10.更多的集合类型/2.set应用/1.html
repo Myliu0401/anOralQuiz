@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //面试题
+        /* 
+         
+            两个数组的并集、交集、差集
+        
+        */
+
+
+        const arr1 = [1, 2, 3, 4, 3, 2, 1, 2, 3, 44, 55, 66,123];
+        const arr2 = [1, 2, 3, 4, 56, 7, 8, 9, 909, 8, 7, 66, 55, 4,456];
+
+
+        //并集 (不能有重复项,结果是一个新数组)
+        console.log('并集', [...new Set([...[...new Set(arr1)], ...[...new Set(arr2)]])])
+
+
+
+        //交集 (两个数组相同的项,结果是一个新数组)
+        const s = new Set(arr1);
+        const arra = [...s].filter(function (ele) { //得到满足条件的元素,组成新数组
+
+            return arr2.indexOf(ele) >= 0 //找第一个严格相等匹配的下标
+
+        })
+        console.log('交集', arra)
+
+
+
+        //差集 (两个数组的不同项,结果是一个新数组)
+        const s1 = [...new Set([...arr1, ...arr2])].filter(function (ele) {
+            return arr1.indexOf(ele) >= 0 && arr2.indexOf(ele) < 0 || arr1.indexOf(ele) < 0 && arr2.indexOf(
+                ele) >= 0
+        })
+        console.log('差集', s1)
+
+
+
+        //
+    </script>
+</body>
+
+</html>

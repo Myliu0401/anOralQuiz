@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+               calss表示类
+               class: 类名{
+                  constructor(){ 表示构造器
+                
+                  }
+
+                  xxx(){
+
+                  }
+
+                  xxx(){
+
+                  }
+               }
+               
+                
+               当new类时,会把实参传给构造器
+               没有使用new的话会报错
+
+               返回一个对象  构造器里的this内容就是对象的内容
+                            除构造器外,其他就是对象原型里的东西
+
+               返回的这个对象,原型里的东西不会被遍历到
+               代码结构也更好           
+        
+        
+        
+        
+        */
+
+        class Ailmen {  
+            constructor(type, name, get, deb) {
+                 this.type = type;
+                 this.name = name;
+                 this.get = get;
+                 this.deb = deb;
+            };
+            bink(){
+                console.log(this.type,this.name,this.get,this.deb)
+                console.log(arguments)
+            }
+        }
+
+       const obj = new Ailmen('人','林培璇','21','Love') 
+       console.log(obj.bink(12))
+    </script>
+</body>
+
+</html>

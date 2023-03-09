@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="misi">
+        <p><input type="number" value="0"></p>
+        <p><input type="number" value="0"></p>
+        <p><input type="number" value="0"></p>
+        <p><input type="number" value="0"></p>
+        <p><input type="number" value="0"></p>
+        <p><input type="number" value="0"></p>
+        <p><input type="number" value="0"></p>
+    </div>
+    <button>收集</button>
+    <h2>最大值:<span></span></h2>
+    <h2>最小值:<span></span></h2>
+    <script>
+        const but = document.querySelector('button');
+        const span1 = document.querySelectorAll('span')[0];
+        const span2 = document.querySelectorAll('span')[1];
+
+        //获取所有的input元素的value值
+        function shouyou() {
+            const arr = [];
+            const input = document.querySelectorAll('input'); //获取所有的input元素
+
+            for (var i = 0; i < input.length; i++) {
+                arr[i] = input[i].value //将input元素的value值,赋进去
+            }
+
+            return arr; //返回数组
+        };
+
+        but.onclick = function () {
+            const Arr = shouyou()
+            const max = Math.max(...Arr) //将数组展开,做为实参。 取最大值
+            const min = Math.min(...Arr) //将数组展开,做为实参。 取最小值
+
+            span1.innerHTML = max;
+            span2.innerHTML = min;
+
+        }
+    </script>
+</body>
+
+</html>

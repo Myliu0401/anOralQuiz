@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+           /* 
+                      #类的继承
+
+                        如果两个类A和B,如果可以描述为:B是A,则A和B形成继承关系
+                        如果B是A,则
+                         1.B继承自A
+                         2.A派生B
+                         3.B是A的子类
+                         4.A是B的父类
+                         如果A是B的父类,则A会自动拥有B中的所有实例成员
+                         相当于子类会继承父类中的所有实例成员
+
+
+                       关键字: 
+                             extends:继承,用于类的定义 吐音：姨克是 灯（潮汕话）
+                             相当于 class 需继承子类  extends 被继承父类
+                             
+                             super写在构造器里
+
+                             super  吐音：收（潮汕话）披 
+                             直接当做函数调用,表示父类构造函数
+                             相当于 super函数就是 父类的构造器，调用时父类的this是子类的this
+                             相当于ES5 父类函数.call(子类函数的this,....)
+                             如果super当做对象使用,则表示父类的原型
+
+                      如果使用了继承 最后当new 子类函数时 
+                      返回的对象 拥有父类上的所有实例成员
+
+
+                      注意: ES6要求,如果定义了constructor,并且该类是子类,则必须在constructor的第一行手动
+                            调用父类的构造函数
+
+                            如果子类不写constructor,则会默认调用 super，并且传参数全传进去
+            */
+    
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const arr = ['女神1', '女神2', '女神3', '女神4', '女神5', '女神6'];
+
+        //创建Promise对象
+        function biaobai(index) {
+            return new Promise((resolve, reject) => {
+                console.log(`向${index}表白`)
+                setTimeout(() => {
+                    if (Math.random() < 0.2) {
+                        //推向已决阶段的resolve状态
+                        resolve(true)
+                    } else {
+                        //推向已决阶段的reject状态
+                        resolve(false)
+                    }
+                }, Math.random() * (3000 - 1000) + 1000)
+            })
+        };
+
+
+        let pro;
+        arr.forEach((ele, index) => {
+            if (index === 0) {
+                pro = biaobai(arr[index])
+            }
+            pro = pro.then((boolean) => {
+                if (boolean === undefined) {
+                    return;
+                } else if (boolean) {
+                    console.log(`${ele}同意了`)
+                } else {
+                    console.log(`${ele}拒绝了`)
+                    if (index < arr.length - 1) {
+                        return biaobai(arr[index + 1])
+                    }
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

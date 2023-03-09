@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const arr = [12, 3, 3, 4, 5, 6, 7, 8];
+        const obj = arr[Symbol.iterator]()
+        let mi = obj.next();
+        while (!mi.done) {
+            console.log(mi.value)
+
+            //进行下一次迭代
+            mi = obj.next();
+        }
+
+
+
+        for (let mii of arr) {
+            console.log(mii)
+        }
+        //原理：会调用数组的迭代对象里面的next方法,每循环一次调用一次
+        //相当于上面的while循环操作
+
+
+
+        //=========================利用可迭代对象的原理 实现一个加强版
+        //将对象里的每个属性 装进对象里返回 
+        //相当于  {name:'a',value:'奈斯'} 
+        const objA = { //根据原理进行操作
+            a: '奈斯',
+            b: '迷死',
+            c: 'lover',
+            [Symbol.iterator]() {
+                const arr = Object.keys(this) //将对象里的属性名push进数组并返回
+                let i = 0;
+                return {
+                    next: () => {
+                        i++;
+                        return {
+                            value: {
+                                name: arr[i - 1],
+                                val: this[arr[i - 1]]
+                            },
+                            done: i > arr.length
+                        }
+                    }
+                }
+            }
+        }
+
+        for (let itmr of objA) {
+            console.log(itmr)
+        }
+
+        //========================================展开迭代对象
+
+        const arrA = [...objA] //对象在不是对象里展开,会根据迭代原里来
+        console.log(arrA)
+
+
+        function zhangkai(a, b, c) {
+            console.log(a, b, c)
+        }
+
+        zhangkai(...objA)
+    </script>
+</body>
+
+</html>

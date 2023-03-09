@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        const text = () => {
+            console.log(this)
+            // console.log(arguments) 会报错,因为没有,往外层找也没有
+
+        }
+
+        const obj = {
+            func: text
+        }
+
+        obj.func()
+        //因为箭头函数没有this等,所以使用外层的,而外层是obj对象,而obj对象的this,指向window,所以打印window
+
+
+
+
+        //============================面试题
+        const obja = {
+            mido: function () {
+                const ios = () => {
+                    console.log(this)
+                    //往外层找 this为obja,因为mido函数是obja调用的,mido函数的this是obja,所以箭头函数找到mido的thsi
+
+                    console.log(arguments)
+                    //一样,为mido函数的实参列表
+                };
+
+                ios()
+            }
+        }
+
+        obja.mido(234)
+
+
+
+        //====================箭头函数没有原型
+        const func = () => {
+
+        }
+        console.log(func.prototype) //为unedfined,因为没有原型
+
+
+        //====================箭头函数不能作为构造函数使用
+        const newfun = () => {
+
+        }
+        //console.log(new newfun()) //会报错
+
+
+
+
+        //=========================简洁代码
+        const arr = [1, 2, 3, 4, 5, 6, 7, 8]
+        const sum = arr.filter((num) => num % 2 !== 0).map((num) => num * 2).reduce((a, b) => a + b)
+       
+        console.log(sum)
+   
+   </script>
+</body>
+
+</html>

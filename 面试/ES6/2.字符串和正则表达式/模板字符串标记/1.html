@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        /* 
+                   在模板字符串书写之前,可以加上标记
+                   标记名`内容...`
+                   标记是一个函数,函数参数如下
+                   1.参数1:被插值分割的字符串数组
+                   2.后续参数:所有的插值
+                     (插值.length+1 === 数组.length)
+
+               
+                        如果在模板字符串前面加上一个,已经定义的函数,的函数名
+                        会以 ${} 为分割点进行分割 把不是${}里面的值, push进数组
+                        然后作为参数,执行模板字符串前面的函数
+
+                     //在模板字符串前面加上String.raw,加会把模板字符串里面的 转移字符 变成普通字符   
+               
+               
+               */
+
+        var a = '奈斯';
+        var b = '迷死';
+
+        var text = mymisi `偶买噶${a},黑龙江${b}`
+        //会分割成   ['偶买噶','黑龙江',''] 、 '奈斯'  、  '迷死'
+        //然后会被作为参数 执行模板字符串前面的函数=====相当于 mymisi(['偶买噶','黑龙江',''],'奈斯','迷死')
+        // mymisi函数的返回值 会赋给text变量
+        function mymisi(a, b, c) {
+            console.log(a, b, c)
+        }
+
+
+        //在模板字符串前面加上String.raw,加会把模板字符串里面的 转移字符 变成普通字符
+        var strr = String.raw `fafdsa\fdsa\nfa`
+        console.log(strr)
+
+
+    </script>
+</body>
+
+</html>

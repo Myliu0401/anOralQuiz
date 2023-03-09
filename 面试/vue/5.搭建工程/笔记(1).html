@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+                 vue-cli脚手架，用于搭建vue工程
+                   脚手架内部使用了webpack,并预置了很多插件和加载器，以达到开箱即用的效果。
+                   还预置了： 
+                            babel                将es6转化成es5
+                            webpack-dev-server   开发环境服务器
+                            eslint
+                            postcss     
+                            less-loader          css预处理器
+                
+                
+                  SFC: 
+                       vue文件，包含了一个组件所需要的全部代码，称为单文件组件。
+                       <template>
+                           组件模板    
+                       </template>
+                       <script>
+                           export default {
+                               组件配置
+                           }
+                       <script>
+                       <style>
+                          组件样式    
+                       </style>
+
+
+                 预编译： 
+                   当vue-cli进行打包时，会直接把组件中模板转换为render函数，这叫做模板预编译。 (会将模板解析进render函数)
+                   vue-cli会将模板解析进render函数来生成虚拟dom,先不会执行render函数，因为执行是在客户端执行，只是将模板解析进render函数。
+                   这样好处在于： 
+                       1.运行时就不再需要编译模板了，提高了运行效率。(如：运行时减少了解析模板这步操作)
+                       2.打包结果中不再需要vue的模板解析系统，减少打包体积。
+                           因为打包结果中没有了，模板解析系统，所以如果组件模板使用的是template属性则会报错。
+                        
+                    详情看课件
+
+                    
+         
+        
+        */
+    </script>
+</body>
+</html>

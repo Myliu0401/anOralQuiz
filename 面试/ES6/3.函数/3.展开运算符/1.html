@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        /* 
+                ##展开运算符 
+                 
+                 #展开数组
+                  在数组前面加上三个点,就相当于将数组展开,相当于数组里的每一项,相当于将数组里的每一项拿出来
+                  在哪里展开都可以
+                  语法：...数组
+
+                 #展开对象
+                  在对象前面加上三个点,就相当于将对象展开,相当于对象里的每一项,相当于将对象里的每一项拿出来
+                  在哪里展开都可以
+                  语法：...对象
+
+                  展开对象,只能在对象里展开
+                  因为原理是这样的：
+                  var a = {a:123,b:456}
+                  var n = {...a} 原理是 ====> {a:123,b:456}
+                  所以只能展开对象这能在对象里展开
+
+                  如果在不是里展开,会调用迭代对象里原理,根据迭代对象的原理来
+                  如果要展开的对象没有迭代对象里面的方法,就会报错
+        
+        
+        */
+
+      //====================================展开数组
+        const arr = [1, 2, 3, 4, 5, 6];
+
+        function srn(...args) { //收集剩余参数
+            let a = 0;
+            for (var l = 0; l < args.length; l++) {
+                a += args[l]
+            }
+            return a;
+        }
+
+        console.log(srn(...arr)) //展开数组,相当于就数组里的每一项拿出来
+        console.log(srn(1, 2, 3, ...arr, 1, 1, 1))
+
+
+        //克隆数组
+
+        const arr1 = [...arr]
+
+
+       //====================================展开对象
+         
+          //克隆对象
+          const obj = {
+              name:'林培璇',
+              get:'21',
+              love:'老刘'
+          }
+          let obj1;
+        console.log(obj1 = {...obj})
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+              function* Gr1(){
+                  yield 'a';
+                  yield 'c'
+                  
+              }
+
+              function* Gr2(){
+                  
+                 Gr1()//当调用next方法时,执行Gr2函数,执行到Gr1函数时,不会执行Gr1函数,因为调用生成器函数
+                      //js内部,直接返回一个生成器对象
+
+                 yield Gr1(); //如果在这里,会把返回的生成器对象,赋给value值,相当于创建一个生成器数据     
+
+                 yield* Gr1(); //关键字后面加星号,就会按顺序执行Gr1函数，在这种条件下，Gr1函数返回值不会作为 迭代的结果
+
+                  yield 1;
+                  yield 2;
+                  yield 3;
+              }
+ 
+              const obj = Gr2()
+
+    </script>
+</body>
+</html>

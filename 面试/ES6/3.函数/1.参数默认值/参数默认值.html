@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        /* 
+                  #参数默认值
+                   使用:
+                 在书写形参时,直接给形参赋值,赋的值即为默认值
+                 这样一来,当调用函数时,如果没有给对应的参数赋值(或赋给它的值是undefined),则会自动使用默认值
+           
+
+                  对arguments的影响
+                 只要给函数加上参数默认值,该函数会自动变成严格模式下的规则:argumemts和形参脱离(实参和形参不映式)
+          
+               
+                  留意暂时性死区
+                 形参和ES6中的let或const声明一样,具有作用域,并且根据参数的声明顺序,存在暂时性死区 
+                       function an(a=b,b){ //会报错,因为形参,相当于声明后,b的值赋给a,在声明前使用，导致触发暂时性死区。
+
+                       }   
+                       console.log(unedfined,1)
+                
+
+                 */
+
+        function lais(a, b = 1, c = 2) {
+            return a + b + c;
+        }
+        console.log(lais(10)) //执行函数时,没有对应的实参赋给它,会使用默认值
+        console.log(lais(20, undefined, undefined)) //执行函数时,如果实参为undefined,对应的形参也会使用默认值
+
+
+
+        //面试题
+        function misi() {
+            console.log('abc') //会执行两次,最后一次执行naisi函数的第二位参数有值，所以不执行misi函数
+            return 'acb'
+        }
+
+        function naisi(a, b = misi(), c = 1) {
+            console.log(a)
+        }
+        console.log(naisi(undefined, undefined, 5))
+        console.log(naisi(undefined, undefined, 6))
+        console.log(naisi(undefined, 7, undefined))
+
+        //==================================//
+        //对arguments的影响
+        function omg(a, b, c = 1) {
+            //                    3             4            5
+            console.log(arguments[0], arguments[1],arguments[2]) 
+            a = 6; //受默认值影响,与实参列表不映式
+            console.log(a, b, c) //6   4   5//受默认值的影响,变成严格默认(实参和形参不映式)
+        }
+        omg(3, 4, 5)
+
+
+        //==============================//
+        
+    </script>
+</body>
+
+</html>

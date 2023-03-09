@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./MyPromise.js"></script>
+    <script>
+        /* const pro = new MyPromise((resolve, reject) => {
+            reject(1)
+        })
+
+         pro.catch((a) => {
+            console.log(a)
+        }) */
+
+        new MyPromise((resolve, reject) => {
+            /* setTimeout(() => { */
+                reject(1)
+         /*    }, 5000) */
+        }).then((data) => {
+            console.log(data)
+        }).catch((data) => {
+            console.log(data)
+        })
+    </script>
+</body>
+
+</html>

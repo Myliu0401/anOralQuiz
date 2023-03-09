@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+         /* 
+         
+              #正则中的粘连标记
+         
+              标记名:y
+              含义:匹配时,完全按照正则对象中的lastIndex位置开始匹配,并且匹配的位置必须在lastIndex位置
+
+         */
+ 
+          const str = 'Holl Nihao'
+          const reg = /H\w+/y;
+
+           console.log(str+':的lastIndex',reg.lastIndex)
+           console.log(reg.test(str))
+           
+           //可以更改lastIndex
+           reg.lastIndex = 3
+    </script>
+</body>
+
+</html>

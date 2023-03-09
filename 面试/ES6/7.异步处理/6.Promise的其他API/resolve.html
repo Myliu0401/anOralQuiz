@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+           
+            const pro = new Promise((resolve,resoed)=>{
+                  resolve(1)
+            });
+
+            //上面等效于:
+         
+            const pro1 = Promise.resolve(1);
+
+            console.log(pro1)
+
+
+            //===================特殊情况
+             //特殊情况只发生在resolve函数上
+              const por2 = Promise.resolve(pro) 
+              //如果传递的数据是Promise,则直接返回传递的Promise对象
+              //会把数据直接返回给por2 所以相等,por2是什么状态就会pro绝定了
+
+              console.log(por2 === pro) //为true
+    
+    </script>
+</body>
+</html>

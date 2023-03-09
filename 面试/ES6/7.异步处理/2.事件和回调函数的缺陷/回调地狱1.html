@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        button {
+            font-size: 20px;
+            outline: none;
+            background-color: cadetblue;
+            border: 1px solid black;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: cornflowerblue;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <p>
+        <button>点击！给第二个按钮添加事件</button>
+        <button>点击！给第三个按钮添加事件</button>
+        <button>点击！弹出xxxxx</button>
+    </p>
+    <script>
+        const but1 = document.getElementsByTagName('button')[0];
+        const but2 = document.getElementsByTagName('button')[1];
+        const but3 = document.getElementsByTagName('button')[2];
+
+        //每层每层的嵌套,产生了回调地狱,如果代码过多不易阅读
+
+        but1.addEventListener('click', function () {
+        console.log(11)
+            but2.addEventListener('click', function () {
+                console.log(12)
+                but3.addEventListener('click', function () {
+                    console.log(123)
+                    alert('我Love!林培璇');
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>

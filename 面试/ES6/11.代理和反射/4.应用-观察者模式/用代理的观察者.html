@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="conet"></div>
+    <script>
+        //利用代理实现,观察者
+        function Observer(target) {
+            const div = document.querySelector('#conet'); //获取div
+
+            //给target对象创建代理
+            const daili = new Proxy(target, {
+                get(target, shuxin) { //通过代理参看时运行
+                    return Reflect.get(target, shuxin);
+                },
+                set(target, shuxin, value) { //通过代理赋值时运行
+                   
+                   Reflect.set(target,shuxin,value);
+                   xuanran();
+                }
+            });
+
+            xuanran()
+
+            function xuanran(){
+                let html = '';
+                for(const prop of Object.keys(daili)){
+                   html += `<p><span>${prop}:</span><span>${daili[prop]}</span></p>`
+                }
+                div.innerHTML = html;
+            }
+
+            return daili;
+
+
+
+        }
+ 
+         //通过代理的方式,能够随时的监听目标对象
+         //没有通过代理的方式,没办法随时监听目标对象
+
+        //
+        const obj = {
+            '姓名': '林培璇',
+            love: 5201314
+        }
+        const misi = Observer(obj)
+    </script>
+</body>
+
+</html>

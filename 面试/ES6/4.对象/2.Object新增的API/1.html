@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        /* 
+                 ##Object的新增API  
+                   
+                    都是在静态方法上
+
+                  1.Object.is
+                  用于判断两个数据是否相等,基本上跟严格相等(===)是一致的,除了以下两点  
+                     1.NaN和NaN
+                     2.+0和-0      
+                   都是历史遗留问题
+                  is就是解决这些历史遗留问题的判断     
+                 Object.is(数据,数据) 
+            
+
+                 2.Object.assign   吐音：液（潮汕话）赛
+                   混合对象,将对象进行混合在一起
+                   Object.assign(对象,对象,....)
+                  如果相同 后面覆盖前面 
+                  会改变第一个参数对象,最后返回第一个参数对象
+ 
+                
+                 3.Object.getOwnPropertyNames 
+                   该方法之前就存在,只不过,官方没有明确要求,对象属性的顺序如何排序
+                  ES6规定了该方法返回的数组的排序方式:
+                   1.先排数字,并按照升序排序
+                   2.再排其他,按照书写顺序排序
+
+                  会将对象的属性名,push进数组,并返回
+
+                
+                 4.Object.setPrototypeOf
+                   该方法用于设置某个对象的隐式原型
+                   比如:Object.setprototypeOf(obj1,obj2)
+                   相当于: obj1.__proto__=obj2  
+                  
+                  
+          
+          
+          */
+
+        //==========================Object.is
+
+        console.log(NaN === NaN)
+        console.log(+0 === -0)
+        console.log('----------------')
+        console.log(Object.is(NaN, NaN))
+        console.log(Object.is(+0, -0))
+
+
+        //========================Object.assign
+
+        const obj = {
+            name: 1,
+            get: 2
+        }
+        const obj1 = {
+            name: 2,
+            op: 5
+        }
+        const obj2 = {
+            km: 9,
+            jk: 18,
+            name: 6
+        }
+        console.log(Object.assign(obj, obj1, obj2))
+
+
+        //===========================Object.getOwnPropertyNames 
+        const obj11 = {
+            a: 1,
+            b: 2,
+            c: 3,
+            '0': 20,
+            '6': 30,
+            '1': 60
+        }
+
+        console.log(Object.getOwnPropertyNames(obj11))
+
+        //==============================Object.setprototypeOf
+        const ok = {
+            a: 123
+        }
+        const ko = {
+            b: 456
+        }
+        console.log(Object.setPrototypeOf(ok, ko))
+    </script>
+</body>
+
+</html>

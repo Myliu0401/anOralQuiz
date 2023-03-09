@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+                 
+                   因为set集合,本身就是一个可迭代对象,所以可以用 for-of 循环
+                 
+                 */
+
+        const s = new Set([1, 2, 3, 4, 5, 'a', 'b', 'c', 'd']);
+
+        for (let prop of s) {
+            console.log(prop)
+        }
+
+        //=======================forEach
+
+        s.forEach(function (val, index, s) {
+            console.log(val, index, s)
+        })
+
+
+
+        //
+    </script>
+</body>
+
+</html>

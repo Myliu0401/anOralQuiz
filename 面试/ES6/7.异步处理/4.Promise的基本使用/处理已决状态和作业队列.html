@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //创建Promise对象
+        const por = new Promise(function (resolve, reject) {
+            console.log('向女神表白')
+            setTimeout(() => {
+                if (Math.random() < 0.1) {
+                    //推向已决阶段    resolve 状态
+                    resolve(true)
+
+                } else {
+                    //也是推向已决阶段   reject 状态
+                    reject(false)
+
+                }
+            }, 3000)
+        });
+
+      
+
+          //处理已决阶段
+        //当状态为已决时,会执行作业队列中的处理函数,因为then函数的参数,会被放进作业队列中
+        //执行多次then函数,会被参数依次放进作业队列中
+        por.then((data) => {
+            console.log(1)
+        }, (err) => {
+            console.log('一')
+        });
+        por.then((data) => {
+            console.log(2)
+        }, (err) => {
+            console.log('二')
+        });
+        por.then((data) => {
+            console.log(3)
+        }, (err) => {
+            console.log('三')
+        });
+    </script>
+</body>
+
+</html>

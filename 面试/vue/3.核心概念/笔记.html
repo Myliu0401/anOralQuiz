@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+              vue实例中
+                  $开头的属性或方法，是vue提供给我们方便使用的。
+                  _开头的属性或方法，vue内部使用自己使用的，开发者不要使用它们。
+                  除_和$开头外，其他属性或方法就是开发者自己配置进去的。
+                                          如：    data:{
+                                                  xxx:xxx
+                                                 }
+                                                 methods:{   吐音：猛茶（潮汕话）是
+                                                     xxxx(){
+   
+                                                     }
+                                                 }
+                                                 等等。。。
+                                            vue会将配置对象里面配置的属性或方法 xxx全部注入实例对象中，一级属性  
+
+                data: 配置 和界面相关的数据
+                computed: 配置 通过已有数据计算得来的数据
+                methods: 配置 方法   
+                render: 生成虚拟dom的函数
+                template: 配置模板
+
+                模板里的插值可以直接使用vue实例里的成员
+
+                数据响应式，只能在注入后才会响应式
+
+
+                虚拟dom树： 
+                    直接操作真实的dom会太耗费效率,vue使用虚拟dom(vnode)的方式来描述要渲染的内容
+                    虚拟dom(vnode)就是一个普普通通的js对象,这个对象描述了dom的内容。比如：
+                     const = vnode = {
+                         tag:'h1', 表示h1元素节点
+                         children:[{
+                             tag:undefined, //表示没有标签节点
+                             text:'奈斯'， //表示文本节点
+                         }] 表示h1元素的子节点
+                     } 
+                     上面虚拟dom描述了相当于以下dom
+                        <h1>奈斯</h1>
+                    
+                    vue模板，会被编译成虚拟dom树，虚拟dom树最终会生成真实dom树。
+                    当数据发生变化后,会引发重新渲染,vue会再根据数据生成虚拟dom树然后与旧虚拟dom树进行对比,有那个
+                    节点发生变化就更改真实dom的那个节点。
+
+
+                可见，在vue中,要得到最终的界面,必须要生成一个虚拟dom树(vnode tree)
+                  vue通过以下逻辑来生成虚拟dom树: 
+                       vue会看配置对象有没有配置render函数，有就直接取render函数的返回值作为虚拟dom树，
+                        没有就看有没有配置template模板,有就直接将template模板解析进render函数来生成虚拟dom树，
+                        没有就直接将el配置选中的模板的outerHTML作为模板解析进render函数来生成虚拟dom。
+                        最终根据虚拟dom生成真实dom替换掉el配置选中的模板。
+                        render函数vue执行时会传入一个参数进来,这个参数是函数就来用创建虚拟dom的。
+                   注意:虚拟dom树必须是单根的
+
+
+                挂载
+                   将生成的真实dom树,替换掉模板，称之为挂载
+                   挂载的方式: 
+                      1.通过el:'css选择器'进行配置
+                      2.通过vue实例.$mount('css选择器') 进行配置
+                        
+         
+                
+                指令： 
+                  v-bind:属性    作用是使属性值可以动态修改
+                    可以简写为 : 
+                  
+                  v-for循环指令   循环数组   注意绑定key值  key值唯一且稳定
+
+                  v-on绑定事件指令   
+                     可以简写为 @
+        
+         */
+    </script>
+</body>
+</html>

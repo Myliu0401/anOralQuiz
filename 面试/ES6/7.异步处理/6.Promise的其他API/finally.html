@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+         
+          const pro = new Promise((resolved,reject)=>{
+                resolved(1)
+          });
+ 
+          pro.finally(()=>console.log('mi')) // 最先执行
+          pro.then((mi)=>console.log(mi))  //第二执行
+          pro.then((mi)=>console.log(mi))  //第三执行
+          pro.catch((mi)=>console.log(mi)) //不会执行
+          pro.finally(()=>console.log('mi')) //最后执行 finally的回调函数不能传参,无论是那种状态都会执行
+
+
+
+    </script>
+</body>
+
+</html>

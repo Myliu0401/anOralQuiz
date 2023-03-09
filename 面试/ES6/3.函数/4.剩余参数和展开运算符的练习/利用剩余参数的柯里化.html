@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        //柯里化函数
+        function keli(func, ...argms) { //第一个参数为回调函数,第二个为收集固定的值
+            return function (...args) {
+                const arr = [...argms, ...args]
+                if (arr.length >= func.length) { //arr的长度是否大于func函数的形参
+                    return func(...arr);
+                } else { //参数不够,继续固定
+                    return keli(func, ...arr)
+                }
+            }
+        }
+
+
+        //执行函数
+        function zhixin(a, b, c, d) {
+            return a + b * c - d;
+        }
+
+        //执行柯里化
+        let newzhi = keli(zhixin, 6, 7) //返回一个已经固定6和7的函数
+        console.log(newzhi(8, 9))
+    </script>
+</body>
+
+</html>

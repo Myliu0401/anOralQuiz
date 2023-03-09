@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+                   #生成器(Generator)
+
+                     1.什么是生成器?
+                       生成器是一个通过构造函数 Generator 创建的对象,(但这个构造函数只供js内部使用)
+                       生成器即是一个迭代器,同时又是一个可迭代对象
+                       **证明它里面有, Symbol.iterator属性名的函数,和有next方法**
+                       也可以用for-of循环
+
+                     2.如何创建生成器
+                       生成器的创建,必须使用生成器函数 (Generator Function)   
+                       在函数关键字的后面加一个*号,或者在函数名前面加一个*号
+                       function* Gener(){} 
+
+                     3.如何书写一个生成器函数呢？
+                       function* Gener(){}
+                       或 {
+                           *misi(){
+
+                           }
+                       }
+                       该生成器函数一定,返回一个生成器
+
+                     4.生成器函数里面
+                       调用生成器函数,不会运行函数,只是js内部自己返回一个生成器对象给你
+                       当调用生成器里的next函数才会执行生成器函数  
+                     
+                     生成器函数 的函数体yield关键字生成数据的。
+                     (yield 数据),每当执行生成器函数,有yield关键字,就创建一个迭代数据,就停止运行函数了,如果后面没有yield关键字,done值就为true了
+                     
+                     原理:
+                         (当执行生成器对象里的next方法)
+                         当执行生成器函数时,返回一个生成器对象(相当于js内部 new一个返回出来)
+                         当执行生成器对象里的next方法时,会执行生成器函数,当生成器函数执行遇到yield关键字时,会创建一个数据
+                         然后停止执行函数,会把数据放到next函数返回的对象里的value属性,然后把done属性为false,并返回对象
+                         如果再执行,生成器里的next方法,会执行生成器函数,但是,是从上次的yield关键字,下面开始来执行
+                         如果没有创建字了,就把生成器函数的返回值 赋给返回的对象里的value属性,把true赋给done属性,并返回对象
+                         生成器函数的返回值只出现在 第一次done属性值为ture时,的value属性值
+
+
+                         (当执行生成器对象里的[Symbol.iterator]方法)([Symbol.iterator]方法返回,thsi,也就是返回生成器对象)
+                         因为 for-of循环 的原理就是执行[Symbol.iterator]方法 
+                         当执行[Symbol.iterator]方法时,会执行生成器函数,遇到关键字yield时创建数据,并把数据赋给返回的对象里的value属性
+                         和(当执行生成器对象里的next方法)操作一样
+
+
+                    ***细节
+                       1.生成器函数中可以有返回值,当第一次返回的对象里的done值为true时,就会把返回值赋给value属性     
+                       2.调用生成器的next方法时,可以传递参数,传递的参数会交给yield表达式的返回值
+                        原理: 当调用next方法时,会把参数赋给 yield表达式的结果,也就是返回值
+                              yield 123 是生成数据123, 参数不是赋给yield的生成数据,而是赋给yield的返回值
+                        比如:
+                            const mi = yield 123; 会先创建数据123,并赋给value属性,并返回对象
+                            此时 (const mi = yield 123) 这条表达式还没执行完成
+                            当下一次调用 next方法时 会将(const mi = yield 123)表达式执行完成,参数赋给返回值
+                        3.所以基于上面,第一次调用next方法时,参数无效       
+                        4.生成器的其他API
+                                return方法: 调用该方法,可以提前结束生成器函数,从而提前让整个迭代过程结束
+                                   这个方法也可以传参,参数直接是赋给value值
+                                
+                                throw方法:调用该方法,可以在生成器中产生一个错误
+                                 原理: 执行这个返回会在yield部分报错
+                                       执行第一次 yield 时还未完全执行完成
+                                       下一次执行会执行 yield 的返回值时,就报错   
+
+                        5.在生成器函数内部,可以调用其他生成器,但是要注意加上*号
+
+
+
+              */
+
+
+        //========================生成器对象
+        function* Gener() {
+
+        }
+        const Grtr = Gener(); //生成器函数返回一个生成器对象
+        console.log(Grtr)
+
+        console.log(Grtr[Symbol.iterator]())
+
+        //========================执行生成器,创建数据
+        function* Ge1() {
+            console.log('第一次');
+            yield 123;
+            console.log('第二次');
+            yield 456;
+        }
+
+        const obj = Ge1();
+
+
+        //====================利用生成器的循环迭代
+
+        const arr = [12, 3, 4, 5, 6, 7, 8, 9];
+        const arr1 = [1, 2, 3, 0, 4, 5, 6, 6, 4, 3];
+
+        function* Gr(data) {
+            for (const prop of data) {
+                yield prop
+            }
+            return '结束了' //返回值出现在 第一次done属性的值为ture时,的value属性值
+        }
+
+        const obja = Gr(arr)
+        const objb = Gr(arr)
+
+
+
+    </script>
+</body>
+
+</html>

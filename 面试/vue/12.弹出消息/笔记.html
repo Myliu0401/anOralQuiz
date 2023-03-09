@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        　　　　在vue中使用css模块化
+                       需要将样式文件的命名改为 文件名.module.后缀名
+                       后缀名可以是 css less sass
+                    在vue-cli中会默认配置了css模块化，所以不用继续配置，只需要修改文件名
+
+                
+                在vue中得到组件渲染的dom (组件的dom)
+                       利用vue来生成dom。
+                       因为单文件组件模式，vue打包时会将模板解析进render函数中，最终导出组件实例对象。
+                       相当于vue在打包时会对组件进行： 
+                          obj = new Vue({
+                                render:(h)=>{
+                                    //template模板解析的步骤。。。。。
+                                }
+                            });
+                          导出obj;
+                        
+                        就可以： 
+                         1. 导入组件，得到组件实例。
+                         2. 利用vue来根据组件实例来生成dom,因为vue配置对象里的render函数的参数可以根据vue实例来生成虚拟dom。
+                         3. 最终 实例.$mount(); 挂载后，vue实例中就有$el属性，就是组件的dom。
+                            因为vue是判断配置对象中有没有el属性，没有就等待调用$mount方法后再进行后续的虚拟dom操作等等。
+                        
+                        import 组件 from './xxx' 
+
+                        function xxx(){
+                          cosnt vm =  new Vue({
+                                render:(h)=>{
+                                    h(组件，{属性}); //属性，相当于传 props特性
+                                }
+                            });
+                            vm.$mount();
+                            return vm.$el; // 返回组件的dom
+                        }
+
+                  
+               扩展vue实例
+                   在vue-cli的vue项目中，无论是直接执行Vue还是组件，都是利用同一个Vue构造函数来创建出实例的。
+                   所以在Vue构造函数的原型上添加上东西，构造出来的实例就能使用。(原型链的相关知识)
+
+
+               
+               ref
+                 在dom上加上行间属性 ref="xxx",在该实例中的 $refs属性对象中就会有该属性xxx,属性值的是dom元素。
+                 如果是在组件行间上加上 ref="xxx" , 实例中的 $refs属性对象中就会有该属性xxx,属性值为组件实例对象
+                 如：<组件 ref="abc"></组件>
+                     实例.$refs.abc 为该子组件的实例对象。
+                 
+                 通过ref可以直接操作dom，甚至可以改动子组件，但是这些都不符合vue的设计理念。
+                 触发迫不得已，否则不要使用ref
+
+                
+               
+        
+        */
+    </script>
+</body>
+</html>

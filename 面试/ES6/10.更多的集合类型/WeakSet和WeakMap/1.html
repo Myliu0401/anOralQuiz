@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+               
+                        #WeakSet 和 WeakMap
+                         
+                          ## WeakSet
+
+                             使用该集合,可以实现和set一样的功能,不同的是：
+                               1.**它内部存储的对象地址不会影响垃圾回收**
+                                 相当于: 一个变量将地址赋给 WeakSet集合里面
+                                        如果变量的被重新赋值,WeakSet集合里面的值,也会被回收掉
+                              相当于: 
+                              let obj = {}
+                              let set = new WeakSet()
+                                  set.add(obj) 这个set集合里面就有obj这个值了
+                              obj = null 变量被重新赋值,set集合里的obj值也会被垃圾回收机制给回收掉   
+               
+                              相当于:使用WeakSet集合里面有引用类型的值,如果外部没有变量指向它的地址,就
+                                     会被回收掉
+
+                                2.只能添加引用类型
+                                3.不能遍历(不是可迭代对象)、没有size值、没有forEach方法  
+                                
+                              WeakSet的功能,相当于 只作为观察集合里面的那些引用类型还没有被垃圾回收  
+               
+                       
+                           ## WeakMap
+                              
+                              类似于map的集合,不同的是:
+                                1.**它的键存储的地址不会影响垃圾回收**
+                                2.它的键只能是引用类型
+                                3.不能遍历(不是可迭代对象)、没有size值、没有forEach方法  
+                             
+ 
+
+
+               
+               
+               */
+
+        //===========================Set集合   
+        const set = new Set();
+        let obj = {
+            a: 1
+        }
+        set.add(obj)
+        obj = null
+        console.log(set); //引用类型地址,只要能找到,就不会被回收
+
+
+        //=============================WeakSet集合
+        const wset = new WeakSet();
+        let obj1 = {
+            a: '林培璇'
+        }
+        wset.add(obj1)
+ 
+        console.log(wset); //除了 集合里面有指向 它地址的,就没有了,所以垃圾回收机制,也会把集合里的值给收了
+        
+        obj1 = null; //必须写在打印下面,才能看得到
+        //因为垃圾回收需要过程,打印出来有是实时更新的
+
+ 
+
+
+
+        
+
+
+
+
+
+        //
+    </script>
+</body>
+
+</html>

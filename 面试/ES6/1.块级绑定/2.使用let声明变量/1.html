@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+                 //使用let声明变量
+                 /* 
+                     1.全局的变量不会挂载到winodw上
+                     2.不允许当前作用域范围内重复声明
+
+                     3.不会有变量提升,因此不能在变量声明之前使用它
+                     底层原理,实际上let声明的变量也会有提升,但是,提升后会将其放入到"暂时性死区",
+                     如果访问的变量位于"暂时性死区",则会报错,当代码运行到该变量的声明语句时,会将其从
+                     "暂时性死区"中移出
+
+                 
+                   ES6不仅引入let关键字用于解决变量声明的问题,同时引入了块级作用域的概念
+                 块级作用域:代码执行时遇到大括号,会创建一个块级作用域,大括号结束,销毁块级作用域  
+
+
+                       *特殊处理*
+                    在循环中,用let声明的循环变量,会特殊处理,每次进入循环体,都会开启一个新的作用域,并
+                    且将循环变量绑定到该作用域(每次循环,使用的是一个全新的循环变量)
+                    在循环中使用let声明的循环变量,在循环结束后会销毁   
+                 */
+
+                 let a = '123';//不会挂载到window上
+                 console.log(window.a) //不会污染到全局的变量
+
+
+                 /* 
+                    let b = 2;
+                    let b = 3;
+                    第二个b 会报错,同个作用域不允许重复声明
+                 */
+
+
+                 //====不同作用域可以重复声明
+                 let c = 999;
+                 function ui(){
+                     let c =888
+                     console.log(c)
+                 }
+
+                 ui()
+                 console.log(c)
+
+              //=============================块级作用域
+                { //会创建块级作用域
+                    let jk = 879
+                    console.log(jk)
+  
+                 //可以访问外面,但外面访问不了块级作用域内
+
+                } //结束就销毁  
+
+
+
+    </script>
+</body>
+
+</html>

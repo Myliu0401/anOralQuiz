@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Fulei { //父类
+            constructor(type, name, xin, get) { //构造器
+                //对象上的成员
+                this.type = type;
+                this.name = name;
+                this.xin = xin;
+                this.get = get;
+            }
+
+
+            Bink() { //原型上的成员
+                console.log(this.type, this.name, this.xin, this.get)
+                console.log(this)
+            }
+        }
+
+        //进行继承操作
+        class Zilei extends Fulei {
+            constructor(type, name, xin, get) {
+                super('猫科', name, xin, get) //必须在最开始的位置调用父类的构造器
+                this.loves = '骨头';
+            };
+           
+            //如果没有写constructor,就会变成
+            /* constructor(type, name, xin, get) {
+                super(type, name, xin, get) //参数会和父类一样
+            } */
+
+
+            king(){ //子类特有的方法(相当于子类原型上的成员)
+                super.Bink(); //super当做对象使用,会成父类的原型
+                console.log(this.loves)
+            }
+
+        }
+
+        const obj = new Zilei('动物', '狗', '母', '3')
+       
+        /* 
+              底层原理:(乱想的)
+                    super在子类的constructor中,super的this跟子类constructor的this一样
+                    当new子类时,子类的构造器的this变成一个对象,super也一样是那个对象
+        
+                    super被当成对象时,比如在king函数中,super的this跟king函数一样,当king函数执行时,this对象
+                    放生变化,super的this也发生变化
+        
+
+         */
+
+    </script>
+</body>
+
+</html>

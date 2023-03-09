@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <ul id="misi"></ul>
+    <p>
+        <button style="font-size: 20px;cursor: pointer;">点击</button>
+    </p>
+    <script>
+        /* 
+          
+                     MutationObserver 
+                     
+                     当 new MutationObserver(处理函数) 时会返回一个对象
+                     
+                     observe
+                     对象中的这个方法用于监听DOM对象
+                     observe(DOM元素,{
+                         配置
+
+                         attributes:true // 表示监听属性的变化
+                         childList:true //监听子元素的变化
+                         subtree:true //监听后代元素的变化
+                     })
+
+                     当配置中其中一种发生,就触发MutationObserver事件
+
+
+                     取消监听
+                     对象.disconnect() 
+
+
+
+                     这个事件处理函数,当触发事件时,处理函数进入微队列中,等待被执行(也就是进入vip通道)
+
+
+                 
+          
+           */
+           
+
+         //=======================================理解下面事件循环得顺序  
+
+
+        const ul = document.getElementById('misi');
+
+        document.getElementsByTagName('button')[0].onclick = function () {
+            let li = document.createElement('li'); //创建标签
+            let cont = 1;
+            li.innerText = cont++;
+            ul.appendChild(li);
+            console.log('添加了一个li标签')
+            setTimeout(() => { //一次性循环函数
+                console.log('OK!!!')
+            })
+        };
+
+
+        //进行创建微队列监听事件
+        const jiantin = new MutationObserver(function () {
+            console.log('ul标签其中一项被改变')
+        });
+
+        //进行ul监听
+        jiantin.observe(ul, {
+            attributes: true, //进行ul标签属性变化监听 
+            childList: true, //进行ul标签子元素变化监听 
+            subtree: true //进行ul标签后代元素变化监听 
+        })
+    </script>
+</body>
+
+</html>

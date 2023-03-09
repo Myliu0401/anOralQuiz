@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+                小明心中有二十个女神,他决定用更加高效的办法
+                他同时给二十个女神表白,如果有女神同意,就拒绝其他女神,并且
+                当所有的女神回复完成后,他要把所有的回复都记录到日记进行分析
+                用带码模拟上面的场景         
+          */
+
+        //封装proimse对象
+        function biaobai(mi) {
+            return new Promise((resolve, reject) => {
+                console.log(`小明向女神${mi}表白`);
+                setTimeout(() => {
+                    if (Math.random() < 0.3) {
+                        resolve(true)
+                    } else {
+                        console.log(`女神${mi}拒绝`)
+                        resolve(false)
+                    }
+                }, Math.random() * (3000 - 1000) + 1000)
+            })
+        }
+
+        const arr = []; //后面做日记用
+        let boolean = false; //开关
+        for (let i = 0; i < 20; i++) {
+            arr.push(biaobai(i).then((is) => {
+                if (is) { //成功就进
+                    if (boolean) { //后续表白成功的进
+                        console.log(`小明让女神${i}滚`)
+
+                    } else { //第一个表白成功的可以进
+
+                        console.log(`小明向女神${i}表白成功`)
+                        boolean = true; //关闭
+                    }
+                }
+                return is;
+            }))
+
+        }
+
+        //做日记
+        Promise.all(arr).then((mi) => {
+            console.log('日记记录', mi)
+        })
+    </script>
+</body>
+
+</html>

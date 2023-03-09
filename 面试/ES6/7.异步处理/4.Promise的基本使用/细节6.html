@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const obja = new Promise(((resolve, reject) => {
+            resolve(1);
+            resolve(2); //无效
+            reject(3);  //无效
+            //因为状态一旦确立,就无法更改
+        }))
+
+
+        obja.then((num) => {
+            console.log(unm)
+        }, (num) => {
+            console.log(num);
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+                 # 属性描述符
+                   
+                   Property Descriptor 属性描述符 用于描述一个属性的相关信息
+
+                   通过 Object.getOwnPropertyDescriptor(对象,属性名) 可以得到一个对象的某个属性的相关信息
+                   里面有:
+                          value:属性值
+                          configurable:该属性的描述符是否可以修改(出value属性外,其他属性会受影响)
+                          enumerable:该属性是否可以被枚举(会影响到Object.keys方法和Object.values方法)
+                          writable:该属性是否可以被重新赋值(属性描述符里的所有属性都会受影响)
+
+                   Object.getOwnPropertyDescriptors(对象) 可以得到一个对象的所有属性的属性描述符
+                       描述符里的属性和上面一样       
+                      
+                     如果需要为某个对象添加属性时 或 修改属性时,配置其属性描述符,可以使用的代码
+                      对 对象的单个属性
+                      Object.defineProperty(对象,属性名,描述符/配置)
+                       
+                      对 对象的所有属性
+                      Object.defineProperty(对象,{
+                          xxx:{ //某个属性
+
+                          },
+                          xxx:{ //某个属性
+
+                          }
+                      })
+
+
+            */
+
+
+
+        //=============================获取对象的某个属性描述符
+
+        const obj = {
+            a: 123,
+            b: '林培璇'
+        }
+
+        const xinxi = Object.getOwnPropertyDescriptor(obj, 'b');
+
+        console.log(xinxi)
+
+        //===========================获取对象的所有属性的描述符
+        const xinxis = Object.getOwnPropertyDescriptors(obj);
+        console.log(xinxis)
+
+
+        //===========================如果把属性描述符里的configurable设为false,
+        //那么该属性的描述符里除了value属性外就不能被修改了
+
+        Object.defineProperty(obj, 'b', {
+            configurable: false,
+        })
+        /* 
+            会报错因为上面已经设置不能修改了
+          Object.defineProperty(obj,'b',{
+              configurable:true 
+          }) 
+          */
+
+
+
+
+        //============================如果把属性描述符里的 enumerable 设为false,那么该属性就不能枚举
+
+        const obj1 = {
+            name: '林培璇',
+            lover: 520,
+            misi: 1314,
+        }
+
+        Object.defineProperty(obj1, 'name', {
+            enumerable: false,
+            configurable: false,
+        })
+
+        for (const prop1 in obj1) {
+            console.log(obj1[prop1])
+        }
+
+
+        console.log(Object.keys(obj1)) //会影响到这个方法
+        console.log(Object.values(obj1)) //也会影响到这个方法
+
+
+
+
+        //========================================属性的描述符里writable属性设置为false,
+        //那么这个属性的值或描述符里的属性就不能被重新修改
+
+        const obj2 = {
+            name: '林培璇刘玉联',
+            naisi: 5201314
+        };
+
+
+        Object.defineProperty(obj2, 'naisi', {
+            writable: false,
+        })
+
+        Object.defineProperty(obj2, 'name', {
+            writable: false,
+        })
+
+
+        //那么上面obj2对象里的所有属性都不能被修改
+
+
+
+
+        //======================================同时对多个属性的描述符进行操作
+        const objs = {
+            name: '林培璇',
+            name1: '刘玉联',
+        }
+
+        Object.defineProperties(objs, {
+            name: { //针对name属性进行操作
+                writable: false,
+            },
+            name1: { //针对name1属性进行操作
+                writable: false,
+            }
+        })
+
+
+        console.log(Object.getOwnPropertyDescriptors(objs));
+
+
+
+
+
+        //
+    </script>
+</body>
+
+</html>

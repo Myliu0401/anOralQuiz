@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+                  知识点： 
+                    v-if 和 v-show 有什么区别？ 
+                      v-if能够控制是否生成 虚拟dom，也就间接控制了是否生成真实dom。当v-if为true时，会生成对应的 虚拟dom，并
+                         生成对应的dom元素；当为false时，不会生成对应的 虚拟dom，自然不会生成任何的dom元素。
+                      v-show始终会生成 虚拟dom,也就间接导致了生成dom元素。它只是控制dom的display属性，当v-show为true时，不做任何处理；当为false时，生成
+                         的dom的display属性为none。
+                      使用v-if可以有效的减少树的节点和渲染量，但也会导致树的不稳定；而使用v-show可以保持树的稳定，但不能减少树的节点和渲染量。
+                      因此,在实际开发中，显示状态变化频繁的情况下应该使用v-show,以保持树的稳定；显示状态变化较少时应该使用v-if,以减少树的节点和渲染量。
+
+                    使vue的效率高，就要尽量减少树的节点和保持树的稳定，所以有了 v-if 和 v-show
+
+
+
+                    3.组件事件
+                        抛出事件：子组件在某个时候发生了一件事，但由于单向数据流的原因自身无法处理
+                                 于是通过事件的方式通过父组件处理  ----- 相当于主动触发事件  $emit('父组件注册的事件名',参数)
+                        事件参数：子组件抛出事件时，传递给父组件的数据
+                        注册事件：父组件声明事件，当子组件发生某件事的时候，自身将作出一些处理
+                        这整个过程叫做 组件的通信
+                           prop ---- 父组件传递给子组件，子组件没有权利更改
+                           event --- 子组件抛出事件到父组件
+                    
+                      
+        
+        
+         */
+    </script>
+</body>
+</html>

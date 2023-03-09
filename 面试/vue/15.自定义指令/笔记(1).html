@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+                         全局定义自定义指令
+                               Vue.directive('自定义指令名',配置对象);
+                               跟全局定义组件一样，所有地方都能用
+
+
+                         局部定义 --- 局部定义是指在某个组件中定义指令，和局部注册组件一样。
+                             局部定义仅在该组件中有效。
+                             在配置对象中添加directive属性,属性值为对象
+                             directive:{
+                                 自定义指令名:{
+                                     指令配置对象
+                                 }
+                             }
+
+
+                          指令配置对象
+                              vue支持在指令配置对象中配置一些钩子函数，在适当的时机,vue会调用这些钩子函数并传入参数，以便开发者操作。
+                              bind(el,binding){
+                                  //只调用一次，指令第一次绑定元素时调用。在这可以进行一次性的初始化设置
+                              }
+                              inserted(el,binding){
+                                  //绑定这个指令的元素被插入到父节点时调用
+                              }
+                              update(el,binding){
+                                  //所在组件的虚拟dom更新时调用
+                              }
+                              每个钩子函数在调用时，vue都会向其传递一些参数，其中最重要的是前两个参数。
+                              el是绑定该自定义指令的dom元素
+                              binding是一个对象,描述了指令中提供的信息
+
+                              如:一个自定义指令
+                                v-mynaisi:a.b.c="2>1"
+                                  a表示指令的参数
+                                  b和c表示指令的修饰符
+                                  true表示指令的值
+                                最终binding参数是这个样子的： 
+                                {
+                                     name:'指令的名',
+                                     value:指令的值,
+                                     arg:指令的参数,
+                                     modifiers:{ //存储指令的修饰符
+                                         b:true,
+                                         c:true
+                                     }
+
+                                }
+
+
+                        也可以简化指令配置对象
+                           可以将指令的配置对象改为函数，该函数会被同时设置到bind和update中
+                           相当于vue执行bind函数时，会执行该函数，执行update函数时，也会执行该函数
+                             
+        
+        
+        
+        
+        */
+    </script>
+</body>
+</html>

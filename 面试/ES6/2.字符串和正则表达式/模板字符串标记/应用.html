@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p>
+        <textarea id="text"></textarea>
+        <button>点击</button>
+    </p>
+    <div></div>
+    <script>
+        const text = document.getElementById('text');
+        const but = document.getElementsByTagName('button')[0];
+        const div = document.getElementsByTagName('div')[0];
+
+        but.onclick = function () {
+            var str = zhuanyi `<p>
+              ${text.value}  
+          </p> `
+            div.innerHTML = str
+        };
+
+
+        function zhuanyi(arr) {
+            let str = Array.prototype.slice.apply(arguments).slice(1)
+            let st = '';
+            for (var i = 0; i < str.length; i++) {
+                const v = str[i].replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                st += arr[i] + v;
+                if (i === str.length - 1) {
+                    st += arr[i + 1]
+                }
+            }
+            return st;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+                  以前，前后端没分离的情况下，页面是在服务端进行组装的。  
+                        浏览器 ---请求---> 服务器（服务器根据请求，读取数据库等其他操作然后进行页面的拼接组装成完整页面）----发送--->浏览器
+
+
+                  前后端分离
+                       浏览器 ---请求---> 服务器(服务器返回一个无内容的html) ---发送---> 浏览器
+                          浏览器运行页面里的js创建元素和请求服务器获取数据等，渲染成完整页面
+                          每次切换页面时会抛弃当前页面,重新根据请求的新页面重新加载渲染(刷新页面)
+
+
+                  单页应用
+                         浏览器 ---请求---> 服务器(返回一个无内容的html) ---发送---> 浏览器
+                             浏览器运行js，创建元素，渲染页面。
+                             当跳转页面是,不会抛弃当前页面，而是删除不要的dom，重新创建想要的dom，来重新构建页面元素
+                       
+        
+                  详情看课件
+         */
+    </script>
+</body>
+</html>

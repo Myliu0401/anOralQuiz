@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./MyPromise.js"></script>
+    <script>
+        const pro = new MyPromise((resolve, reject) => {
+            reject(1)
+        })
+
+
+        pro.then((mi) => {
+            console.log(mi, 2)
+        })
+        pro.then((mi) => {
+            console.log(mi, 3)
+        }, () => {
+            console.log('我是catch')
+        })
+        pro.then((mi) => {
+            console.log(mi, 4)
+        }, () => {
+            console.log('我是catch')
+        })
+        pro.then((mi) => {
+            console.log(mi, 5)
+        })
+        pro.then((mi) => {
+            console.log(mi, 6)
+        })
+
+        pro.catch((mi) => {
+            console.log(mi, 6)
+        })
+        pro.catch((mi) => {
+            console.log(mi, 6)
+        })
+        pro.catch((mi) => {
+            console.log(mi, 6)
+        })
+
+
+
+        /* const onk = new Promise((resolve, reject) => {
+            reject(1)
+        })
+
+        onk.catch((mi) => {
+            console.log(mi, 6)
+        })
+        onk.catch((mi) => {
+            console.log(mi, 6)
+        }) */
+    </script>
+</body>
+
+</html>

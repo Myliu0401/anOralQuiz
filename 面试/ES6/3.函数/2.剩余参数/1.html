@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+
+          /* 
+               #剩余参数
+               arguments的缺陷:
+               1.如果和形参配合使用,容易导致混乱
+               2.从语义上,使用arguments获取参数,由于形参缺失,无法从函数定义上理解函数的真实意图
+
+
+               ES6的剩余参数专门用于收集未尾的所有参数,将其放进到一个形参数组中。
+               语法:
+                function xxx(...形参){
+                      ...abc,就是收集所有参数后,展开(相当于所有形参参数)
+                         abc,就相当于 ...abc收集所有参数,放进数组,打印出来是数组,里面装着收集的参数
+                }
+                
+
+               *细节*
+               1.一个函数,仅能出现一个剩余参数
+                比如: function xxx(...形参,...形参){ //会报错,因为只能有一个剩余参数
+
+                } 
+               2.一个函数,如果有剩余参数,剩余参数必须在最后一个参数
+                 比如:function xxx(a,s,d,...形参){ //剩余参数只能在最后一位
+
+                 }  
+          
+          
+          */
+
+          function hanshu(...abc){ //第一个参数会,收集自己包括后面的所有实参列表,并push进数组
+              console.log(abc)     //如果...abc在形参的第三位,就会收集第三位实参和后面的所有参数
+          }
+          hanshu(1,2,3,4,5,6)
+
+
+
+          //====================//
+           function arf(...agrs){
+               console.log(...agrs) //所有的形参
+               console.log(agrs) //收集的所有形参push进数组
+           }
+
+           arf(1,2,3,4,5,6,7)
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+                   
+               小明向三个女神表白,女神1拒绝,就向女神2,再拒绝就向女神3,下拒绝就结束
+               如果其中一个同意就结束
+         
+         */
+
+
+        //一层一层嵌套,产生回调地狱,不易阅读
+
+        function baiai(nvsheng, func) {
+
+            setTimeout(() => { //'想了后才做出回应'
+                //概率
+                if (Math.random() < 0.1) {
+                    func(nvsheng, true)
+                } else { //被拒绝
+                    func(nvsheng,false)
+                }
+            }, 1000)
+        }
+
+        baiai('女神1', function (nvsheng, boolean) {
+            if (boolean) {
+                console.log(`向${nvsheng}表白成功`)
+            } else {
+                console.log(`向${nvsheng}表白失败`)
+                baiai('女神2', function (nvsheng, boolean) {
+                    if (boolean) {
+                        console.log(`向${nvsheng}表白成功`)
+                    } else {
+                        console.log(`向${nvsheng}表白失败`)
+                        baiai('女神3', function (nvsheng, boolean) {
+                            if (boolean) {
+                                console.log(`向${nvsheng}表白成功`)
+                            } else {
+                                console.log(`向${nvsheng}表白失败`)
+                                console.log('绝望!!!');
+                            }
+                        })
+                    }
+                })
+            }
+        })
+    </script>
+</body>
+
+</html>

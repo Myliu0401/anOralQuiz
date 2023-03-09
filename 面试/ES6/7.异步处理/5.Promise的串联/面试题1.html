@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const obj = new Promise((resolve, reject) => {
+            resolve(1);
+        });
+        console.log(obj) //为已决阶段
+        const obj1 = obj.then((index) => index * 2)
+        console.log(obj1) //为未决阶段
+
+        //原因: 后续的Promise的一定要等到前面的Promise有了后续处理结果,才会改变成已决状态
+        //then函数的参数是异步代码, 最开始运行resolve(1)时,obj为已决阶段, 因为异步代码还没有运行结果
+        //所以obj1为未决状态
+    </script>
+</body>
+
+</html>

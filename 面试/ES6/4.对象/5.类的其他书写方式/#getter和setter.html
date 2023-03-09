@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        const biName = 'bink'
+        class Ailmen {
+            constructor(type, name, get, deb) {
+                this.type = type;
+                this.name = name;
+                this.get = get;
+                this.deb = deb;
+            };
+            [biName]() {
+                console.log(this.type, this.name, this.get, this.deb)
+                console.log(arguments)
+            }
+
+            
+           //创建一个get属性(get是要设置的值的名称),并给它加上getter,读取该属性时,会运行该函数
+            get get() { //当查看get属性时会自动执行这个函数 (get是要设置的值的名称)
+                return this._get + '岁';
+                //会自己操作将_get属性赋给get属性
+            }
+
+
+            //创建一个get属性(get是要设置的值的名称),并给它加上setter,给该属性赋值时,会运行该函数
+               //(get是要设置的值的名称)
+            set get(val) { //当给get属性赋值时,会自动执行这个函数。 给get属性赋值为8,相当于 setAge(8)
+                if (typeof (val) !== 'number') {             //赋值的会被这个函数当做参数
+                    throw new TypeError('请赋数字类型')
+                }
+                if (val < 0) {
+                    val  = 0
+                } else if (val > 100) {
+                    val = 100
+                }
+                this._get = val
+                //对象的成员上,多加了_get属性
+            }
+
+
+        }
+
+        var obj = new Ailmen('人', '林培璇', 211, 'Love')
+    </script>
+</body>
+
+</html>

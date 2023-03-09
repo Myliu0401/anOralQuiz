@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        //创建一个类
+        class newnaisi {
+
+        }
+
+        function Classnew(miclass, ...misi) {
+
+            //类就是构造函数,函数也是对象,所以可以进行代理
+            return new Proxy(miclass, {
+                //当返回的代理被new时会运行
+                construct(target, argumentsLi) {
+                    const obj = Reflect.construct(target, argumentsLi);
+                    misi.forEach((ele, index) => {
+                        obj[ele] = argumentsLi[index];
+                    })
+
+                    //返回值必须是对象,通过这种返回值必须写
+                    return obj
+                }
+            });
+        }
+
+        const misi = Classnew(newnaisi, 'xin', 'name', 'get')
+
+        const obj = new misi('林', '培璇', 21)
+    </script>
+</body>
+
+</html>

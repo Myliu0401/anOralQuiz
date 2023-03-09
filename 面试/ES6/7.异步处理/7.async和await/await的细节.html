@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //===========================如果关键字后面不是Primse对象
+        (async () => {
+            const a = await 1;
+        })();
+
+        //相当于:
+
+        (async () => {
+            return new Promise((resolve, reject) => {
+                Promise.resolve(1).then((data) => {
+                    const a = data
+                    console.log(a);
+                })
+            })
+        })();
+
+
+        //============================如果是reject状态
+        function aaa() {
+            if (Math.random() < 0.3) {
+                return true
+            } else {
+                throw 3;
+            }
+
+        }
+
+        //处理失败,也就是处理reject状态
+        (async () => {
+            try {
+                const num = aaa()
+                console.log(num)
+            } catch (err) {
+                console.log(err)
+            }
+        })();
+
+        //相当于这样写
+        (async () => {
+            return new Promise((resolve, reject) => {
+                aaa().then((data) => {
+                    const num = data;
+                    console.log(num)
+                }, (data) => {
+                    console.log(num)
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>

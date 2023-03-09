@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+         /* 
+         
+                父子组件通信
+                       vue提供的绝大部分组件通信方式，都是父子组件通信
+                    prop
+                      由父组件传递给子组件
+
+                    event
+                      子组件通知父组件和抛出数据给父组件
+
+                  （是呆奥）
+                    style和class
+                       父组件给子组件传递 stlye、class, 会被子组件合并到根元素中
+
+                    attribute （而吹谬特）
+                       父组件传递给子组件的prop，但是子组件并没有声明这些东西，则称这些为attribute,这些属性还会
+                       直接被赋在子组件的根元素上。
+                       style和class不称为attribute。因为会被特殊处理
+                       attribute还会被添加到子组件实例的$attrs对象中
+                       如： 
+                        父组件
+                            <div> 
+                                <子组件  naisi="xxx" misi="xxx"   />
+                            </div>
+
+                        子组件
+                           props属性里没有声明 naisi、misi 那么会被赋到根元素上并且添加到实例的$attrs对象中
+                           <div naisi="xxx" misi="xxx">
+                              <h1></h1>
+                            <div>
+                            实例.$attrs:{naisi:'xxx',misi:'xxx'}
+                            子组件还可以通过 inheritAttrs: false 配置，禁止将attribute 赋到子组件的根元素中，但是
+                              不影响 $attrs对象
+
+                              inheritAttrs 吐音：音嗨特
+
+                    natvie 修饰符
+                       父组件在子组件上注册事件来监听子组件的event时，可以使用natvie修饰符，那么该事件会直接注册到子组件的根元素上，
+                         如果子组件触发event,那么对应的父组件的函数将不会被触发。
+                         详情看课件
+
+                    $listeners
+                        子组件可以通过实例上的 $listeners对象获取父组件传递过来的所有事件处理函数
+                        
+                    v-model 数据双向绑定
+
+                    sync 修饰符
+                       和v-model的作用类似，用于双向绑定，不同点在于v-model只能针对一个数据进行双向绑定，而sync修饰符没有限制
+                       详情看课件
+
+                    （葩冷字）
+                    $parent和$children
+                       父组件实例上$children对象中包含子组件的实例
+                       子组件实例上$parent对象中包含父组件的实例
+
+                    ref
+                      父组件可以通过ref获取到子组件的实例
+ 
+                    $slots和$scopedSlots
+                     
+                    
+                跨组件通信 
+                   （碰fai）  （英觉）
+                   Provide和Inject
+                          祖先组件在配置对象中提供provide属性，如： 
+                             provide:{
+                                  foo: 'bar'
+                             }
+                           
+                           后代组件中添加inject属性，如：
+                             inject:['foo']
+                            那么该后代组件实例中就会有 foo属性，值为'bar'
+                            
+                           详情见 https://cn.vuejs.org/v2/api/?#provide-inject
+
+                   router
+                        如果一个组件改变了地址栏，所有监听地址栏的组件都会做出相应的反应
+                        最常见的场景就是通过点击router-link组件改变了地址，router-view组件就渲染其他内容
+                        所以可以利用地址栏来传递和接收数据
+
+                   vuex
+                      独立数据仓库
+
+                   store模式
+                       跟vuex很像，但是没vuex那么复杂，适用于小型项目
+                       就是利用 引用类型 的特点，然后赋到配置对象的data属性中，利用data属性响应特点来修改数据。
+                       因为是 引用类型 一改，用到store的组件的对应数据都会变。
+                       如：
+                         js模块
+                            cosnt store = {
+                                xxx1:{  //值必须是对象
+
+                                },
+                                xxx2:{
+
+                                }
+                            }
+
+                        组件A
+                          improt store from '相应js模块'
+                          data(){
+                              reutrn{
+                                  xxxA:store.xxx1
+                              }
+                          }
+                        
+                        组件B
+                          improt store from '相应js模块'
+                          data(){
+                              reutrn{
+                                  xxxB:store.xxx2
+                              }
+                          }
+
+                   eventbus 事件总线
+                      组件通知总线发生了某件事，总线通知有监听该事件的组件，运行某个函数
+                   
+
+                
+         */
+
+    </script>
+</body>
+
+</html>

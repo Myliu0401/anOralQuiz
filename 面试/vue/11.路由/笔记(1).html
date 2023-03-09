@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+                vue-router路由插件：
+                       可以解决三个问题 
+                          解决根据地址中的路径选择不同的组件。
+                          选择的组件放置的位置。
+                          无刷新页面的切换组件。
+
+                  路由插件的使用： 
+                      安装： 
+                        npm install vue-router
+
+                      导入
+                        import VueRouter from 'vue-router'
+                        
+                      在Vue中安装插件
+                        Vue.use(VueRouter)
+
+                      创建路由实例
+                       cosnt router = new VueRouter({
+                             配置路由
+                         })
+
+                      在vue配置对象中配置路由
+                        new Vue({
+                            router,
+                        })
+
+                
+                   基本使用： 
+                       路由的配置 ---- 配置对象里的属性
+                       routers:[ //表示配置路由规则 --- 命中组件的规则
+                         {
+                             path:'路径',  //当地址栏中路径与path相同表示命中该组件  路径可以写 * 号，表示通配符
+                                             但是如果是通配符那么该路由只能写到最后，表示前面都没有匹配到，就会匹配到通配符组件
+                             component:组件
+                         }
+                       ]
+
+                      router-view组件 --- 当在Vue中安装路由插件时，就会内置这个组件进去
+                         当地址栏路径与路由配置对象里配置的东西命中时，命中的组件会替换掉对应的router-view组件
+                         router-view跟slot一样相当于一个占位组件
+
+                  
+                   路由模式： 
+                     路由模式决定了：
+                             1.路由从哪里获取访问路径(也就是命中路径)
+                             2.路由如何改变访问路径
+                     vue-router提供了三种路由模式: 
+                         1.hash模式：默认值。 路由从浏览器地址栏中的hash部分获取路径，改变路径也是改变hash部分。这个模式兼容性最好。
+                            如：  http://localhost:8080/#/naisi   ---->路由获取的路径是  /naisi 
+                                  http://localhost:8080/misi/#/naisi   路由获取的路径也是  /naisi
+                           hash模式 vue-router也能监控到hash的变化，一但更改hash，也会进行匹配组件。
+
+                         2. history模式：路由从浏览器地址栏的location.pathname中获取路径，改变路径使用h5的 history的api
+                             也就是路由内部的改变路径使用h5的 history的api。
+                             这种模式可以让地址栏最友好，但是需要浏览器支持h5
+                             如：http://localhost:8081/#/blog  -->        /
+                                 http://localhost:8081/about#/blog  -->  /about
+                                 http://localhost:8081/blog  -->         /blog
+
+                         3.abstract模式：路由从内存中获取路径，改变路径也只是改动内存中的值。这种模式通常应用到非浏览器环境中。
+                            内存： /			-->   /
+                            内存： /about	--> /about
+                            内存： /blog	  --> /blog
+
+                
+                   导航
+                      router-link组件  在Vue中安装路由插件时内置进去的组件，这个组件的默认结果会渲染成一个a元素
+                      这个组件的必须传一个 to属性，属性为路径。当点击时会将这个属性值替换地址栏的路径，并匹配对应的组件
+                      这个组件可以传的属性有
+                       
+                      原理：
+                      当路由模式为hash时，router-link会被渲染成 <a href="#/xxxx"></a>
+                      当路由模式为history时，router-link会被渲染成 <a href="/xxxx"></a> 并注册一个点击事件，并阻止了默认事件，在函数内部使用h5的api修改地址栏中的路径
+                
+
+                   激活状态
+                      默认情况下，vue-router会用 当前路径(地址栏中的路径) 匹配 导航路径(router-link的to属性)
+                        如果导航路径是以当前路径开头，则算作匹配，会为导航的a元素添加类型 router-link-active
+                        如果当前路径完全等于导航路径，则算作精准匹配，会为导航的a元素添加类型 router-link-exact-active
+                        导航路径也就是 router-link组件的to属性
+                      
+                     可以为 router-link组件添加 布尔属性 exact，将匹配规则改为：必须要精准匹配才能添加匹配类名 router-link-active
+                      相当于禁止普通匹配，只能精准匹配，并且精准匹配到的添加的类名改为 router-link-active
+                    
+                     可以通过在router-link组件上添加 active-class属性更改匹配的类名，添加 exact-active-class属性更改精准匹配的类名
+
+                    
+                   命名路由
+                       可以解决to属性与路径之间的耦合
+                       在路由配置对象里的routers属性中的对象添加name属性
+                       routers:[{
+                           name:'xxx',
+                           path:'/xxx',
+                           component:组件
+                       }]
+                       并且将对应的router-link组件上的to属性值改为对象
+                        to="{name:'xxx'}"
+                       当点击router-link组件时 vue-router会取router-link组件的to属性对象里的name
+                       来找到路由配置对象里对应的组件，并且将对应的path属性替换掉地址栏的路径
+                        
+
+
+
+        
+        
+        
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+               事件总线: 
+                   //监听事件
+                   vue实例.$on('事件名',处理函数);
+
+                   
+                   //取消监听  ----- 取消监听，处理函数必须带过去。 跟dom的取消监听一样。
+                   vue实例.$off('事件名',处理函数);
+
+
+                   //触发事件
+                   vue实例.$emit('事件名',数据);
+        
+                   触发事件总线里的事件后，所有监听该事件总线里的该事件的全都会执行。
+
+                   原理： 
+                                  vue事件总线 -----> 就是vue实例上的_events对象
+                         //监听
+                         vue实例.$on('事件名',处理函数)   
+                               会判断事件总线里有没有该事件，如果没有会添加该事件(为属性名)，值为数组，并且将该处理函数push进该数组。
+                                    如果有该事件，那么将该处理函数push进该数组。
+
+                         
+                         //取消监听
+                         vue实例.$off('事件名',处理函数)
+                               会判断事件总线里有没有该事件，如果没有就直接结束。
+                                  如果有，那么会从该 事件属性中，找到该处理函数并删除。因为属性值为数组。
+                                相当于： 
+                                    事件总线：{
+                                        '事件名':[xxx处理函数,xxx处理函数]
+                                    }
+
+
+                         //触发事件
+                         //vue实例.$emit('事件名',数据)
+                              会判断事件总线中有没有该事件，如果没有就直接结束。
+                                 如果有那么会找到该 事件属性 并循环执行数组里面的函数。
+
+                        
+                        $on 、 $off 、 $emit 这么方法是在vue的原型上。
+                           当执行这些方法后 这些方法会根据 this来找到_events对象，并进行操作。
+                           相当于： 
+                              vue实例.$emit('xxx',数据)
+                                
+
+                              vue原型：{
+                                  $emit(name,data){
+                                       this._events[name](data)
+                                  }
+                              }
+
+                        父组件传递给子组件的函数也会被放到 子组件的 _events事件总线 对象中   
+        
+
+        */
+    </script>
+</body>
+</html>

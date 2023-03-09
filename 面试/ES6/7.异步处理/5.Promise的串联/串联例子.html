@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //创建Promise对象
+        function biaobai(index) {
+            return new Promise((resolve, reject) => {
+                console.log(`向女神${index}表白`)
+                setTimeout(() => {
+                    if (Math.random() > 0.1) {
+                        //推向已决阶段的resolve状态
+                        resolve(true)
+                    } else {
+                        //推向已决阶段的reject状态
+                        resolve(false)
+                    }
+                }, 2000)
+            })
+        };
+
+
+        //给已决阶段添加处理函数
+        biaobai(1).then((boolean) => {
+            if (boolean) {
+                console.log('女神1同意了')
+            } else {
+                console.log('女神1拒绝了')
+                return biaobai(2)
+            }
+            
+        }).then((boolean) => {
+            if (boolean === undefined) {
+                return;
+            } else if (boolean) {
+                console.log('女神2同意了')
+            } else {
+                console.log('女神2拒绝了')
+                return biaobai(3)
+            }
+            
+        }).then((boolean) => {
+            if (boolean === undefined) {
+                return;
+            } else if (boolean) {
+                console.log('女神3同意了')
+            } else {
+                console.log('女神3拒绝了')
+
+            }
+           
+        })
+    </script>
+</body>
+
+</html>

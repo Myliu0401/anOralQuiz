@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+           
+            const pro = new Promise((resolve,reject)=>{
+                  reject(2)
+            });
+
+
+            //上面等效于:
+
+            const por1 =  Promise.reject(2)
+
+
+            //=======================没有特殊情况
+              const pro2 = Promise.reject(pro)
+              //这样,pro2为一个已绝阶段的reject状态, pro参数 作为pro2对象的参数
+
+              console.log(pro2)
+    
+    
+    
+    </script>
+</body>
+</html>

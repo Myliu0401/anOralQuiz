@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+                    #可迭代协议与for-of 循环
+                     ##可迭代协议
+                      
+                       迭代器：一个具有next方法的对象,next方法返回下一个数据并且能指示是否迭代完成
+                       迭代器创建函数：一个返回迭代器的函数
+
+                     **可迭代协议**
+                     ES6规定,如果一个对象具有知名符号属性 Symbol.iterator 并且属性值是一个迭代器
+                     创建函数,则该对象是可迭代的(iterable)
+                     
+                     相当于：一个对象里面有 一个函数,这个方法的名是知名符号Symbol.iterator的属性
+                            而这个函数返回一个迭代对器,那么该对象就是一个可迭代对象
+
+                      数组就是一个可迭代对象,因为数组的隐式原型有这个方法      
+                      所以数组的迭代,迭的是它自己(数组)
+                            
+
+
+                     ## for-of 循环
+                        for-of 循环用于遍历可迭代对象,格式如下：
+
+                      for(cosnt item of iterable){
+                          iterable:可迭代对象
+                          item:每次迭代得到的数据
+                      } 
+                     
+              
+               
+               */
+
+        //====================可迭代对象
+        const obj = {
+            [Symbol.iterator]() {
+                return {
+                    next() {
+                        return {
+                            value: 1,
+                            done: false,
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

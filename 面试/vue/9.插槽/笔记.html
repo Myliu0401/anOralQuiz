@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+               在某些组件的模板中,有一部分区域需要父组件来指定
+                 比如： 
+                    <组件模板>
+                       <div></div>
+                       //// ---> 这个部分需要父组件来指定 --- 就需要用到插槽
+                    </组件模板>
+
+                  插槽组件 <slot></slot> 是vue的内置组件
+                  插槽的简单用法： 
+                        父组件
+                           <div>
+                              <组件>
+                                 <div class="app-message">
+                                 <p>App Message</p>
+                                 <a href="">detail</a>
+                              </组件>
+                           </div>
+                        
+                       子组件
+                         <div>
+                            <slot></slot>
+                         </div>
+                       最终会给替换成
+                        <div>
+                               <div class="app-message">
+                                 <p>App Message</p>
+                                 <a href="">detail</a>
+                        </div>
+                        solt组件最终会被父组件里的东西替换掉
+
+                   
+                   具名插槽： 
+                      如果某个组件中需要父元素传递多个区域内容，也就意味着需要提供多个插槽
+                      所以为了避免冲突，就需要给不同的插槽赋予不同的名字
+                      <slot name="xxxxx"></slot> 在插槽组件的行间上添加 name属性
+
+                      比如: 
+                         父组件 
+                           <div>
+                             <组件>
+                                <template v-slot:插槽名> fasgagdfsgsd </template> 
+                                <template v-slot:插槽名> yrt </template>
+                                <template v-slot:插槽名> 254 </template>
+                             </组件>
+                            </div>
+                            父组件里的东西就可以用 template标签来包裹，并且加上 v-slot指令，属性为插槽名。最终就会替换掉对应的插槽。
+                            如果template标签没有v-slot指令就相当于默认插槽，会替换掉没有名字的slot组件
+                            
+                     
+                  
+                
+              
+        
+        
+        
+        */
+    </script>
+</body>
+
+</html>

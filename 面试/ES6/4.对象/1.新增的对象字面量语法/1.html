@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        /* 
+                ##新增的对象字面量语法
+                  
+                   1.成员速写
+                     如果对象字面量初始化时,成员的名称来自于一个变量的名称,并且值和变量的值相同
+                     则可以进行简写
+             
+                   2.方法速写
+                     对象字面量初始化时,方法可以省略冒号和function关键字,但没有原型，所以也不能作为构造函数使用
+        
+                   3.计算属性名
+                     有的时候,初始化对象时,某些属性名可能来自于某个表达式的值,在ES6,可以使用中括号
+                     来表示该属性名是通过计算得到的             
+ 
+
+        */
+
+
+        //==================成员速写
+        function shuxie(name, mi, si) {
+            const func = function () {
+                console.log('LinPeiXuan')
+            }
+            return {
+                name,
+                mi,
+                si,
+                func,
+            }
+        }
+        console.log(shuxie('林', '培', '璇'))
+
+        //===================方法速写
+        const objj = {
+            name: 'Hello',
+            func() {
+                console.log(this.name)
+            }
+        }
+
+        objj.func()
+
+        //===================计算属性名
+        const prop1 = 'name';
+        const prop2 = 'get';
+        const prop3 = 'func';
+        const objA = {
+            [prop1]: '林培璇',
+            [prop2]: '奈斯',
+            [prop3]() {
+                console.log(this[prop1], this[prop2])
+            }
+        }
+        objA[prop3]()
+    </script>
+</body>
+
+</html>

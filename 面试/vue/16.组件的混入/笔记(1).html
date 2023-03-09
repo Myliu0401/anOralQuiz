@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+                    混入： 
+                      可以写一个配置对象跟组件配置对象跟组件的配置对象一样。
+
+                      在其他组件的配置对象中添加一个mixins属性,属性值为数组。
+
+
+                      相当于： 
+                        {
+                            //要混入的配置对象
+                        }
+
+
+                        组件a的配置对象 
+                        {
+                            mixins:[混入的配置对象],  会将混入对象里面的数据等等混入到a组件的配置对象中。
+                            data(){
+                                reutrn{
+                                    
+                                }
+                            },
+                            命名周期{
+
+                            },
+                            ......
+                        }
+
+                        如果混入配置对象里有生命名周期跟组件的配置的对象冲突了，会先运行混入的再运行实例的。
+                        如果是数据或其他除生命周期钩子以外与组件实例里冲突，那么则使用组件的。
+
+
+        
+        
+        
+        */
+    </script>
+</body>
+</html>

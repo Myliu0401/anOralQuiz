@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+                
+                       ## async和await
+
+                       async和await是ES2016 新增两个关键字,它们借鉴了ES2015 中生成器在实际开发
+                       中的应用,目的是简化 Promise api 的使用,并非是替代 Promise
+
+                         #async
+                          用于修饰函数(无论是函数字面量还是函数表达式),放置在函数最开始的位置,被修饰
+                          的函数的返回结果一定是 Promise 对象
+                          相当于把函数体里面的代码,全部放到 Promise((resolve,reject)=>{ 
+                                                                     相当于全部代码放到这里,
+                                                                     返回值就是resolve的参数
+                                                                 })
+
+                          async function (){
+                              console.log(1)
+                              return 2
+                          }
+                          相当于:
+                          function (){
+                             return new Promise((resolve,reject)=>{ 
+                                   console(1)                            
+                                  resolve(2)
+                              })
+                          }
+
+                         
+                        #await关键字必须出现在async函数中
+                         await用在某个表达式之前,如果表达式是一个Promise,则得到的是thenable中的状态数据
+                              
+                         await 函数() 这里是异步代码 
+                         会返回 函数()返回 的Promise对象的thenable数据
+
+                         await 下面全部都是异步代码
+                         相当于在 then(()=>{
+                             相当于在这里
+                         })
+
+                         在循环里面使用循环比较特殊
+                         如果是在循环里面,当前等待的promise没有resolve,下一次循环不运行
+
+                       
+                       #await的细节
+                        如果await关键字 后面表达式结果不是Promise对象,会直接调用Promise.resolve(关键字后面的数据)  
+                                    
+                
+                
+                */
+
+
+        //====================async 的resolve状态
+        async function abc() {
+            console.log(1)
+            return 2
+        }
+
+        console.log(abc())
+
+        //====================async 的reject状态  
+        async function bca() {
+            console.log(2)
+            throw 2
+        }
+        console.log(bca())
+
+        //===================如果返回值是promise对象,则是按自己写的来
+        async function aaa() {
+            return new Promise((resolve, reject) => {
+                reject(5)
+            })
+        }
+        console.log(aaa())
+
+        console.log('hoho佛哦好')
+
+        //================================
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+       
+                const obj = {};
+                const arr = [];
+                const str = '';
+                const num = 123;
+
+                obj[Symbol.toStringTag] = '奈斯';
+                arr[Symbol.toStringTag] = '迷死';
+                str[Symbol.toStringTag] = 'love';  // 不会给该变，包装类的知识
+                
+    
+                //改变了Object.prototype.toString的结果
+                console.log(Object.prototype.toString.call(obj)) 
+                //toString函数的this变成obj,会先obj的[Symbol.toStringTag]属性是什么
+              
+               
+    </script>
+</body>
+</html>

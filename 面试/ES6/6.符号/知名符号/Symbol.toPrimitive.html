@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const obj = {
+            a: 1,
+            b: 2
+        }
+
+        console.log(obj * 2) //最终会调用toString方法
+
+        //给obj对象加上 [Symbol.toPrimitive] 知名符号属性后,在隐式转换时就会先调用[Symbol.toPrimitive]属性
+
+        obj[Symbol.toPrimitive] = function (vlaue) { //js内部调用时,会传一个参数,这个参数根据隐式类型转换来的
+            console.log(vlaue)
+            return 2
+        }
+
+        console.log(obj * 2) //4 ,因为先调用obj[Symbol.toPrimitive]得到的结果再乘于2===4
+
+
+
+
+
+        class misi {
+            constructor(vlaue) {
+                this.leixin = vlaue;
+            }
+
+            [Symbol.toPrimitive](type) {
+                console.log(type)
+                if (type === 'default') {
+                    return this.leixin + '摄氏度'
+                } else if (type === 'number') {
+                    return this.leixin
+                } else if (type === 'string') {
+                    return this.leixin + '℃'
+                }
+            }
+
+        }
+        const objj = new misi(30)
+        console.log(objj + '!') //因为[Symbol.toPrimitive] 的返回结果是unedfined。 过程为默认转换。 type参数为 default
+
+        console.log(objj / 2) //结果为NaN,为数字类型,type参数为 number
+        console.log(String(objj)) //转换成字符串 ,type参数为 string
+    </script>
+</body>
+
+</html>

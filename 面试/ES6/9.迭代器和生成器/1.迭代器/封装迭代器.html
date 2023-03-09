@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //封装迭代器
+        function getdiedai(data) {
+            let i = 0; //表示索引
+            return { //返回迭代器
+                next() {
+                    return {
+                        value: data[i++],
+                        done: i > data.length,
+                    }
+                }
+            }
+        }
+
+
+        const arr1 = [1, 2, 3, 4, 5];
+        const arr2 = [9, 8, 7, 6, 5];
+
+        const obj = getdiedai(arr1)
+        let boo = obj.next()
+        while (!boo.done) {
+            console.log(boo.value)
+            boo = obj.next()
+        }
+
+        const obj1 = getdiedai(arr2)
+        let hoo = obj1.next();
+        while (!hoo.done) {
+            console.log(hoo.value)
+            hoo = obj1.next()
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 模板 交给vue一顿骚操作 变成dom -->
+    <div id="app">
+        <h1>标题:水果商城</h1>
+        <ul>
+            <li v-for="(el,index) in datas" :key="index">
+                <span>商品名称：{{el.name}};</span>
+                <span>商品库存：<button @click="el.kucun?el.kucun--:''">-</button>{{el.kucun?el.kucun:'无货'}}<button
+                        @click="el.kucun++">+</button></span>
+                <button @click="datas.splice(index,1)">删除</button>
+            </li>
+        </ul>
+        <span>总库存:{{Mynum}}</span>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                datas: [{
+                    name: '苹果',
+                    kucun: 10,
+                }, {
+                    name: '香蕉',
+                    kucun: 10,
+                }, {
+                    name: '荔枝',
+                    kucun: 10
+                }]
+            },
+            //计算属性
+            computed: {
+                Mynum() {
+                    return this.datas.reduce((a, b) => {
+                        return a + b.kucun
+                    }, 0)
+                }
+            }
+        });
+        
+    </script>
+</body>
+
+</html>
