@@ -8,6 +8,7 @@
 </head>
 <body>
     <div id="app">
+        {{ a }}
            <naisi-liu></naisi-liu>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -25,12 +26,23 @@
            //全局注册
            Vue.component("naisi-liu", MyButton);
            const vm = new Vue({
+               data:{
+                  a:123
+               },
                el:'#app',
               /*  template:`<div>
                 <MyButton/>
                 <MyButton/>
                 <MyButton/>
                </div>` */
+               watch: {
+                  a(){
+                    console.log('+++')
+                  }
+               },
+               beforeUpdate (){
+                  console.log('=====')
+               }
            });
 
 
