@@ -16,7 +16,7 @@
                                           如：    data:{
                                                   xxx:xxx
                                                  }
-                                                 methods:{   吐音：猛茶（潮汕话）是
+                                                 methods:{   吐音：咩茶s（潮汕话）是
                                                      xxxx(){
    
                                                      }
@@ -56,8 +56,8 @@
                 可见，在vue中,要得到最终的界面,必须要生成一个虚拟dom树(vnode tree)
                   vue通过以下逻辑来生成虚拟dom树: 
                        vue会看配置对象有没有配置render函数，有就直接取render函数的返回值作为虚拟dom树，
-                        没有就看有没有配置template模板,有就直接将template模板解析进render函数来生成虚拟dom树，
-                        没有就直接将el配置选中的模板的outerHTML作为模板解析进render函数来生成虚拟dom。
+                        没有就看有没有配置template模板,有就直接将template模板解析成render函数来生成虚拟dom树，
+                        没有就直接将el配置项选中的模板的outerHTML作为模板解析成render函数来生成虚拟dom。
                         最终根据虚拟dom生成真实dom替换掉el配置选中的模板。
                         render函数vue执行时会传入一个参数进来,这个参数是函数就来用创建虚拟dom的。
                    注意:虚拟dom树必须是单根的

@@ -9,6 +9,8 @@
 <body>
     <div id="app">
         {{ a }}
+        <span>{{ ab }}</span>
+        <span>{{ d.a }}</span>
            <naisi-liu></naisi-liu>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -27,7 +29,12 @@
            Vue.component("naisi-liu", MyButton);
            const vm = new Vue({
                data:{
-                  a:123
+                  a:123,
+                  b:456,
+                  c:789,
+                  d: {
+                    a:123
+                  }
                },
                el:'#app',
               /*  template:`<div>
@@ -38,10 +45,18 @@
                watch: {
                   a(){
                     console.log('+++')
+                  },
+                  'd.a'(newValue, oldValue){
+                    console.log(newValue, oldValue, '更新')
                   }
                },
                beforeUpdate (){
                   console.log('=====')
+               },
+               computed:{
+                ab(){
+                    return Math.random()
+                }
                }
            });
 

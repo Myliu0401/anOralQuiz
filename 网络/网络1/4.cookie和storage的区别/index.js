@@ -21,4 +21,14 @@
 
 
 
+      小程序的缓存与web的缓存有所不同，小程序的 Storage 缓存跟web端的 localStorage更接近，但不是完全相同的
+         区别： 
+            小程序的Storage缓存容量大约10MB，而web端的localStorage拥有更大的容量。
+            小程序的Storage数据对每个小程序都是独立的，互不干扰的。而web端的localStorage是域名级别的，只要相同的域名
+               就可以共享localStorage数据。
+  
+     
+
+
+
 */

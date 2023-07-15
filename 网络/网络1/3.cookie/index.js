@@ -12,10 +12,10 @@
         cookie的组成
             key: 健
             value: 值
-            domain: 域，表示这个cookie属于那个网站的
-            path: 路径，表示这个cookie是属于该网站的那个基路径
-            secure: 是否使用安全传输
-            expire: 过期时间，表示该cookie在什么时候过期
+            domain（嘟妹）: 域，表示这个cookie属于那个网站的    
+            path（葩是）: 路径，表示这个cookie是属于该网站的那个基路径
+            secure（是起额）: 是否使用安全传输
+            expire（衣可是摆）: 过期时间，表示该cookie在什么时候过期
 
             当浏览器向服务器发出请求时，cookie小系统就会看那个cookie符合条件，符合得则会带在请求中。
             条件如下： 

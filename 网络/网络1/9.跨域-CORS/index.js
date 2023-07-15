@@ -15,15 +15,15 @@
           请求头只能包含安全的字段
              如：Accept、Accept-Language、Content-Language、Content-Type、DPR、Downlink、Save-Data等
           请求头如果包含 Content-Type,那么值只能是以下三种的其中一种
-             text/plain、multipart/form-data、application/x-www-form-urlencoded
+             text/plain（披0）、multipart/form-data、application/x-www-form-urlencoded
          同时满足上面三个条件则为 简单请求
 
 
        简单请求的交互规范
          当浏览器发出跨域简单请求时，会发生以下事情
-            请求头中会自动添加 Origin 字段，值为 页面的源
+            请求头中会自动添加 Origin（哦另值） 字段，值为 页面的源
           
-          如果服务器允许简单请求的跨域访问，则需要在响应头中添加 Access-Control-Allow-Origin 字段
+          如果服务器允许简单请求的跨域访问，则需要在响应头中添加 Access-Control-Allow-Origin （啊可生坑凑饿捞哦另值）字段
            值为如下
               *           表示允许所有的源跨域访问
              具体的源      表示只允许该源跨域访问
@@ -49,7 +49,7 @@
             如果服务器允许，则需要响应给预检请求时添加请求头
               Access-Control-Allow-Origin: 允许的源
               Access-Control-Allow-Methods: 真实请求的方法
-              Access-Control-Allow-Headers: 允许改动的请求头
+              Access-Control-Allow-Headers: 允许改动的请求头 (如果有一些头部属性没有被允许，后续也不会发送真实的请求)
               Access-Control-Max-Age: 多少秒内，对于同样的请求源、方法、头，都不需要再发出预检请求
       
             浏览器收到预检响应后，会根据这4个属性进行判断
@@ -62,7 +62,7 @@
            当发生跨域请求时，浏览器不会附带 cookie
            当手动添加上cookie后，预检请求的请求头中 Access-Control-Allow-Headers会多了一个值为 cookie
 
-           服务器预检响应时需要再响应头中添加 Access-Control-Allow-Credentials: true 即可，否则浏览器则会拒绝
+           服务器预检响应时需要在响应头中添加 Access-Control-Allow-Credentials: true 即可，否则浏览器则会拒绝
 
 
        在跨域请求时，js只能拿到一些最基本的响应头，如果要拿到特殊的响应头，则需要再响应头上加上
