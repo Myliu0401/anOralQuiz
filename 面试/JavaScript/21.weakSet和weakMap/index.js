@@ -20,8 +20,7 @@
 
 
        Map和Object的区别
-           Map默认情况下不包含任何建。Object有一个原型，原型链上的建名有可能和自己对象上的建产生冲突。
-           Map的建可以是任意值，包括函数，对象或者任意基本类型。一个Object必须是一个string或Symbo。
+           Map的键可以是任意值，包括函数，对象或者任意基本类型。一个Object必须是一个string或Symbo。
            Map中的key是有序的，因此当迭代的时候，一个Map对象以插入的顺序返回键值。Object的建是无序的。
            Map可以通过size获取长度。Object只能手动计算。
            Map可以迭代。Object需要某种方式获取到建才能被迭代

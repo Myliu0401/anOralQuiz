@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script>
-        /* 
+      /* 
                          # Proxy 代理
 
                            代理:提供了修改底层实现的方式
@@ -33,47 +32,39 @@
               
               */
 
+      //=========================代理
+      const obj = {
+        a: 123,
+        b: 456,
+      };
 
-        //=========================代理
-        const obj = {
-            a: 123,
-            b: 456
-        }
+      const daili = new Proxy(obj, {
+        set(obj, shuxin, value) {
+          //代理的方法,当给代理赋值时,代理会运行这个方法
 
-        const daili = new Proxy(obj, {
-            set(obj, shuxin, value) { //代理的方法,当给代理赋值时,代理会运行这个方法
+          console.log(obj, shuxin, value);
 
-                console.log(obj, shuxin, value);
+          Reflect.set(obj, shuxin, value); //代理操作目标对象
+        },
 
-                Reflect.set(obj, shuxin, value); //代理操作目标对象
-
-            },
-
-
-            get(obj, shuxin) {
-                if (Reflect.has(obj, shuxin)) {
-                    return Reflect.get(obj, shuxin)
-                }else{
-                    return -1;
-                }
-            }
-            /* 
+        get(obj, shuxin) {
+          if (Reflect.has(obj, shuxin)) {
+            return Reflect.get(obj, shuxin);
+          } else {
+            return -1;
+          }
+        },
+        /* 
                  相当于：我们给代理对象里属性赋值,代理会运行get函数
                  执行Reflect.has方法 相当于代理问obj对象里面有没有这个属性
                  return Reflect.get(obj, shuxin) 就是代理从目标对象里拿出来
             
             */
-        })
-        daili.b = '林培璇'; //相当于 跟代理说赋这个值,代理就会运行set函数
-        console.log(daili.a)
+      });
+      daili.b = "林培璇"; //相当于 跟代理说赋这个值,代理就会运行set函数
+      console.log(daili.a);
 
-
-
-
-
-
-        //
+      //
     </script>
-</body>
-
+  </body>
 </html>

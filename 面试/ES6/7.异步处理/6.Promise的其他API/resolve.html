@@ -24,7 +24,7 @@
              //特殊情况只发生在resolve函数上
               const por2 = Promise.resolve(pro) 
               //如果传递的数据是Promise,则直接返回传递的Promise对象
-              //会把数据直接返回给por2 所以相等,por2是什么状态就会pro绝定了
+              //会把数据直接返回给por2 所以相等,por2是什么状态就由pro决定了
 
               console.log(por2 === pro) //为true
     

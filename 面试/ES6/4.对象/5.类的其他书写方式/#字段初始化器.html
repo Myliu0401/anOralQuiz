@@ -18,7 +18,10 @@
                 this.name = name;
                 this.get = get;
                 this.deb = deb;
-            }; */ //可以简写成字段初始化器
+            }; */ 
+            constructor(type){ this.type = type } // 权重比 字段初始化器高
+
+            //可以简写成字段初始化器
             type = 1;
             name = 2;
             get = 3;

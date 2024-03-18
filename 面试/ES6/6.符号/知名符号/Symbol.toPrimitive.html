@@ -48,7 +48,7 @@
 
         }
         const objj = new misi(30)
-        console.log(objj + '!') //因为[Symbol.toPrimitive] 的返回结果是unedfined。 过程为默认转换。 type参数为 default
+        console.log(objj + '!') //只有是通过显示类型转换得出的字符串，执行该函数时参数才是string,否则是default
 
         console.log(objj / 2) //结果为NaN,为数字类型,type参数为 number
         console.log(String(objj)) //转换成字符串 ,type参数为 string

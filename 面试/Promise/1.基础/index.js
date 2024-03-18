@@ -1,6 +1,6 @@
 
 
-function sendMessage(name, success, fail) {
+function sendMessage(name, success, fail) { 
     setTimeout(() => {
         Math.random() <= 0.4 ? success(true) : fail(false);
     }, 1000)
@@ -55,7 +55,7 @@ delay(1000).then(() => { console.log('finish') })
 
 /* 
    根据指定的图片路径，创建一个img元素
-   该函数需要返回一个Promise,但图片加载完成后，任务完成，若图片加载失败，任务失败
+   该函数需要返回一个Promise,当图片加载完成后，任务完成，若图片加载失败，任务失败
    任务完成后，需要提供的数据是图片DOM元素，任务失败时，需要提供失败的原因
    提示  img元素有两个事件，load事件会在图像加载完成时触发，errror事件会在图像加载失败时触发
 

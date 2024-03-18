@@ -1,45 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script>
-        //利用生成器的斐波那契数列
-        function* Gr() {
-            let poer1 = 1, //当前位的前一位 
-                poer2 = 1, //当前位的前两位
-                n = 1; //当前是第几位
+      //利用生成器的斐波那契数列
+      function* Gr() {
+        let poer1 = 1, //当前位的前一位
+          poer2 = 1, //当前位的前两位
+          n = 1; //当前是第几位
 
-            while (true) {
-                if (n++ <= 2) {
-                    yield 1;
-                } else {
-                    yield poer1 + poer2;
-                    poer1 = poer1 + poer2;
-                    poer2 = poer1 - poer2;
-                }
-            }
+        while (true) {
+          if (n++ <= 2) {
+            yield 1;
+          } else {
+            yield poer1 + poer2;
+            poer1 = poer1 + poer2;
+            poer2 = poer1 - poer2;
+          }
         }
-    /* 
+      }
+      /* 
            上面执行的原理:
                          如果 n<=2 就进入 yield 1 (创建数据1,返回后,就停止执行了)
                          在执行函数,会从上次的 yield 1 下面开始执行,(yield下面没有代码,又开始循环,到yield 1,返回后,又停止执行)
 
                          如果到 yield poer1+poer2 就生成数据后,并返回对象
                          下次再执行函数,就从 yield poer1+poer2 下面开始执行,又开始循环
-    */  
+    */
 
-       const obj = Gr();
+      const obj = Gr();
 
-
-
-        //
+      //
     </script>
-</body>
 
+    <script>
+      //  利用生成器来实现裴波那契数列
+
+      function* fGr(infinite = true) {
+        let one = 1;
+        let two = 1;
+        let index = 0;
+
+        while (infinite) {
+          index++;
+
+          if (typeof infinite !== "boolean" && index >= infinite) {
+            infinite = false;
+          }
+
+          if (index <= 2) {
+            yield 1;
+          } else {
+            two = one + two;
+            one = two - one;
+            if (!infinite) {
+              return two;
+            }
+            yield two;
+          }
+        }
+      }
+    </script>
+  </body>
 </html>

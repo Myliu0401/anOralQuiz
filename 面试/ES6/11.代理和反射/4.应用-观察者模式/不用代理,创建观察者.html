@@ -52,6 +52,42 @@
         }
         const daili = guancazhi(obj1)
     </script>
+
+    <script>
+        // 创建观察者
+        function createObserver(target){
+            let obj = {}
+            for(let name in target){
+                obj[name] = target[name]
+                let nam1 = name;
+
+               // 利用该ES5api进行监听
+               Object.defineProperty(target, name, {
+                   get(){
+                       return obj[nam1]
+                   },
+                   set(newValue){
+                      obj[nam1] = newValue; 
+                      operate();
+                   }
+               });
+            };
+
+            // 操作dom
+            function operate(){
+                const conset = document.querySelector('#conset');
+                let html = '';
+                for(let name in obj){
+                    html += `<p>${name}----<span>${obj[name]}</span></p>`
+                };
+
+                conset.innerHTML = html;
+            };
+            
+
+        };
+
+    </script>
 </body>
 
 </html>

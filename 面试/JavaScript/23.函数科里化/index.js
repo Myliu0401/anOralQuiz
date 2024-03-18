@@ -12,7 +12,7 @@
 function currying(callback, ...surplus) {
     return (...collect) => {
         const arr = surplus.concat(collect);
-        if (arr.length <= callback.length) {
+        if (arr.length >= callback.length) {
             return callback(...arr)
         } else {
             return currying(callback, ...arr)

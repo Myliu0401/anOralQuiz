@@ -1,56 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script>
-        //用循环实现斐波那契数列
-        function g(num) {
-            let a = 1;
-            let b = 0;
-            let c;
-            for (let i = 0; i < num; i++) {
-                c = a + b;
-                b = a;
-                a = c;
-            }
-            console.log(c)
+      //用循环实现斐波那契数列
+      function g(num) {
+        let a = 1;
+        let b = 0;
+        let c;
+        for (let i = 1; i < num; i++) {
+          c = a + b;
+          b = a;
+          a = c;
         }
-        g(5)
+        console.log(c);
+      }
+      g(5);
 
-        //数组实现斐波那契数列只能写多少拿多少
+      //数组实现斐波那契数列只能写多少拿多少
 
-        //用迭代器实现可以无限
-        function diedaiFbnqsl() {
-            let per1 = 1,
-                per2 = 1; //当前值的前一位和前二位
-            let n = 1; //当前是第几位    
+      //用迭代器实现可以无限
+      function diedaiFbnqsl() {
+        let per1 = 1,
+          per2 = 1; //当前值的前一位和前二位
+        let n = 1; //当前是第几位
+
+        return {
+          next() {
+            if (n++ <= 2) {
+              value = 1;
+            } else {
+              value = per1 + per2;
+              per2 = per1;
+              per1 = value;
+            }
+            return {
+              value,
+              done: false, //可以无限迭代
+            };
+          },
+        };
+      }
+
+      const obj = diedaiFbnqsl();
+    </script>
+
+    <script>
+      // 用循环实现斐波那契数列
+      function fibonacci(num = 10) {
+        let one = 1;
+        let two = 0;
+        let conet = null;
+        for (let i = 1; i < num; i++) {
+          conet = one + two;
+          two = one;
+          one = conet;
+        }
+        return conet;
+      }
+
+      // 用迭代形器实现, 参数为是否无限迭代
+      function diedAiqiFbnqsl(infinite = true) {
+        let one = 1;
+        let two = 1;
+        let coum = null;
+        let times = 0;
+        return {
+          next() {
+            if (infinite) {
+              coum = times < 2 ? 1 : one + two;
+              one = two;
+              two = coum;
+              times++;
+            }
+
+            if(typeof(infinite) !== 'boolean' && times >= infinite){
+                infinite = false;
+            }
 
             return {
-                next() {
-                    if (n++ <= 2) {
-                        value = 1;
-                    } else {
-                        value = per1 + per2;
-                        per2 = per1;
-                        per1 = value;
-                    }
-                    return {
-                        value,
-                        done: false, //可以无限迭代
-                    }
-                }
-            }
-        }
-
-        const obj = diedaiFbnqsl();
+              value: coum, // 迭代的值
+              done: !infinite, // 是否迭代完成
+            };
+          },
+        };
+      };
     </script>
-</body>
-
+  </body>
 </html>

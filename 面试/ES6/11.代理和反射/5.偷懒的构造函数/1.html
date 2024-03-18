@@ -37,6 +37,23 @@
 
         const obj = new misi('林', '培璇', 21)
     </script>
+
+
+<script>
+   
+      function createBeLazy(target, ...residue){
+            return new Proxy(target, {
+                construct(tag, parameter){
+                  const obj = Reflect.construct(tag, parameter);
+                  residue.forEach((name, index)=>{ obj[name] = parameter[index] });
+
+                  return obj;
+                }
+            })
+      };
+
+
+</script>
 </body>
 
 </html>

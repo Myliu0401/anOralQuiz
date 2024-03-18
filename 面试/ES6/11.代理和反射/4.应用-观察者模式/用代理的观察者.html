@@ -51,7 +51,37 @@
             '姓名': '林培璇',
             love: 5201314
         }
-        const misi = Observer(obj)
+       // const misi = Observer(obj)
+    </script>
+
+    <script>
+ 
+        function createProxyObserver(target){
+              const proxy = new Proxy(target, {
+                 get(tag, name){
+                    return Reflect.get(tag, name); // 利用反射的函数获取属性
+                 },
+
+                 set(tag, name, value){
+                    Reflect.set(tag, name, value); // 利用反射的函数进行设置属性或添加属性
+                    operate();
+                 }
+              });
+
+              function operate(){
+                   const conet = document.querySelector('#conet');
+                   let html = '';
+                   for(let name of Object.keys(proxy)){
+                      html += `<p><span>${name}</span>-----<span>${proxy[name]}</span></p>`
+                   };
+
+                   conet.innerHTML = html;
+              };
+
+              return proxy;
+        };
+
+
     </script>
 </body>
 

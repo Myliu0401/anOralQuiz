@@ -1,67 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script>
-        function sum(a, b) {
-            return a + b;
-        }
+      function sum(a, b) {
+        return a + b;
+      }
 
+      //func为指定函数    types为sum函数参数的类型
+      function Verification(func, ...types) {
+        const misi = new Proxy(func, {
+          apply(target, thisnaisi, argumentss) {
+            //代理的执行
 
-        //func为指定函数    types为sum函数参数的类型
-        function Verification(func, ...types) {
+            types.forEach((ele, index) => {
+              if (typeof argumentss[index] !== ele) {
+                throw new TypeError(`参数${argumentss[index]}不是${ele}类型的`);
+              }
+            });
 
-            const misi = new Proxy(func, {
-                apply(target, thisnaisi, argumentss) { //代理的执行
+            //执行底层(也就是执行sum函数)
+            return Reflect.apply(target, thisnaisi, argumentss);
+          },
+        });
 
-                    types.forEach((ele, index) => {
-                        if (typeof (argumentss[index]) !== ele) {
-                            throw new TypeError(`参数${argumentss[index]}不是${ele}类型的`);
-                        }
-                    })
+        return misi;
+      }
 
-                    //执行底层(也就是执行sum函数)
-                    return Reflect.apply(target, thisnaisi, argumentss);
+      const func = Verification(sum, "number", "number"); //返回代理
+      console.log(func(1, "123")); //执行代理
 
-                }
-            })
+      //返回的 misi代理 不会占内存
 
-            return misi;
-
-        }
-
-        const func = Verification(sum, 'number', 'number') //返回代理
-        console.log(func(1, '123')); //执行代理 
-
- 
-
-          //返回的 misi代理 不会占内存
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //
+      //
     </script>
-</body>
 
+    <script>
+      function createAgentBeLazy(callback, ...types) {
+        return new Proxy(callback, {
+          apply(tag, This, parameter) {
+            for (let i = 0; i < parameter.length; i++) {
+              if (!typeof parameter[i] !== types[i]) {
+                throw new Error("某位参数类型错误");
+              }
+            }
+
+            return Reflect.apply(tag, This, parameter);
+          },
+        });
+      }
+    </script>
+  </body>
 </html>

@@ -11,7 +11,7 @@
 
      cookie是有大小限制的，一般存储总量为4M，而seeionStroage和localStroage没有大小限制。
 
-     cookie会与domain、path关联，而seeionStroage、localStroage只与domain关联（只能用同个网站下的）
+     cookie只与（请求的域和地址）domain、path关联，而seeionStroage、localStroage只与domain关联（只能用同个网站下的）
 
 
 

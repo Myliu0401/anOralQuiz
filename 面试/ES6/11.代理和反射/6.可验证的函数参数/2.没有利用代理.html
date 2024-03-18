@@ -1,47 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script>
-        function sum(a, b) {
+      function sum(a, b) {
+        return a + b;
+      }
 
-            return a + b;
-
-        }
-
-
-        // 参数types为 sum函数的参数类型, func参数为sum函数
-        function Verification(func, ...types) {
-
-            //misi为传给sum函数的参数 
-            return function (...misi) {
-                types.forEach((ele, index) => {
-                    if (typeof (misi[index]) !== ele) {
-                        throw new TypeError(`参数${misi[index]}不是${ele}类型的`);
-                    }
-
-                })
-                return func(...misi);
+      // 参数types为 sum函数的参数类型, func参数为sum函数
+      function Verification(func, ...types) {
+        //misi为传给sum函数的参数
+        return function (...misi) {
+          types.forEach((ele, index) => {
+            if (typeof misi[index] !== ele) {
+              throw new TypeError(`参数${misi[index]}不是${ele}类型的`);
             }
-        }
+          });
+          return func(...misi);
+        };
+      }
 
+      const func = Verification(sum, "number", "number");
 
-        const func = Verification(sum, 'number', 'number');
+      console.log(func(123, "456"));
 
-        console.log(func(123, '456'));
+      // 返回的 函数 会占内存
 
-
-         // 返回的 函数 会占内存
-
-        //
+      //
     </script>
-</body>
 
+    <script>
+      // 会验证参数是否类型一样的增强版函数
+      function createVerifyParameters(callback, ...types) {
+        return (...values) => {
+          for (let i = 0; i < values.length; i++) {
+            if(!typeof(values[i]) !== types[i]){
+                throw new Error('某位参数类型错误')
+            }
+          };
+
+          return callback(...values);
+        };
+      }
+    </script>
+  </body>
 </html>
