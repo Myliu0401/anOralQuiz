@@ -33,9 +33,9 @@
               使用的协议为  ws:// 或  wss://
 
               请求头中带有：
-                 Connection: Upgrade   表示升级协议
-                 Upgrade: webscoket    使用webscoket协议
-                 Sec-WebScoket-Version: 版本号    表示使用的webScoket版本
+                 Connection: Upgrade   表示升级协议         Connection 吐音 坑乃顺
+                 Upgrade: webscoket    使用webscoket协议    Upgrade   吐音 噢古略
+                 Sec-WebScoket-Version: 版本号    表示使用的webScoket版本   吐音 熟坑-webscoket-窝顺
                  Sec-WebScoket-Key: .....  表示秘钥
 
             服务端响应时
@@ -61,9 +61,9 @@
         
          webScoket与传统的http有什么优势
             http只能由客户端发出请求，服务端进行响应，断开链接，服务端无法主动告知客户端。
-            当需要实时通信时，http只能由客户端发出请求，询问服务端。次数都了会造成大多无意义请求，太耗效率、无法实时知道数据。
+            当需要实时通信时，http只能由客户端发出请求，询问服务端。次数多了会造成大多无意义请求，太耗效率、无法实时知道数据。
             如果使用长链接又会导致请求长时间被挂起，浪费资源。
-            webscoket解决了上面的问题，可以持久性链接，客户端和服务端可以只有的收发数据。
+            webscoket解决了上面的问题，可以持久性链接，客户端和服务端可以自由的收发数据。
 
 
          前端实现实时通讯的方式

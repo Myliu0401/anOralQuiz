@@ -9,7 +9,7 @@
      浏览器不会对这两个有任何的默认行为，这样一来，保存令牌，读取令牌、附带令牌 的工作就只能手动完成，这
      就让恶意攻击者难以针对登陆状态进行攻击。
 
-     cookie是有大小限制的，一般存储总量为4M，而seeionStroage和localStroage没有大小限制。
+     cookie是有大小限制的，一般存储总量为4M，而seeionStroage和localStroage 的容量则更大
 
      cookie只与（请求的域和地址）domain、path关联，而seeionStroage、localStroage只与domain关联（只能用同个网站下的）
 
