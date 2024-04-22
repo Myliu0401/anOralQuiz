@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <script>
-           /* 
+      /* 
                      #数组解构
                         接收时必须用对象或数组包裹起来
                       
@@ -20,61 +18,62 @@
            
            */
 
+      //=============================利用非同名属性的解构,因为变量不能数字开头
+      const arr1 = ["a", 1, 2, 3, 4];
+      let { 0: n1, 1: n2 } = arr1;
+      //可以控制解构第几项
 
-          //=============================利用非同名属性的解构,因为变量不能数字开头
-          const arr1 = ['a',1,2,3,4]
-          let {0:n1,1:n2} = arr1
-          //可以控制解构第几项
+      //=============================更简洁的解构
+      var arr2 = [22, 33, 44, 55];
+      let k1, k2;
+      [k1, k2] = arr1; //就数组的第一和第二项解构出来
 
-          //=============================更简洁的解构
-          var arr2 = [22,33,44,55]
-          let k1,k2 ;
-          ([k1,k2]=arr1) //就数组的第一和第二项解构出来
+      //==============================最简洁
+      const arr3 = [66, 77, 88];
+      const [m1, m2] = arr3; //将数组第一和第二项解构出来
+      //也可以 [m1,,m2] = arr3 //将第一项和最后一项解构出来
 
+      //==============================深层次的解构
+      const arr5 = [1, { a: "密室" }, 3, 4, 5, [1, 2, 3]];
+      const [, , , , , [, , ni1]] = arr5;
+      console.log(ni1); //将里面的最后一项解构出来
+      const [
+        ,
+        {
+          a: A, //变量成大写的A
+        },
+        ,
+        ,
+        ,
+        [, nil],
+      ] = arr5;
+      console.log(A, nil);
 
-          //==============================最简洁
-           const arr3 = [66,77,88]
-           const [m1,m2] = arr3 //将数组第一和第二项解构出来
-           //也可以 [m1,,m2] = arr3 //将第一项和最后一项解构出来
+      //================================解构剩余项
+      //剩余项的解构必须放到最后一个
+      const obj8 = {
+        a: 1,
+        name: "林培璇",
+        name1: "刘玉联",
+        misi: "love",
+      };
 
+      const { a: ai, ...obj } = obj8;
+      console.log(ai, obj);
 
-           //==============================深层次的解构
-           const arr5 = [1,{a:'密室'},3,4,5,[1,2,3]]
-           const [,,,,,[,,ni1]] = arr5;
-           console.log(ni1) //将里面的最后一项解构出来
-           const [,{
-               a:A //变量成大写的A
-           },,,,[,nil,]] = arr5
-           console.log(A,nil)
+      //相当于 将对象里面的a解构出来,...obj表示将剩下的所有项放到obj这个对象,三个点表示将后面的项收集起来
 
-          //================================解构剩余项
-            //剩余项的解构必须放到最后一个
-            const obj8 = {
-                a:1,
-                name:'林培璇',
-                name1:'刘玉联',
-                misi:'love'
-            }
+      //===============================数组剩余项解构
+      const mis = [1, 2, 3, 4, 5, 6, { a: 123, g: 12 }, [11, 22, 33]];
+      const [g1, ...arr0] = mis;
+      console.log(g1, arr0);
 
-            const {a:ai, ...obj} = obj8
-            console.log(ai,obj)
-  
-            //相当于 将对象里面的a解构出来,...obj表示将剩下的所有项放到obj这个对象,三个点表示将后面的项收集起来
-
-          //===============================数组剩余项解构
-           const mis = [1,2,3,4,5,6,{a:123,g:12},[11,22,33]]
-           const [g1,...arr0] = mis;
-           console.log(g1,arr0)
-
-
-          //================================利用解构进行交换值
-            let ar = 12, br = 24;
-              [br,ar] = [ar,br]
-              //相当于 [br,ar] = [12,24] 
-              // 相当于将数组解构出来，赋给变量
-
-
+      //================================利用解构进行交换值
+      let ar = 12,
+        br = 24;
+      [br, ar] = [ar, br];
+      //相当于 [br,ar] = [12,24]
+      // 相当于将数组解构出来，赋给变量
     </script>
-</body>
-
+  </body>
 </html>
