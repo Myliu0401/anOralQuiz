@@ -33,7 +33,7 @@ export default {
         }
 
         for (let Callback of eventBus[eventName]) {
-            Callback(...data)
+            Callback(data)
         }
     }
 };

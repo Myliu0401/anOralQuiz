@@ -37,4 +37,6 @@
     call函数内部是调用this函数，call函数的this指向bind，所以会执行bind函数，并且将bind函数的this指向f函数，call
     内部中执行this函数并返回。
     而bind函数的内部会返回一个新的this函数，该函数的this指向参数。
+
+  
 */

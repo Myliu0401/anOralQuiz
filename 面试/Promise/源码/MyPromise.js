@@ -60,7 +60,7 @@ class MyPromise {
      * @param {Function} fulfilledFunc     fulfilled状态是执行的函数
      * @param {Function} rejectedFunc      rejected状态时执行的函数
      */
-    then(fulfilledFunc, rejectedFunc) {
+    then(fulfilledFunc, rejectedFunc) {  // then  吐音 黏
 
         return new MyPromise((resolve, reject) => {
             this._queue.push({ state: fulfilled, processingFunc: fulfilledFunc, resolve, reject });
@@ -123,7 +123,7 @@ class MyPromise {
      * 处理失败的场景
      * @param {function} rejectedFunc 
      */
-    catch(rejectedFunc) {
+    catch(rejectedFunc) {  // 吐音  客取
         return this.then(null, rejectedFunc);
     };
 
@@ -132,7 +132,7 @@ class MyPromise {
      * 无论成功还是失败都会执行回调
      * @param {function} onSettled 
      */
-    finally(onSettled) {
+    finally(onSettled) {   // finally 吐音  伐么哩
         return this.then(
             (data) => { onSettled(); return data },
             (err) => {
@@ -168,7 +168,7 @@ class MyPromise {
       * 得到一个被拒绝的Promise
       * @param {any}} err
       */
-    static reject(err) {
+    static reject(err) { 
         return new MyPromise((resolve, reject) => {
             reject(err)
         });
@@ -183,7 +183,7 @@ class MyPromise {
    * 只要有一个Promise失败，则返回的Promise失败，原因是第一个失败的Promise的原因
    * @param {iterator} proms
    */
-    static all(proms) {
+    static all(proms) {  // 吐音 哦
         return new MyPromise((resolve, reject) => {
             try {
                 const arr = [];
@@ -210,7 +210,7 @@ class MyPromise {
        * 并且按照顺序将所有结果汇总
        * @param {iterator} proms
        */
-    static allSettled(proms) {
+    static allSettled(proms) {   // allSettled 吐音 哦沙逗
         const arr = [];
         for (const prom of proms) {
             arr.push(MyPromise.resolve(prom).then(
@@ -229,7 +229,7 @@ class MyPromise {
        * 返回的Promise与第一个有结果的一致
        * @param {iterator} proms
        */
-    static race(proms) {
+    static race(proms) {  // race 吐音 略是
         return new MyPromise((resolve, reject) => {
             for (const prom of proms) {
                 MyPromise.resolve(prom).then(resolve, reject)

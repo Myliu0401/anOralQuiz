@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>原生虚拟列表示例</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      height: 400px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      position: relative;
+    }
+    .spacer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: -1;
+    }
+    .item {
+      height: 40px;
+      line-height: 40px;
+      border-bottom: 1px solid #eee;
+      box-sizing: border-box;
+      padding-left: 10px;
+      background: white;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container" id="list"></div>
+
+<script>
+  // ====== 基础配置 ======
+  const itemHeight = 40; // 每个 item 高度
+  const visibleCount = 12; // 可视数量（含缓冲）
+  const totalCount = 10000; // 总数据条数
+
+  const listEl = document.getElementById('list');
+
+  // ====== 模拟数据 ======
+  const data = Array.from({ length: totalCount }, (_, i) => `Item ${i + 1}`);
+
+  // ====== 创建可视区节点 ======
+  const visibleList = [];
+  for (let i = 0; i < visibleCount; i++) {
+    const div = document.createElement('div');
+    div.className = 'item';
+    listEl.appendChild(div);
+    visibleList.push(div);
+  }
+
+  // ====== 创建占位高度 ======
+  const spacer = document.createElement('div');
+  spacer.className = 'spacer';
+  spacer.style.height = totalCount * itemHeight + 'px';
+  listEl.appendChild(spacer);
+
+  // ====== 渲染函数 ======
+  function render(startIndex) {
+    const endIndex = Math.min(startIndex + visibleCount, totalCount);
+    for (let i = startIndex; i < endIndex; i++) {
+      const div = visibleList[i - startIndex];
+      div.textContent = data[i];
+      div.style.transform = `translateY(${i * itemHeight}px)`;
+    }
+  }
+
+  // ====== 监听滚动事件 ======
+  listEl.addEventListener('scroll', () => {
+    const scrollTop = listEl.scrollTop;
+    const startIndex = Math.floor(scrollTop / itemHeight);
+    render(startIndex);
+  });
+
+  // ====== 初始渲染 ======
+  render(0);
+</script>
+
+</body>
+</html>
