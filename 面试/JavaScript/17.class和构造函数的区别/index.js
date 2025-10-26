@@ -39,6 +39,8 @@ class Computer {
  * @param {*} Constructor 构造函数
  */
 function _classCallCheck(instance, Constructor) {
+
+    // 对象 的原型链上有没有 函数的原型 
     if (!(instance instanceof Constructor)) {
         throw new TypeError("Cannot call a class as a function");
     }
@@ -53,11 +55,12 @@ function _defineProperties(target, props) {
     for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
         // 进行属性描述符的配置
-        descriptor.enumerable = descriptor.enumerable || false;
-        descriptor.configurable = true;
+        descriptor.enumerable = descriptor.enumerable || false;  // 类构造出来的实例原型的属性不可以被枚举
+        descriptor.configurable = true; // 是否可以修改删除
 
+        // 判断该对象上有没有该属性
         if ("value" in descriptor)
-            descriptor.writable = true;
+            descriptor.writable = true; // 是否可以写入
         Object.defineProperty(target, descriptor.key, descriptor); 
     }
 }
@@ -91,13 +94,13 @@ var Computer = function () {
         key: "showSth",
         value: function showSth() {
             console.log("\u8FD9\u662F\u4E00\u53F0".concat(this.name, "\u7535\u8111"));
-        } // 静态方法
+        } // 原型上方法
 
     }], [{
         key: "comStruct",
         value: function comStruct() {
             console.log("电脑由显示器，主机，键鼠组成");
-        }
+        } // 静态上方法
     }]);
 
     return Computer;

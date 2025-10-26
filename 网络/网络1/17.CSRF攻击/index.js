@@ -9,28 +9,34 @@
         当用户访问一个危险网站时，网站会发出请求到被攻击的站点，这次请求会携带用户的cookie发送，因此就利用了用户
         的身份信息完成攻击。
 
+        默认情况下，fetch（或 XHR）跨域请求不会自动带上 cookie。
+        但是脚本可以显式地把 cookie 一并发送（fetch(..., { credentials: 'include' })）；
+        浏览器会遵守 cookie 的 SameSite、Secure 等策略并发送。
+
         防御
           1.不使用cookie, 使用sessionStorage、loaclStorage存储令牌，因为浏览器不会带上这两个
           2.为表单添加校验的token校验 （csrf token）
           3.cookie中使用sameSite字段 
-          4.服务器检查referer字段
+          4.服务器检查referer字段   吐音：略非尔
              
 
-           sameSite 吐音 绳fai (潮音)
+           sameSite 吐音 绳塞 (潮音)
           sameSite:  是在响应时，在cookie中添加sameSite。如 set-cookie: cookieName=cookieValue; sameSite=value;
                      sameStie有三个可选值   strict、lax、noen
 
                      strict: 表示严格，完全禁止第三方获取cookie, 跨站时，不会附带cookie，只有当前网站的url与请求时的url一致时，该请求才会附带该cookie。
-                             由于过于严格，导致可能出现某种影响，如：当利用a标签点击跳转到其他页面时，该页面不会附带cookie。
+                             由于过于严格，导致可能出现某种影响，如：当利用a标签点击跳转到其他页面时，该页面不会附带cookie。比如 a跳到b，此时b网站的cookie不会带上去
+                             吐音  是拽特                            
+ 
 
-                     lax: 防范跨站，大多数情况下会紧张获取cookie，只有跨站的请求是get或是表单发出的请求时，该请求才会附带cookie。
+                     lax: 防范跨站，大多数情况下不会获取cookie，只有跨站的请求是get或是表单发出的请求时，该请求才会附带cookie。
 
                      none: 表示没有限制。
 
 
-          csrf token: 用户访问一个网站时，服务器生成一个随机token，保存到session中，并将cookie给到客户端，当有重要请求时会带上该cookie,服务端验证后销毁该token。
-                      当有跨站请求时，没有该cookie或者在该服务端中该cookie已经过期，则验证不通过。
-                      弊端：可以在恶意网站中先请求拿到临时token，再发起重要请求，就可以附带该临时cookie过去。
+          csrf token: 用户访问一个网站时，服务器生成一个随机csrfToken，保存到session中，可以通过set-cookie给到客户端，当有重要请求时会带上该cookie,服务端验证后销毁该csrfToken。
+                      当有跨站请求时，服务端中该session的csrfToken已经过期，则验证不通过。
+                      双重提交通过让浏览器自动带的 cookie 与 JS 主动在 header 中提交的 token 做对比来防 CSRF。它的弱点是 token 必须对 JS 可读
           
           
           
@@ -40,7 +46,7 @@
                 将一个url进行ba64编码后，放到iframe标签的src上，该标签发出的请求就不会附带referer属性
                 称为“无 referer 攻击”
           
-             referer 吐音 而非而略
+            
            
 
 

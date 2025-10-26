@@ -223,7 +223,7 @@ export class ButtonWrapper {
    组合式继承/伪经典
 
       function zi(){
-         this.call(this, 123)
+         fu.call(this, 123)
       }
 
       function fu(name){
@@ -237,7 +237,7 @@ export class ButtonWrapper {
 
      缺点： 效率问题，基类函数被执行了两次，一次在赋值给子类的原型，一次在子类函数中执行，基类被执行了两次
 
-     组合式继承本质上是子类原型上拥有基类实例的所有属性，所有在执行子类时改变其原型即可。
+     组合式继承本质上是子类原型上拥有基类实例的所有属性，所以在执行子类时改变其原型即可。
 
 
 
@@ -321,7 +321,7 @@ export class ButtonWrapper {
 // ### 15. *promise.all* 方法的使用场景？数组中必须每一项都是 *promise* 对象吗？不是 *promise* 对象会如何处理 ？
 
 /*
-     all 在需在多个异步同时进行的情况下，并且会等待所有异步都有结果之后，才会有结果的情况下可以使用promise.all
+     all 在需要多个异步同时进行的情况下，并且会等待所有异步都有结果之后，才会有结果的情况下可以使用promise.all
 
      数组的每一项不必全是promise，如果数组的某一项不是promise，则promise会调用promise函数静态属性的resolve，并且将值传进去，
      会变成一个成功状态的promise,值为该数组项。
@@ -732,7 +732,7 @@ Object.defineProperty(函数, Symobl.hasInstance, {
 // ### 43. 内存泄漏（美团 19 年）
 
 /* 
-    内存泄露是由于 程序中的变量数据 需要在内存中开辟空间存储，到数据过多时，内存中空间会被开辟满，js垃圾回收机制没有回收
+    内存泄露是由于 程序中的变量数据 需要在内存中开辟空间存储，数据过多时，内存中空间会被开辟满，js垃圾回收机制没有回收
     就会导致内存泄露
 
     js常用垃圾回收机制   引用计数、标记清除
@@ -761,8 +761,8 @@ Object.defineProperty(函数, Symobl.hasInstance, {
      字符串和正则表达式
         增加了字符串原型上的方法 
            includes  判断是否拥有某一项
-           startsWith 判断是否以某一项开头
-           endsWith   判断是否以某一项结尾
+           startsWith 判断是否以某一项开头    吐音： 是跌是 喂
+           endsWith   判断是否以某一项结尾    吐音： 言是 喂
            repeat    会对字符串进行拼接几次后才会（参数为次数）
         
         增加了正则表达式标记名 y
@@ -781,7 +781,7 @@ Object.defineProperty(函数, Symobl.hasInstance, {
       增加了 成员速写、方法速写、计算属性名
       Object增加了api 
          is 判断两个数据是否严格相等 
-         assign  混入
+         assign  混入   吐音：额塞
          ...
       增加了类 （calss）
          类中所有代码都处于严格模式。原型上的所有属性都不会被遍历到，类中的所有方法都不能作为构造函数使用，没有原型。
@@ -796,7 +796,7 @@ Object.defineProperty(函数, Symobl.hasInstance, {
      符号
        共享符号  Symbol.for(描述)   只要描述一致，则会返回同一个符号
        普通符号  Symbol(描述)   无论描述是否一致都会返回唯一的符号
-       知名符号  Symbol.xxx     原型上的属性，使我们可以参数某些关键字的判断
+       知名符号  Symbol.xxx     原型上的属性，使我们可以参与某些关键字的判断
 
      promise
        为了解决回调地狱
@@ -806,7 +806,7 @@ Object.defineProperty(函数, Symobl.hasInstance, {
      迭代器、生成器
        迭代器是一个对象 对象中必须拥有 next方法且返回一个对象，对象中有两个属性 value: 此次迭代的值 dong: 迭代是否结束
        可迭代协议 当一个数据中有一个 Symbol.iterator 属性，值为函数，并且返回一个迭代对象。那么该数据就是可迭代的
-       但一个函数加上*号后，那么该函数会返回一个生成器，生成器也是一个可迭代对象和迭代器
+       当一个函数加上*号后，那么该函数会返回一个生成器，生成器也是一个可迭代对象和迭代器
        执行带有*号的函数就会返回一个生成器，yield关键字会停顿函数，该关键字只能在生成器函数中
 
      反射和代理
