@@ -36,7 +36,7 @@
 
           csrf token: 用户访问一个网站时，服务器生成一个随机csrfToken，保存到session中，可以通过set-cookie给到客户端，当有重要请求时会带上该cookie,服务端验证后销毁该csrfToken。
                       当有跨站请求时，服务端中该session的csrfToken已经过期，则验证不通过。
-                      双重提交通过让浏览器自动带的 cookie 与 JS 主动在 header 中提交的 token 做对比来防 CSRF。它的弱点是 token 必须对 JS 可读
+                      双重提交通过让浏览器自动带的 cookie 与 JS 主动在 header 中添加的 token 做对比来防 CSRF。它的弱点是 token 必须对 JS 可读
           
           
           
