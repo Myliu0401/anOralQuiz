@@ -79,9 +79,24 @@
 
          写出抽奖概率 50%  20%  10%
 
-         const m = Math.random() * 100;
-         if(m >= 50){  } else if(m <= 20){   }else if(m <= 10){ }
-      
+         function lottery(prizes) {
+             const rand = Math.random() * 100;
+             let cumulative = 0;
+             for (const p of prizes) {
+               cumulative += p.prob;
+               if (rand < cumulative) return p.name;
+             }
+             return '未中奖';
+           }
+           
+           const prizes = [
+             { name: '冰箱', prob: 50 },
+             { name: '微波炉', prob: 25 },
+             { name: '洗衣机', prob: 15 },
+             { name: '未中奖', prob: 10 }
+           ];
+
+        }
       */
 
 

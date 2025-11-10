@@ -82,6 +82,35 @@
 
   // ====== 初始渲染 ======
   render(0);
+
+
+
+  /*
+    
+     <div class="container" style="position: relative; height: 600px; overflow: auto;">
+        <div class="item" style="position: relative; top: 100px;">A</div>
+        <div class="itemb" style="position: absolute; height: 10000px;"></div>
+     </div>
+    这里：
+
+    .container 的 可见高度（viewport height） = 600px
+    
+    .container 的 内容区（content box） 被子元素撑大到了 10000px（因为 .itemb 很高）
+
+
+    而相对定位是根据父级内容区来定位
+
+    static静态定位  不会脱离文档流  
+
+    relative相对定位  不会脱离文档流  相对于自身根据父元素内容区来定位
+
+    absolute绝对定位 脱离文档流 相对于最近的定位祖先元素的内容区
+
+    fixed固定定位   脱离文档流  相对于视口
+
+
+   * 
+   * /
 </script>
 
 </body>
