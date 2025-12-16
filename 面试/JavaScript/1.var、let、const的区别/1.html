@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Foo() {
+        getname = function () {
+          console.log(3);
+        };
+        return this;
+      }
+      Foo.getname = function () {
+        console.log(1);
+      };
+      Foo.prototype.getname = function () {
+        console.log(2);
+      };
+      var getname = function () {
+        console.log(4);
+      };
+      function getname() {
+        console.log(5);
+      }
+      Foo.getname(); 
+      getname();
+      Foo().getname();
+      new Foo().getname();
+      new new Foo().getname();
+    </script>
+  </body>
+</html>

@@ -29,9 +29,14 @@
                              吐音  是拽特                            
  
 
-                     lax: 防范跨站，大多数情况下不会获取cookie，只有跨站的请求是get或是表单发出的请求时，该请求才会附带cookie。
+                     lax: 防范跨站，大多数情况下不会获取cookie，只有跨站的请求是get时，该请求才会附带cookie。
+                          fetch + credentials 也不能突破 SameSite=Lax 的限制！
+                          只允许 跨站 + 顶级导航 + GET 时附带 Cookie。顶级到导航就是地址栏
 
                      none: 表示没有限制。
+                           从 2020 起（Chrome 80+）所有现代浏览器统一修改了规则。
+                           现在 SameSite=None 有非常严格的要求，必须有Secure为true。fetch和XHR的请求必须配合credentials才会附带
+                           也就是必须是https请求并且存储的cookie是都Secure为true这个属性的
 
 
           csrf token: 用户访问一个网站时，服务器生成一个随机csrfToken，保存到session中，可以通过set-cookie给到客户端，当有重要请求时会带上该cookie,服务端验证后销毁该csrfToken。
@@ -50,6 +55,12 @@
            
 
 
+          CSRF 最常见也最强的攻击方式确实是利用隐藏的 <form> 自动提交，因为表单可以发送 POST 请求，而 POST 通常用于执行重要的业务操作。
 
+          但 CSRF 并不仅限于表单。任何能触发浏览器自动携带 Cookie 的跨站请求方式都可以用于 GET CSRF，例如 <img>、<iframe>、<script> 等，只是 GET 请求通常影响较小或被正确设计为无副作用。
+
+          因此，CSRF 的本质是：诱导用户浏览器向受信任站点发请求，浏览器自动带上 cookie，而非攻击者可以控制的 fetch/XHR。
+
+          <form> 可以发 POST（甚至 PUT/DELETE）请求！
 
 */

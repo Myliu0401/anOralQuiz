@@ -21,6 +21,10 @@
  *  
  *             可以随时导入导出，在哪里写都行
  * 
+ * 
+ *              exports = { a: 1 }   // ❌ 这样不会导出任何东西
+ *              exports 重新赋值，它就断开与 module.exports 的关联了。
+ * 
  */
 
 console.log('--==')
